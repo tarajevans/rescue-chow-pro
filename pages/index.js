@@ -1,17 +1,20 @@
 import rescueChow from "../public/images/Rescue-Chow-Logo-white-outline.gif";
 import petsAbout from "../public/images/pets-about-free-img.png";
 import chooseRescueImg from "../public/images/pet-with-girl-free-img.png";
+import Image from 'next/image'
 
 const Home = () => {
   return (
     <div className="bg-hero-pattern bg-cover bg-fixed ">
       <header className="bg-header-pattern bg-center pb-20 md:pb-64 contrast-75 ">
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-          <img
-            className="object-fill h-1/4 w-3/4"
-            src={rescueChow}
-            alt="rescue chow logo"
-          />
+        <Image
+        className="object-fill h-1/4 w-3/4"
+        src={rescueChow}
+        alt="rescue chow logo"
+        width={""}
+        height={""}
+        />
         </div>
         <div className=" flex flex-row items-center justify-center space-x-4">
           <a
@@ -64,11 +67,13 @@ const Home = () => {
                     >
                       <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                         <div className="flex items-center space-x-6 lg:space-x-8">
-                          <img
-                            src={petsAbout}
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
+                        <Image
+                        className="h-full w-full object-cover object-center"
+                        src={petsAbout}
+                        alt=""
+                        width={""}
+                        height={""}
+                        />
                         </div>
                       </div>
                     </div>
