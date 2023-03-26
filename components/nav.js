@@ -6,7 +6,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import dropdownImg from "../public/images/icons8-double-down-50.png";
 import { idbPromise } from "../utils/helpers";
-import { useStoreContext } from "../utils/globalState";
+// import { useStoreContext } from "../utils/globalState";
 import { TOGGLE_CART } from "../utils/actions";
 
 const user = {
@@ -63,7 +63,7 @@ function classNames(...classes) {
 }
 
 export default function Nav(props) {
-  const [, dispatch] = useStoreContext();
+  // const [, dispatch] = useStoreContext();
 
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });

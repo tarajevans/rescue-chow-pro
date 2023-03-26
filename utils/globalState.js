@@ -1,7 +1,18 @@
 import React, { createContext, useContext } from "react";
 import { useProductReducer } from './reducers'
 
-const StoreContext = createContext();
+const StoreContext = createContext({
+  products: [],
+    cart: [],
+    cartOpen: false,
+    categories: [],
+    currentCategory: '',
+    selectedRescueValue: {},
+    rescues: []
+
+});
+
+
 const { Provider } = StoreContext;
 
 const StoreProvider = ({ value = [], ...props }) => {
