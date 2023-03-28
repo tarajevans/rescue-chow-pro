@@ -42,7 +42,8 @@ function Logout() {
 }
 
 function showNavigation() {
-  if (true) { //Auth.loggedIn()
+  if (Auth.loggedIn()) {
+    //Auth.loggedIn()
     userNavigation = [
       ...userNavigation,
       { name: "Logout", href: "/", onclick: Logout },
