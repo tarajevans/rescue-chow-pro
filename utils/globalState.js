@@ -9,7 +9,6 @@ const StoreContext = createContext({
     currentCategory: '',
     selectedRescueValue: {},
     rescues: []
-
 });
 
 

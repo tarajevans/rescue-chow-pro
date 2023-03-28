@@ -2,13 +2,10 @@ import rescueChow from "../public/images/Rescue-Chow-Logo-white-outline.gif";
 import petsAbout from "../public/images/pets-about-free-img.png";
 import chooseRescueImg from "../public/images/pet-with-girl-free-img.png";
 import Image from "next/image";
-import CartContex from "../GlobalStates/cartState";
 import { useContext } from "react";
 
 const Home = () => {
 
-  const cartState = useContext(CartContex);
-  console.log(cartState.cart.cartOpen)
 
   return (
     <div className="bg-hero-pattern bg-cover bg-fixed ">

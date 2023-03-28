@@ -8,7 +8,7 @@ const CartContex = createContext({
 });
 
 export function CartContextProvider(props) {
-  const [cart, setcart] = useState({
+  const [cart, setCart] = useState({
     products: [],
     cartOpen: false,
     currentCategory: "",

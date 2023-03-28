@@ -1,5 +1,6 @@
 import { Fragment, useContext } from "react";
 import { CartContextProvider } from "../../GlobalStates/cartState";
+import { ListsDataContexProvider } from "../../GlobalStates/listsDataState";
 
 // import MainHeader from './main-header';
 // import Notification from '../ui/notification';
@@ -13,14 +14,16 @@ function Layout(props) {
   return (
     <Fragment>
       <CartContextProvider>
-        <main>{props.children}</main>
-        {/* {activeNotification && (
+        <ListsDataContexProvider>
+          <main>{props.children}</main>
+          {/* {activeNotification && (
         <Notification
           title={activeNotification.title}
           message={activeNotification.message}
           status={activeNotification.status}
         />
       )} */}
+        </ListsDataContexProvider>
       </CartContextProvider>
     </Fragment>
   );
