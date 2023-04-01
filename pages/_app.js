@@ -1,19 +1,34 @@
-import '../styles/globals.css'
-import Nav from '../components/nav'
-import {GlobalContextProvider} from '../utils/globalStates/globalState'
-import {CartContextProvider} from '../utils/globalStates/cartState'
+import "../styles/globals.css";
+import Layout from "../components/layout/layout";
+import { SessionProvider, useSession } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function Auth({ children }) {
+  // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
+  const { status } = useSession({ required: true });
 
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  return children;
+}
+
+function MyApp({ Component, pageProps: { session, ...pageProps }  }) {
   return (
     <div>
-      <GlobalContextProvider>
-        <CartContextProvider>
-          <Nav/>
-        <Component {...pageProps} />
-        </CartContextProvider>
-      </GlobalContextProvider>
+      <Layout>
+        <SessionProvider session={session}>
+          {Component.auth ? (
+            <Auth>
+              <Component {...pageProps} />
+            </Auth>
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </SessionProvider>
+      </Layout>
     </div>
-  )
+  );
 }
+
 export default MyApp;
