@@ -126,10 +126,12 @@ const Home = () => {
                     >
                       <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-4">
                         <div className="flex items-center space-x-6 lg:space-x-8">
-                          <img
+                          <Image
                             src={chooseRescueImg}
                             alt=""
-                            className="h-full w-full object-cover object-center"
+                            className="object-cover object-center"
+                            height={700}
+                            width={700}
                           />
                         </div>
                       </div>

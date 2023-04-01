@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // import Auth from "../utils/auth";
 import Img from "../public/images/favicon.ico";
 import { Fragment } from "react";
@@ -6,8 +6,10 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import dropdownImg from "../public/images/icons8-double-down-50.png";
 import { idbPromise } from "../utils/helpers";
-import { useStoreContext } from "../utils/globalState";
+import  useStoreContext  from "../utils/globalStates/globalState";
 import { TOGGLE_CART } from "../utils/actions";
+import Image from "next/image";
+import CartContext from "../utils/globalStates/cartState";
 
 const user = {
   name: "user",
@@ -63,8 +65,9 @@ function classNames(...classes) {
 }
 
 export default function Nav(props) {
-  const [, dispatch] = useStoreContext();
-
+  // const [, dispatch] = useStoreContext();
+  const globalState = useContext (useStoreContext);
+const cartState= useContext (CartContext);
   function toggleCart() {
     dispatch({ type: TOGGLE_CART });
   }
@@ -78,8 +81,10 @@ export default function Nav(props) {
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <img
-                        className="h-8 w-8"
+                      <Image
+                        className
+                        height={32}
+                        width={32}
                         src={Img}
                         alt="rescue chow logo"
                       />
@@ -108,7 +113,7 @@ export default function Nav(props) {
                     <div className="ml-4 flex items-center md:ml-6">
                       <button
                         type="button"
-                        onClick={toggleCart}
+                        onClick={cartState.toggleCart}
                         className="rounded-full  p-3 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span role="img" aria-label="trash">
@@ -120,8 +125,10 @@ export default function Nav(props) {
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-red-400 outline outline-3 outline-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
-                            <img
-                              className="h-8 w-8 rounded-full p-1 "
+                            <Image
+                              className="rounded-full p-1"
+                              height={32}
+                              width={32}
                               src={dropdownImg}
                               alt=""
                             />
