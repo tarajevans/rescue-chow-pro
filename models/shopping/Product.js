@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+import { chowDb } from "../../config/connections";
+import thoughtSchema from './Thought';
 
 const { Schema } = mongoose;
-const thoughtSchema = require('./Thought')
 
 const productSchema = new Schema({
   name: {
@@ -35,6 +36,4 @@ const productSchema = new Schema({
   thoughts: [thoughtSchema],
 });
 
-const Product = mongoose.model('Product', productSchema);
-
-module.exports = Product;
+export const Product = chowDb.model('Product', productSchema);

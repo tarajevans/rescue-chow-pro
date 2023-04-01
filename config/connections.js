@@ -1,13 +1,12 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
+import * as mongoose from "mongoose";
 
 
-mongoose.connect(
-    process.env.MONGO_ONLINE_URI,
+const chowDb=mongoose.createConnection (
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        maxPoolSize: 10,
     }
 );
 
-module.exports = mongoose.connection;
+export {chowDb};

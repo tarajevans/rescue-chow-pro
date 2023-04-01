@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+import { chowDb } from "../../config/connections";
 
 const { Schema } = mongoose;
 
@@ -15,6 +16,4 @@ const itemLineSchema = new Schema({
     
 });
 
-const ItemLine = mongoose.model('ItemLine', itemLineSchema);
-
- module.exports = ItemLine;
+export const ItemLine = chowDb.model('ItemLine', itemLineSchema);

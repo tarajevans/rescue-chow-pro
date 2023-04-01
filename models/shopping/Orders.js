@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const ItemLine = require('./ItemLine');
+import mongoose from "mongoose";
+import { chowDb } from "../../config/connections";
+import ItemLine from './ItemLine';
 
 const { Schema } = mongoose;
 
@@ -17,6 +18,4 @@ const orderSchema = new Schema({
     }
 });
 
-const Orders = mongoose.model('Orders', orderSchema);
-
-module.exports = Orders;
+export const Orders = chowDb.model('Orders', orderSchema);

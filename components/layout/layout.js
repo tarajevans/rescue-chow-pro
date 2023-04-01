@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 import { CartContextProvider } from "../../GlobalStates/cartState";
 import { ListsDataContexProvider } from "../../GlobalStates/listsDataState";
+import Nav from "../nav";
 
 // import MainHeader from './main-header';
 // import Notification from '../ui/notification';
@@ -15,6 +16,7 @@ function Layout(props) {
     <Fragment>
       <CartContextProvider>
         <ListsDataContexProvider>
+          <Nav />
           <main>{props.children}</main>
           {/* {activeNotification && (
         <Notification

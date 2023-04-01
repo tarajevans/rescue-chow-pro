@@ -1,4 +1,5 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from'mongoose';
+import { chowDb } from '../config/connections';
 
 const rescueSchema = new Schema(
     {
@@ -26,6 +27,4 @@ const rescueSchema = new Schema(
     }
 );
 
-const Rescues = model('Rescues', rescueSchema);
-
-module.exports = Rescues;
+export const Rescues = chowDb.model('Rescues', rescueSchema);

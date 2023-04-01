@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+import { chowDb } from "../../config/connections";
+
 
 const { Schema } = mongoose;
 
-const categorySchema = new Schema({
+export const categorySchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -14,6 +16,4 @@ const categorySchema = new Schema({
     }
 });
 
-const Category = mongoose.model('Category', categorySchema);
-
-module.exports = Category;
+export const Category = chowDb.model('Category', categorySchema);

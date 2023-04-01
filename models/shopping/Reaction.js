@@ -1,6 +1,7 @@
-const { Schema } = require('mongoose');
-const dateFormat = require('../../utils/helpers');
+import mongoose from "mongoose";
+import dateFormat from '../../utils/helpers';
 
+const { Schema } = mongoose;
 const reactionSchema = new Schema(
     {
         reactionBody: {
