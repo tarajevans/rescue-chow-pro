@@ -8,7 +8,7 @@ const Nav = () => {
             <Link href='#'>Rescues</Link>{" "}
             <Link href='#'>Shop</Link>{" "}
             <Link href='#'>Cart</Link>{" "}
-            <Link href='#'>Login</Link>{" "}
+            <Link href='/auth/login'>Login</Link>{" "}
             <Link href ='#'>Logout</Link>
         </div>
     )
