@@ -1,12 +1,13 @@
+import Link from "next/link";
+
 const Login = () => {
+  const handleFormSubmit = () => {
+    console.log("submit");
+  };
 
-    const handleFormSubmit = () => {
-
-    }
-
-    const handleChange = () => {
-        
-    }
+  const handleChange = () => {
+    console.log("change");
+  };
 
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -17,12 +18,12 @@ const Login = () => {
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or{" "}
-            <a
-              href="/signup"
+            <Link
+              href ='/auth/signup'
               className="font-medium text-red-400 hover:text-black"
             >
               Go to Sign Up
-            </a>
+            </Link>
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>

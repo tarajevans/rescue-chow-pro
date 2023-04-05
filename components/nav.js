@@ -9,7 +9,8 @@ const Nav = () => {
             <Link href='#'>Shop</Link>{" "}
             <Link href='#'>Cart</Link>{" "}
             <Link href='/auth/login'>Login</Link>{" "}
-            <Link href ='#'>Logout</Link>
+            <Link href ='#'>Logout</Link>{" "}
+            <Link href ='/auth/signup'>Signup</Link>
         </div>
     )
 }
