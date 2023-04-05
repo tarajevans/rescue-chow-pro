@@ -4,7 +4,7 @@ const Nav = () => {
 
     return (
         <div>
-            <Link href='#'>Home</Link>{" "}
+            <Link href='/'>Home</Link>{" "}
             <Link href='#'>Rescues</Link>{" "}
             <Link href='#'>Shop</Link>{" "}
             <Link href='#'>Cart</Link>{" "}
