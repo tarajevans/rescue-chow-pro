@@ -1,12 +1,15 @@
-
+import Link from "next/link";
 
 const Nav = () => {
 
     return (
         <div>
-            <p>
-                Hello
-            </p>
+            <Link href='#'>Home</Link>{" "}
+            <Link href='#'>Rescues</Link>{" "}
+            <Link href='#'>Shop</Link>{" "}
+            <Link href='#'>Cart</Link>{" "}
+            <Link href='#'>Login</Link>{" "}
+            <Link href ='#'>Logout</Link>
         </div>
     )
 }
