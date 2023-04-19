@@ -2,10 +2,10 @@ import rescueChow from "../public/images/Rescue-Chow-Logo-white-outline.gif";
 import petsAbout from "../public/images/pets-about-free-img.png";
 import chooseRescueImg from "../public/images/pet-with-girl-free-img.png";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext } from "react";
 
 const Home = () => {
-
 
   return (
     <div className="bg-hero-pattern bg-cover bg-fixed ">
@@ -20,18 +20,18 @@ const Home = () => {
           />
         </div>
         <div className=" flex flex-row items-center justify-center space-x-4">
-          <a
+          <Link
             href="/Shop"
             className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black"
           >
             Shop Now
-          </a>
-          <a
+          </Link>
+          <Link
             href="/who-we-are"
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
           >
             Learn more
-          </a>
+          </Link>
         </div>
       </header>
       <main>
@@ -81,12 +81,12 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <a
+                    <Link
                       href="/who-we-are"
                       className="inline-block rounded-md border border-transparent bg-red-400 py-3 px-8 text-center font-medium text-white hover:bg-black"
                     >
                       Learn More!
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -94,12 +94,12 @@ const Home = () => {
           </div>
           <div className="flex flex-row items-center justify-center space-x-16 my-8">
             <h2 className="font-love text-white text-7xl">Contact Us</h2>
-            <a
+            <Link
               href="/get-in-touch"
               className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-white outline bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
             >
               Learn more
-            </a>
+            </Link>
           </div>
           <div className="relative overflow-hidden bg-red-400 w-full  shadow-inner">
             <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
@@ -140,12 +140,12 @@ const Home = () => {
                       </div>
                     </div>
 
-                    <a
+                    <Link
                       href="/shop"
                       className="inline-block rounded-md border border-transparent bg-white py-3 px-8 text-center font-medium text-red-400 hover:bg-black"
                     >
                       Get Started
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

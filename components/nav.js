@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import { Disclosure, Menu, Transition} from "@headlessui/react";
 import Image from "next/image";
 import Img from "../public/images/favicon.ico";
@@ -7,11 +8,22 @@ import dropdownImg from "../public/images/icons8-double-down-50.png";
 import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
+
+
 const Nav = () => {
+
+  const user = {
+    name: "user",
+    email: "user@email.com",
+    imageUrl: { dropdownImg },
+  };
+
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", href: "/", current: false },
+    { name: "Who We Are", href: "/who-we-are", current: false },
+    { name: "Order Now", href: "/shop", current: false },
+    { name: "Find A Rescue", href: "/find-a-rescue", current: false },
+    { name: "Get In Touch", href: "/get-in-touch", current: false },
   ];
 
   const userNavigation = [
