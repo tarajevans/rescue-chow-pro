@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import facebook from "../assets/icons8-facebook-circled-64.png";
-import linkedin from "../assets/icons8-linkedin-circled-64.png";
-import instagram from "../assets/icons8-instagram-old-50.png";
+import facebook from "../public/images/icons8-facebook-circled-64.png";
+import linkedin from "../public/images/icons8-linkedin-circled-64.png";
+import instagram from "../public/images/icons8-instagram-old-50.png";
 
 const Footer = () => {
   return (
