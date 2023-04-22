@@ -13,7 +13,7 @@ const FindARescue = () => {
         </div>
 
         <div className="mt-16 space-y-16">
-          {state.rescues.map((rescue, rescueIdx) =>
+          {/* {state.rescues.map((rescue, rescueIdx) =>
               <div
                 key={rescue.name}
                 className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
@@ -54,7 +54,7 @@ const FindARescue = () => {
                   </div>
                 </div>
               </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
