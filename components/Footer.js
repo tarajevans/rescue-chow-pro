@@ -9,10 +9,10 @@ const Footer = () => {
   return (
     <footer className="footer footer-center p-5 bg-base-200 text-base-content rounded bg-grey-223">
       <div className="flex flex-row items-center justify-center space-x-20">
-        <Link href="/who-we-Linkre" className="link link-hover">
+        <Link href="/WhoWeAre" className="link link-hover">
           Who We Are
         </Link>
-        <Link href="/get-in-touch" className="link link-hover">
+        <Link href="/GetInTouch" className="link link-hover">
           Contact
         </Link>
         <Link href="/shop" className="link link-hover">

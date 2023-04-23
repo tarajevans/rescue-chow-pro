@@ -27,7 +27,7 @@ const Home = () => {
             Shop Now
           </Link>
           <Link
-            href="/who-we-are"
+            href="/WhoWeAre"
             className="inline-flex items-center justify-center rounded-full border border-transparent bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
           >
             Learn more
@@ -82,7 +82,7 @@ const Home = () => {
                     </div>
 
                     <Link
-                      href="/who-we-are"
+                      href="/WhoWeAre"
                       className="inline-block rounded-md border border-transparent bg-red-400 py-3 px-8 text-center font-medium text-white hover:bg-black"
                     >
                       Learn More!
@@ -95,7 +95,7 @@ const Home = () => {
           <div className="flex flex-row items-center justify-center space-x-16 my-8">
             <h2 className="font-love text-white text-7xl">Contact Us</h2>
             <Link
-              href="/get-in-touch"
+              href="/GetInTouch"
               className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-white outline bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
             >
               Learn more
