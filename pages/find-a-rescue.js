@@ -4,13 +4,13 @@ import React from "react";
 
 const FindARescue = () => {
     return (
-<div className="bg-white">
-      <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-9xl text-center font-medium font-love text-red-400">
-            Our Rescues
-          </h2>
-        </div>
+        <div className="bg-white">
+            <div className="mx-auto max-w-2xl py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
+                <div className="mx-auto max-w-3xl text-center">
+                    <h2 className="text-9xl text-center font-medium font-love text-red-400">
+                        Our Rescues
+                    </h2>
+                </div>
 
         <div className="mt-16 space-y-16">
           {/* {state.rescues.map((rescue, rescueIdx) =>

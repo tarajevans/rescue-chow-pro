@@ -59,9 +59,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const UserMenu = () => {
     const userNavigation = [
-        { name: "Account", href: "#" },
-        { name: "Settings", href: "#" },
+        { name: "Login", href: "#" },
         { name: "Logout", href: "#" },
+        { name: "Signup", href: "#" },
     ];
 
     function classNames(...classes) {
@@ -70,7 +70,7 @@ const UserMenu = () => {
 
     return (
         <div>
-            <Menu as='div' className="relative ml-3">
+            <Menu as="div" className="relative ml-3">
                 <Menu.Button className="flex max-w-xs items-center rounded-full bg-red-400 outline outline-3 outline-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span className="sr-only">Open user menu</span>
                     <Image
