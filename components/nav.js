@@ -246,7 +246,7 @@ const Nav = () => {
         { name: "Who We Are", href: "/WhoWeAre", current: false },
         { name: "Order Now", href: "/OrderNow", current: false },
         { name: "Find A Rescue", href: "/find-a-rescue", current: false },
-        { name: "Get In Touch", href: "/get-in-touch", current: false },
+        { name: "Get In Touch", href: "/GetInTouch", current: false },
     ];
 
     const userNavigation = [
@@ -312,158 +312,46 @@ const Nav = () => {
                                     🛒
                                 </span>
                             </button>
-                            <Menu
-                                as="div"
-                                className="relative inline-block text-left"
-                            >
-                                <div>
-                                    <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                                        Options
-                                        <ChevronDownIcon
-                                            className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
-                                            aria-hidden="true"
-                                        />
-                                    </Menu.Button>
-                                </div>
-                                <Transition
-                                    as={Fragment}
-                                    enter="transition ease-out duration-100"
-                                    enterFrom="transform opacity-0 scale-95"
-                                    enterTo="transform opacity-100 scale-100"
-                                    leave="transition ease-in duration-75"
-                                    leaveFrom="transform opacity-100 scale-100"
-                                    leaveTo="transform opacity-0 scale-95"
-                                >
-                                    <Menu.Items as="div" className="relative ml-3">
-                                        <div className="px-1 py-1 ">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${
-                                                            active
-                                                                ? "bg-violet-500 text-white"
-                                                                : "text-gray-900"
-                                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                                    >
-                                                        {active ? (
-                                                            <EditActiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <EditInactiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Edit
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${
-                                                            active
-                                                                ? "bg-violet-500 text-white"
-                                                                : "text-gray-900"
-                                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                                    >
-                                                        {active ? (
-                                                            <DuplicateActiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <DuplicateInactiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Duplicate
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                        <div className="px-1 py-1">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${
-                                                            active
-                                                                ? "bg-violet-500 text-white"
-                                                                : "text-gray-900"
-                                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                                    >
-                                                        {active ? (
-                                                            <ArchiveActiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <ArchiveInactiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Archive
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${
-                                                            active
-                                                                ? "bg-violet-500 text-white"
-                                                                : "text-gray-900"
-                                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                                    >
-                                                        {active ? (
-                                                            <MoveActiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <MoveInactiveIcon
-                                                                className="mr-2 h-5 w-5"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Move
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                        <div className="px-1 py-1">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        className={`${
-                                                            active
-                                                                ? "bg-violet-500 text-white"
-                                                                : "text-gray-900"
-                                                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                                    >
-                                                        {active ? (
-                                                            <DeleteActiveIcon
-                                                                className="mr-2 h-5 w-5 text-violet-400"
-                                                                aria-hidden="true"
-                                                            />
-                                                        ) : (
-                                                            <DeleteInactiveIcon
-                                                                className="mr-2 h-5 w-5 text-violet-400"
-                                                                aria-hidden="true"
-                                                            />
-                                                        )}
-                                                        Delete
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                    </Menu.Items>
-                                </Transition>
-                            </Menu>
+                            <Menu as="div" className="relative ml-3">
+                        <div>
+                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-red-400 outline outline-3 outline-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <span className="sr-only">Open user menu</span>
+                            <img
+                              className="h-8 w-8 rounded-full p-1 "
+                              src={dropdownImg}
+                              alt=""
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {userNavigation.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <a
+                                    href={item.href}
+                                    onClick={item.onclick}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            ))}
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>                     
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">
