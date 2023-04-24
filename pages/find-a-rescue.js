@@ -34,9 +34,10 @@ const FindARescue = () => {
             console.log("Loading...");
         } else {
             listContext.loadRescues(data);
-            
-        console.log(listContext.data.rescues);
+
+            console.log(listContext.data.rescues);
         }
+        console.log(listContext.data.rescues);
         // load rescues into globalState
     }, [isLoading, data]);
 
@@ -54,7 +55,7 @@ const FindARescue = () => {
                     <div className="mt-16 space-y-16">
                         {listContext.data.rescues.map((rescue, rescueIdx) => (
                             <div
-                                key={rescue.name}
+                                key={rescue.id}
                                 className="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8"
                             >
                                 <div
@@ -65,16 +66,18 @@ const FindARescue = () => {
                                         "mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4"
                                     )}
                                 >
-                                  {rescue?.website && <Link
-                                        target="_blank"
-                                        rel="noopener"
-                                        href={rescue.website}
-                                    >
-                                        <h3 className=" hover:cursor-pointer hover:underline text-lg font-medium text-gray-900">
-                                            {rescue.name}
-                                        </h3>
-                                    </Link>}
-                                    
+                                    {rescue?.website && (
+                                        <Link
+                                            target="_blank"
+                                            rel="noopener"
+                                            href={rescue.website}
+                                        >
+                                            <h3 className=" hover:cursor-pointer hover:underline text-lg font-medium text-gray-900">
+                                                {rescue.name}
+                                            </h3>
+                                        </Link>
+                                    )}
+
                                     <p className="mt-2 text-sm text-gray-500">
                                         {rescue.description}
                                     </p>
