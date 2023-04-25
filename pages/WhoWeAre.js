@@ -126,7 +126,7 @@ const WhoWeAre = () => {
         </div>
         <div className=" flex flex-row items-center justify-center pt-10 space-x-4">
           <Link
-            href="/Shop"
+            href="/OrderNow"
             className="inline-flex items-center justify-center rounded-full border border-transparent  bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
           >
             Shop Now
