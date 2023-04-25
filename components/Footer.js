@@ -15,7 +15,7 @@ const Footer = () => {
         <Link href="/GetInTouch" className="link link-hover">
           Contact
         </Link>
-        <Link href="/shop" className="link link-hover">
+        <Link href="/OrderNow" className="link link-hover">
           Shop
         </Link>
         <Link href="/find-a-rescue" className="link link-hover">

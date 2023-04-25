@@ -21,7 +21,7 @@ const Home = () => {
         </div>
         <div className=" flex flex-row items-center justify-center space-x-4">
           <Link
-            href="/Shop"
+            href="/OrderNow"
             className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black"
           >
             Shop Now
@@ -141,7 +141,7 @@ const Home = () => {
                     </div>
 
                     <Link
-                      href="/shop"
+                      href="/OrderNow"
                       className="inline-block rounded-md border border-transparent bg-white py-3 px-8 text-center font-medium text-red-400 hover:bg-black"
                     >
                       Get Started
