@@ -28,16 +28,17 @@ const Home = () => {
           </Link>
           <Link
             href="/WhoWeAre"
-            className="inline-flex items-center justify-center rounded-full border border-transparent bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
+            className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-gray-50 outline bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
           >
             Learn more
           </Link>
         </div>
       </header>
       <main>
-        <div className="mx-auto py-6 sm:px-6 lg:px-8  ">
-          <div className="relative overflow-hidden bg-white w-full  shadow-inner">
-            <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+        <div className="mx-auto py-6 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+          <div className="relative overflow-hidden bg-white bg-opacity-80 w-4/5  shadow-inner">
+            <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
               <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                 <div className="sm:max-w-lg">
                   <h1 className="font text-4xl py-4 font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -92,6 +93,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+          </div>
           <div className="flex flex-row items-center justify-center space-x-16 my-8">
             <h2 className="font-love text-white text-7xl">Contact Us</h2>
             <Link
@@ -101,8 +103,9 @@ const Home = () => {
               Learn more
             </Link>
           </div>
-          <div className="relative overflow-hidden bg-red-400 w-full  shadow-inner">
-            <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+          <div className="flex justify-center">
+          <div className="relative content-center overflow-hidden bg-red-400 bg-opacity-80 w-4/5  shadow-inner">
+            <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
               <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                 <div className="sm:max-w-lg">
                   <h1 className="text-6xl font-mediuim font-love text-black">
@@ -150,6 +153,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </main>

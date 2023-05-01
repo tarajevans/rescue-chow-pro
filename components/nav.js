@@ -264,9 +264,9 @@ const Nav = () => {
     }
 
     return (
-        <Disclosure as="nav" className="bg-grey-223">
+        <Disclosure as="nav" className="bg-gray-400 border-b-4 border-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex h-16 items-center justify-between">
+                <div className="flex h-16 items-center justify-around">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
                             <Image
@@ -287,7 +287,7 @@ const Nav = () => {
                                             item.current
                                                 ? "bg-gray-900 text-white"
                                                 : "text-gray-700 hover:bg-red-400 hover:text-white",
-                                            "px-3 py-2 rounded-md text-sm font-medium"
+                                            "px-3 py-2 rounded-md text-base font-semibold"
                                         )}
                                         aria-current={
                                             item.current ? "page" : undefined

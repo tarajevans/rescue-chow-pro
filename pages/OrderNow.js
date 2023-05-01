@@ -1,5 +1,5 @@
 import React from "react";
-// import ProductList from "../components/shopping/ProductList";
+import ProductList from "../components/ProductList";
 // import CategoryMenu from "../components/shopping/CategoryMenu";
 // import ChooseARescue from "./shopping/ChooseRescue";
 
@@ -8,8 +8,8 @@ const OrderNow = () => {
     <div>
       <div className="w-full">
         {/* <ChooseARescue />
-        <CategoryMenu />
-        <ProductList /> */}
+        <CategoryMenu /> */}
+        <ProductList />
 
       </div>
     </div>

@@ -63,7 +63,7 @@ const FindARescue = () => {
                                         rescueIdx % 2 === 0
                                             ? "lg:col-start-1"
                                             : "lg:col-start-8 xl:col-start-9",
-                                        "mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4"
+                                        "mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 "
                                     )}
                                 >
                                     {rescue?.website && (
@@ -78,7 +78,7 @@ const FindARescue = () => {
                                         </Link>
                                     )}
 
-                                    <p className="mt-2 text-sm text-gray-500">
+                                    <p className="mt-2 text-sm text-gray-500 lg:items-center">
                                         {rescue.description}
                                     </p>
                                 </div>
@@ -90,13 +90,13 @@ const FindARescue = () => {
                                         "flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8"
                                     )}
                                 >
-                                    <div className="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-white-100">
+                                    <div className="aspect-w-5 aspect-h-2 overflow-hidden rounded-lg bg-white-100 lg:items-center">
                                         <Image
                                             src={`/images/rescues/${rescue.image}`}
                                             alt="rescue"
                                             height="200"
                                             width="200"
-                                            className="object-cover object-center"
+                                            className="object-cover object-position: center "
                                         />
                                     </div>
                                 </div>
