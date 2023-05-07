@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { pluralize, idbPromise, getProceeds } from "../../../utils/helpers";
-import { useStoreContext } from "../../../utils/shopping/GlobalState";
-import {
-  ADD_TO_CART,
-  UPDATE_CART_QUANTITY,
-} from "../../../utils/shopping/actions";
+// import { Link } from "react-router-dom";
+import { pluralize, getProceeds } from "../../utils/helpers";
+// import { useStoreContext } from "../../../utils/shopping/GlobalState";
+// import {
+//   ADD_TO_CART,
+//   UPDATE_CART_QUANTITY,
+// } from "../../../utils/shopping/actions";
 
 function ProductItem(item) {
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   const { image, name, _id, price, quantity } = item;
   const { cart } = state;
 
