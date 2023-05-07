@@ -1,58 +1,58 @@
-import React, { useState, useEffect } from "react";
-import { useStoreContext } from "../utils/shopping/GlobalState";
-import { ADD_RESCUE_CHECKOUT, TOGGLE_CART, UPDATE_RESCUES } from "../utils/shopping/actions";
+// import React, { useState, useEffect } from "react";
+// import { useStoreContext } from "../utils/shopping/GlobalState";
+// import { ADD_RESCUE_CHECKOUT, TOGGLE_CART, UPDATE_RESCUES } from "../utils/shopping/actions";
 
-import { QUERY_RESCUES } from "../utils/shopping/queries";
-import { useQuery } from "@apollo/client";
-import { idbPromise } from "../utils/helpers";
+// import { QUERY_RESCUES } from "../utils/shopping/queries";
+// import { useQuery } from "@apollo/client";
+// import { idbPromise } from "../utils/helpers";
 
 function RescueForm() {
-  const [state, dispatch] = useStoreContext();
-  // const { currentCategory } = state;
-  const [radio, setRadio] = useState("None");
+  // const [state, dispatch] = useStoreContext();
+  // // const { currentCategory } = state;
+  // const [radio, setRadio] = useState("None");
 
-  const { loading, data } = useQuery(QUERY_RESCUES);
+  // const { loading, data } = useQuery(QUERY_RESCUES);
 
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_RESCUES,
-        rescues: data.rescues,
-      });
-      data.rescues.forEach((rescue) => {
-        idbPromise("rescues", "put", rescue);
-      });
-    } else if (!loading) {
-      idbPromise("rescues", "get").then((rescues) => {
-        dispatch({
-          type: UPDATE_RESCUES,
-          rescues: rescues,
-        });
-      });
-    }
-  }, [data, loading, dispatch]);
-
-  // function filterProducts() {
-  //   if (!currentCategory) {
-  //     return state.products;
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_RESCUES,
+  //       rescues: data.rescues,
+  //     });
+  //     data.rescues.forEach((rescue) => {
+  //       idbPromise("rescues", "put", rescue);
+  //     });
+  //   } else if (!loading) {
+  //     idbPromise("rescues", "get").then((rescues) => {
+  //       dispatch({
+  //         type: UPDATE_RESCUES,
+  //         rescues: rescues,
+  //       });
+  //     });
   //   }
-  //   return state.products.filter(
-  //     (product) => product.category._id === currentCategory
-  //   );
+  // }, [data, loading, dispatch]);
+
+  // // function filterProducts() {
+  // //   if (!currentCategory) {
+  // //     return state.products;
+  // //   }
+  // //   return state.products.filter(
+  // //     (product) => product.category._id === currentCategory
+  // //   );
+  // // }
+
+  // function submitCheckout(e) {
+  //   e.preventDefault();
+
+  //   dispatch({
+  //     type: ADD_RESCUE_CHECKOUT,
+  //     selectedRescueValue: radio,
+  //   });
+  //   dispatch({ type: TOGGLE_CART });
   // }
-
-  function submitCheckout(e) {
-    e.preventDefault();
-
-    dispatch({
-      type: ADD_RESCUE_CHECKOUT,
-      selectedRescueValue: radio,
-    });
-    dispatch({ type: TOGGLE_CART });
-  }
   return (
     <div>
-      <legend className="text-lg font-medium text-gray-900">Our Rescues</legend>
+      {/* <legend className="text-lg font-medium text-gray-900">Our Rescues</legend>
       <div className="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
         {state.rescues.map((rescue) =>
             <div className="relative flex items-start py-4" key={rescue._id}>
@@ -88,7 +88,7 @@ function RescueForm() {
             Proceed To Checkout
           </button>
         ) : null}
-      </div>
+      </div> */}
     </div>
   );
 }
