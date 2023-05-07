@@ -15,7 +15,7 @@ module.exports = {
         "grey-223": "#DFDFDF",
       },
       fontFamily: {
-        love: "'Dancing Script', cursive",
+        love: "'Tahoma', sans-serif",
       },
     },
   },

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"); */
 
 
 
@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: 'Dancing Script', cursive;
+  font-family: Tahoma, sans-serif;
 }
 
 h1,
@@ -20,5 +20,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Dancing Script', cursive;
+  font-family: Tahoma, sans-serif;
 }
