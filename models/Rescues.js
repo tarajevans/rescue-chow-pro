@@ -27,4 +27,4 @@ const rescueSchema = new Schema(
     }
 );
 
-export const Rescues = chowDb.model('Rescues', rescueSchema);
+export const Rescuese = chowDb.model('Rescues', rescueSchema);
