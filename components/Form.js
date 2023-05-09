@@ -91,7 +91,6 @@ function RescueForm() {
                 ))}
             </div>
             <div className="flex justify-center align-center">
-                {window.location.pathname === "/shop" ? (
                     <button
                         onClick={submitCheckout}
                         type="submit"
@@ -99,7 +98,6 @@ function RescueForm() {
                     >
                         Proceed To Checkout
                     </button>
-                ) : null}
             </div>
         </div>
     );
