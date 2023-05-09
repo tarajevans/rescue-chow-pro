@@ -65,7 +65,7 @@ db.once("open", async () => {
       category: categories[1]._id,
       description:
         "Healthy, Rich in Iron, Breakable, Human grade, 100% Canadian Dehydrated Dog Treats. Great for training, as small little pieces can be broken off and given as a reward or daily treat. ",
-      image: "Beef Bites.png",
+      image: "Beef-Liver-Treats.gif",
       price: 12.99,
       isCharitable: true,
       quantity: 1,
