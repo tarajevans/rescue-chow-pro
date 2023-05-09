@@ -48,15 +48,15 @@ function RescueForm() {
     // //   );
     // // }
 
-    // function submitCheckout(e) {
-    //   e.preventDefault();
+    function submitCheckout(e) {
+      // e.preventDefault();
 
-    //   dispatch({
-    //     type: ADD_RESCUE_CHECKOUT,
-    //     selectedRescueValue: radio,
-    //   });
-    //   dispatch({ type: TOGGLE_CART });
-    // }
+      // dispatch({
+      //   type: ADD_RESCUE_CHECKOUT,
+      //   selectedRescueValue: radio,
+      // });
+      // dispatch({ type: TOGGLE_CART });
+    }
     return (
         <div>
             <legend className="text-lg font-medium text-gray-900">
