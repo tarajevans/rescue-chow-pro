@@ -7,6 +7,7 @@ const ListsDataContex = createContext({
     rescues: [],
     loadRescues: function (rescues) {},
     loadCategories: function (categories) {},
+    loadProducts: function (products) {},
 });
 
 export function ListsDataContexProvider(props) {
@@ -24,11 +25,18 @@ export function ListsDataContexProvider(props) {
     };
 
     const loadCategories = (categories) => {
-      setData({
-          ...data,
-          categories: categories,
-      });
-  };
+        setData({
+            ...data,
+            categories: categories,
+        });
+    };
+
+    const loadProducts = (products) => {
+        setData({
+            ...data,
+            products: products,
+        });
+    };
 
     // functions here
 
@@ -36,9 +44,8 @@ export function ListsDataContexProvider(props) {
         data: data,
         loadRescues: loadRescues,
         loadCategories: loadCategories,
+        loadProducts: loadProducts,
     };
-
-    
 
     return (
         <ListsDataContex.Provider value={context}>

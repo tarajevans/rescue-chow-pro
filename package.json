@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "seed": "node config/seeds.js"
   },
   "dependencies": {
     "@headlessui/react": "^0.0.0-insiders.b98e642",
