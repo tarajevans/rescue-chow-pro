@@ -1,13 +1,9 @@
-import {Rescuese} from "../../../models/Rescues";
-const mapRescues = (rescues) => {
-    console.log(rescues);
-    return "hi";
-};
+import {Product} from "../../../models/shopping/Product";
 
 const handler = async (req, res) => {
     
     // if (req.method === "POST") {
-        const result = await Rescuese.find();
+        const result = await Product.find();
         if(!result){
             console.log("ERROR");
         }

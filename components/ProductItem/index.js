@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { pluralize, getProceeds } from "../../utils/helpers";
+import CartContex from "../../GlobalStates/cartState";
+import Link from "next/link";
 // import { useStoreContext } from "../../../utils/shopping/GlobalState";
 // import {
 //   ADD_TO_CART,
@@ -8,29 +10,30 @@ import { pluralize, getProceeds } from "../../utils/helpers";
 // } from "../../../utils/shopping/actions";
 
 function ProductItem(item) {
-  // const [state, dispatch] = useStoreContext();
+
+  const cartContext = useContext(CartContex);
+  
   const { image, name, _id, price, quantity } = item;
-  const { cart } = state;
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id);
-    if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
-      idbPromise("cart", "put", {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-      });
-    } else {
-      dispatch({
-        type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 },
-      });
-      idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
-    }
+    // const itemInCart = cart.find((cartItem) => cartItem._id === _id);
+    // if (itemInCart) {
+    //   dispatch({
+    //     type: UPDATE_CART_QUANTITY,
+    //     _id: _id,
+    //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+    //   });
+    //   idbPromise("cart", "put", {
+    //     ...itemInCart,
+    //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+    //   });
+    // } else {
+    //   dispatch({
+    //     type: ADD_TO_CART,
+    //     product: { ...item, purchaseQuantity: 1 },
+    //   });
+    //   idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
+    // }
   };
 
   return (
@@ -39,7 +42,7 @@ function ProductItem(item) {
         <div className="relative h-72 w-full overflow-hidden rounded-lg">
           {price && (
             <img
-              src={`/images/shopping/${image}`}
+              src={`/images/${image}`}
               alt={name}
               className="h-full w-full object-cover object-center"
             />
@@ -70,7 +73,7 @@ function ProductItem(item) {
           )}
         </div>
       </div>
-      <Link to={`/products/${_id}`}>View Item </Link>
+      <Link href={`/products/${_id}`}>View Item </Link>
 
       {price && quantity ? (
         <div className="mt-6 flex items-center justify-center">
@@ -95,7 +98,7 @@ function ProductItem(item) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export default ProductItem;
