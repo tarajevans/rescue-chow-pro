@@ -1,4 +1,8 @@
 import rescueChow from "../public/images/Rescue-Chow-Logo-white-outline.gif";
+import dog from "../public/images/Cartoon-Dog.gif";
+import beefHome from "../public/images/Beef-Bites-For-Home-Page.gif";
+import dogFood from "../public/images/Dog-Food-Bowl.gif";
+import heartPaw from "../public/images/Heart-with-Paw-in-middle.gif";
 import petsAbout from "../public/images/pets-about-free-img.png";
 import chooseRescueImg from "../public/images/pet-with-girl-free-img.png";
 import Image from "next/image";
@@ -40,10 +44,61 @@ const Home = () => {
             <div className="relative content-center overflow-hidden bg-red-400 bg-opacity-80 w-4/5  shadow-inner">
               <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-                  <div className="sm:max-w-lg">
-                    <h1 className="text-6xl font-mediuim font-love text-black text-center">
+                  <h1 className="text-6xl font-mediuim font-love text-white text-center border-y-4 border-white bg-gray-400">
                       How It Works
-                    </h1>
+                  </h1>
+                  
+                  <div className="container mx-auto py-6 sm:px-6 lg:px-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      
+                      <div className="object-fill mx-auto py-6 sm:px-6 lg:px-8">
+                        <div className="inline-flex rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">
+                          Find Your Rescue
+                        </div>
+                        <Image
+                          className="object-fill mx-auto mt-6 py-6 sm:px-6 lg:px-8"
+                          src={dog}
+                          alt="cartoon dog"
+                          width={""}
+                          height={""}
+                        />
+                      </div>
+
+                      <div className="object-fill mx-auto py-6 sm:px-6 lg:px-8">
+                        <div className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">Choose Treats</div>
+                        <Image
+                          className="object-fill mx-auto mt-6 py-6 sm:px-6 lg:px-8"
+                          src={dogFood}
+                          alt="dog food bag"
+                          width={""}
+                          height={""}
+                        />
+                      </div>
+                      
+                      <div className="object-fill mx-auto py-6 sm:px-6 lg:px-8">
+                      <div className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">Proceeds Sent</div>
+                      <Image
+                        className="object-fill mx-auto py-6 sm:px-6 lg:px-8"
+                        src={heartPaw}
+                        alt="heart with a paw in the center"
+                        width={""}
+                        height={""}
+                      />
+                      </div>
+
+
+                      <div className="flex justify-center text-6xl border-2 border-gray-300 rounded-xl p-6 bg-gray-100">
+                      <Image
+                        className=""
+                        src={beefHome}
+                        alt="Beef Bites Product"
+                        width={""}
+                        height={""}
+                      />
+                      </div>
+                    </div>
+                  </div>
+                  {/* <div className="sm:max-w-lg">
                     <p className="mt-4 text-base text-white">
                       Rescue Chow is an animal rescue fundraising initiative that
                       assists animals and rescues in need with fundraising. When
@@ -75,7 +130,6 @@ const Home = () => {
                           </div>
                         </div>
                       </div>
-
                       <Link
                         href="/OrderNow"
                         className="inline-block rounded-md border border-transparent bg-white py-3 px-8 text-center font-medium text-red-400 hover:bg-black"
@@ -83,15 +137,15 @@ const Home = () => {
                         Get Started
                       </Link>
                     </div>
-                  </div>
-                </div>
+                  </div> */}
+                {/* </div> */}
               </div>
             </div>
           </div>
 
 
 
-          <div className="flex flex-row items-center justify-center space-x-16 my-8">
+          {/* <div className="flex flex-row items-center justify-center space-x-16 my-8">
             <h2 className="font-love text-white text-7xl">Contact Us</h2>
             <Link
               href="/GetInTouch"
@@ -100,10 +154,10 @@ const Home = () => {
               Learn more
             </Link>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center"> */}
 
 
-          <div className="relative overflow-hidden bg-white bg-opacity-80 w-4/5  shadow-inner">
+          {/* <div className="relative overflow-hidden bg-white bg-opacity-80 w-4/5  shadow-inner">
             <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
               <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                 <div className="sm:max-w-lg">
@@ -158,7 +212,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
 
           
