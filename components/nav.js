@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Img from "../public/images/favicon.ico";
@@ -9,6 +9,7 @@ import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import UserMenu from "./userMenu";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import CartContex from "../GlobalStates/cartState";
 
 function EditInactiveIcon(props) {
     return (
@@ -233,6 +234,8 @@ function DeleteActiveIcon(props) {
 }
 
 const Nav = () => {
+    const cart = useContext(CartContex);
+
     const user = {
         name: "user",
         email: "user@email.com",
@@ -257,10 +260,10 @@ const Nav = () => {
         return classes.filter(Boolean).join(" ");
     }
 
-    const [isCartOpen, setIsCartOpen] = useState(false);
+    // const [isCartOpen, setIsCartOpen] = useState(false);
 
     function toggleCart() {
-        setIsCartOpen(!isCartOpen);
+        cart.toggleCart(!cart.cart.cartOpen);
     }
 
     return (

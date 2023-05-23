@@ -1,13 +1,7 @@
 import React, { useContext } from "react";
-// import { Link } from "react-router-dom";
 import { pluralize, getProceeds } from "../../utils/helpers";
 import CartContex from "../../GlobalStates/cartState";
 import Link from "next/link";
-// import { useStoreContext } from "../../../utils/shopping/GlobalState";
-// import {
-//   ADD_TO_CART,
-//   UPDATE_CART_QUANTITY,
-// } from "../../../utils/shopping/actions";
 
 function ProductItem(item) {
 
@@ -16,25 +10,15 @@ function ProductItem(item) {
   const { image, name, _id, price, quantity } = item;
 
   const addToCart = () => {
-    // const itemInCart = cart.find((cartItem) => cartItem._id === _id);
-    // if (itemInCart) {
-    //   dispatch({
-    //     type: UPDATE_CART_QUANTITY,
-    //     _id: _id,
-    //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-    //   });
-    //   idbPromise("cart", "put", {
-    //     ...itemInCart,
-    //     purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-    //   });
-    // } else {
-    //   dispatch({
-    //     type: ADD_TO_CART,
-    //     product: { ...item, purchaseQuantity: 1 },
-    //   });
-    //   idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
-    // }
-  };
+
+    cartContext.addProdToCart(item);
+    console.log(cartContext.cart.products);
+
+
+    //check cart for item
+
+    //if found change quantity, if not found add product to cart
+  }
 
   return (
     <div key={_id}>

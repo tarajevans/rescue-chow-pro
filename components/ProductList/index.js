@@ -26,44 +26,9 @@ function ProductList() {
         } else {
             listContext.loadProducts(data);
         }
-        console.log(listContext.data.categories);
-        // load rescues into globalState
     }, [isLoading, data]);
 
-    // const [state, dispatch] = useStoreContext();
-
-    // const { currentCategory } = state;
-
-    // const { loading, data } = useQuery(QUERY_PRODUCTS);
-
-    // useEffect(() => {
-    //   if (data) {
-    //     dispatch({
-    //       type: UPDATE_PRODUCTS,
-    //       products: data.products,
-    //     });
-    //     data.products.forEach((product) => {
-    //       idbPromise("products", "put", product);
-    //     });
-    //   } else if (!loading) {
-    //     idbPromise("products", "get").then((products) => {
-    //       dispatch({
-    //         type: UPDATE_PRODUCTS,
-    //         products: products,
-    //       });
-    //     });
-    //   }
-    // }, [data, loading, dispatch]);
-
-    // function filterProducts() {
-    //   if (!currentCategory) {
-    //     return state.products;
-    //   }
-
-    //   return state.products.filter(
-    //     (product) => product.category._id === currentCategory
-    //   );
-    // }
+    
 
     return (
         <div className=" bg-opacity-20 from-red-200 to-white bg-gradient-to-t">
@@ -71,6 +36,12 @@ function ProductList() {
                 <h2 className="text-xl font-bold text-gray-900">
                     All Products
                 </h2>
+
+                {isLoading && (
+                    <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                        <h4>Loading...</h4>
+                    </div>
+                )}
 
                 <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                     {listContext.data.products.map((product) => (

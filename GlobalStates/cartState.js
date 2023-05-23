@@ -1,29 +1,48 @@
 import React, { createContext, useState } from "react";
 
 const CartContex = createContext({
-  products: [],
-  cartOpen: false,
-  currentCategory: "",
-  selectedRescueValue: {},
-});
-
-export function CartContextProvider(props) {
-  const [cart, setCart] = useState({
     products: [],
     cartOpen: false,
     currentCategory: "",
     selectedRescueValue: {},
-  });
+    toggleCart: function () {},
+    addProdToCart: function (prod) {},
+});
 
-  // functions here
+export function CartContextProvider(props) {
+    const [cart, setCart] = useState({
+        products:[],
+        cartOpen: false,
+        currentCategory: "",
+        selectedRescueValue: {},
+    });
 
-  const context = {
-    cart: cart,
-  };
+    // functions here
+    const addProdToCart = (prod) => {
+      setCart({
+        ...cart,
+        products: [...cart.products, prod],
+      })
+    }
 
-  return (
-    <CartContex.Provider value={context}>{props.children}</CartContex.Provider>
-  );
+    const toggleCart = (isOpen) => {
+            setCart({
+                ...cart,
+                cartOpen: isOpen,
+            });
+    };
+
+    const context = {
+        cart: cart,
+        toggleCart: toggleCart,
+        addProdToCart:addProdToCart,
+    };
+
+    return (
+        <CartContex.Provider value={context}>
+            {props.children}
+        </CartContex.Provider>
+    );
 }
 
 export default CartContex;
