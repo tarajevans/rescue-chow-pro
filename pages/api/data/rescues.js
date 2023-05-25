@@ -1,6 +1,5 @@
 import {Rescuese} from "../../../models/Rescues";
 const mapRescues = (rescues) => {
-    console.log(rescues);
     return "hi";
 };
 

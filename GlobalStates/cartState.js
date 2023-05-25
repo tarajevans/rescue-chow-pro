@@ -7,35 +7,95 @@ const CartContex = createContext({
     selectedRescueValue: {},
     toggleCart: function () {},
     addProdToCart: function (prod) {},
+    updateQuantity: function (prod) {},
 });
 
 export function CartContextProvider(props) {
     const [cart, setCart] = useState({
-        products:[],
+        products: [],
         cartOpen: false,
         currentCategory: "",
-        selectedRescueValue: {},
+        selectedRescueValue: "",
     });
 
     // functions here
-    const addProdToCart = (prod) => {
-      setCart({
-        ...cart,
-        products: [...cart.products, prod],
-      })
-    }
+    const updateQuantity = (item) => {
+        const itemInCart = cart.products.find(
+            (cartItem) => cartItem._id === item._id
+        );
 
-    const toggleCart = (isOpen) => {
+        if (itemInCart) {
+            const nextProds = products.map((prod) => {
+                if (prod._id === item._id) {
+                    return {
+                        ...prod,
+                        quantity: prod.quantity + 1,
+                    };
+                } else {
+                    return prod;
+                }
+            });
             setCart({
                 ...cart,
-                cartOpen: isOpen,
+                products: nextProds,
             });
+        }
+    };
+
+    // const updateQuantitys = (prods) => {
+    //     setCart({
+    //         ...cart,
+    //         products: prods,
+    //     });
+    // };
+
+    const addProdToCart = (item) => {
+        const itemInCart = cart.products.find(
+            (cartItem) => cartItem._id === item._id
+        );
+
+        if (itemInCart) {
+            const nextProds = cart.products.map((prod) => {
+                if (prod._id === item._id) {
+                    return {
+                        ...prod,
+                        quantity: prod.quantity + 1,
+                    };
+                } else {
+                    return prod;
+                }
+            });
+            setCart({
+                ...cart,
+                products: nextProds,
+            });
+        } else {
+            setCart({
+                ...cart,
+                products: [...cart.products, item],
+            });
+        }
+    };
+
+    // const addProdToCarts = (prod) => {
+    //     setCart({
+    //         ...cart,
+    //         products: [...cart.products, prod],
+    //     });
+    // };
+
+    const toggleCart = () => {
+        setCart({
+            ...cart,
+            cartOpen: !cart.cartOpen,
+        });
     };
 
     const context = {
         cart: cart,
         toggleCart: toggleCart,
-        addProdToCart:addProdToCart,
+        addProdToCart: addProdToCart,
+        updateQuantity: updateQuantity,
     };
 
     return (

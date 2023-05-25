@@ -4,6 +4,7 @@ import { ListsDataContexProvider } from "../../GlobalStates/listsDataState";
 import Nav from "../nav";
 import Footer from "../Footer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Cart from "../Cart";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ function Layout(props) {
                 <CartContextProvider>
                     <ListsDataContexProvider>
                         <Nav />
+                        <Cart />
                         <main>{props.children}</main>
                         {/* {activeNotification && (
         <Notification

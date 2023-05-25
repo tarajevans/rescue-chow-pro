@@ -263,7 +263,7 @@ const Nav = () => {
     // const [isCartOpen, setIsCartOpen] = useState(false);
 
     function toggleCart() {
-        cart.toggleCart(!cart.cart.cartOpen);
+        cart.toggleCart();
     }
 
     return (

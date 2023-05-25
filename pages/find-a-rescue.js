@@ -34,10 +34,7 @@ const FindARescue = () => {
             console.log("Loading...");
         } else {
             listContext.loadRescues(data);
-
-            console.log(listContext.data.rescues);
         }
-        console.log(listContext.data.rescues);
         // load rescues into globalState
     }, [isLoading, data]);
 

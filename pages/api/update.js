@@ -1,5 +1,5 @@
-import { Category } from "../models/shopping/Category";
-import { Product } from "../models/shopping/Product";
+// import { Category } from "../models/shopping/Category";
+// import { Product } from "../models/shopping/Product";
 
 const handler = async (req, res) => {
     // await Product.deleteMany();

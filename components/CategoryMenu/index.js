@@ -68,7 +68,6 @@ function CategoryMenu() {
         } else {
             listContext.loadCategories(data);
         }
-        console.log(listContext.data.categories);
         // load rescues into globalState
     }, [isLoading, data]);
 
