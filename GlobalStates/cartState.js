@@ -21,17 +21,17 @@ export function CartContextProvider(props) {
     });
 
     // functions here
-    const updateQuantity = (item) => {
+    const updateQuantity = (item, qnty) => {
         const itemInCart = cart.products.find(
             (cartItem) => cartItem._id === item._id
         );
 
         if (itemInCart) {
-            const nextProds = products.map((prod) => {
+            const nextProds = cart.products.map((prod) => {
                 if (prod._id === item._id) {
                     return {
                         ...prod,
-                        quantity: prod.quantity + 1,
+                        quantity: qnty,
                     };
                 } else {
                     return prod;

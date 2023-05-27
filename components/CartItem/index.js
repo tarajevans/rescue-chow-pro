@@ -4,7 +4,7 @@
 //   UPDATE_CART_QUANTITY,
 // } from "../../../utils/shopping/actions";
 // import { idbPromise } from "../../../utils/helpers";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CartContext from "../../GlobalStates/cartState";
 
 const CartItem = ({ item }) => {
@@ -12,24 +12,16 @@ const CartItem = ({ item }) => {
     const cartContext = useContext(CartContext);
 
     const removeFromCart = () => {
-      cartContext.removeItemFromCart(item)
+        cartContext.removeItemFromCart(item);
     };
 
     const onChange = (e) => {
-        const value = e.target.value;
-        if (value === "0") {
-            // dispatch({
-            //   type: REMOVE_FROM_CART,
-            //   _id: item._id,
-            // });
-            // idbPromise("cart", "delete", { ...item });
+        const value = parseInt(e.target.value);
+
+        if (value <= 0) {
+            removeFromCart();
         } else {
-            // dispatch({
-            //   type: UPDATE_CART_QUANTITY,
-            //   _id: item._id,
-            //   purchaseQuantity: parseInt(value),
-            // });
-            // idbPromise("cart", "put", { ...item, purchaseQuantity: parseInt(value) });
+            cartContext.updateQuantity(item, value);
         }
     };
 
