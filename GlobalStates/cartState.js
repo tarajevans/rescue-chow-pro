@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-const CartContex = createContext({
+const CartContext = createContext({
     products: [],
     cartOpen: false,
     currentCategory: "",
@@ -8,6 +8,8 @@ const CartContex = createContext({
     toggleCart: function () {},
     addProdToCart: function (prod) {},
     updateQuantity: function (prod) {},
+    removeItemFromCart: function (prod) {},
+    emptyCart: function () {},
 });
 
 export function CartContextProvider(props) {
@@ -42,13 +44,6 @@ export function CartContextProvider(props) {
         }
     };
 
-    // const updateQuantitys = (prods) => {
-    //     setCart({
-    //         ...cart,
-    //         products: prods,
-    //     });
-    // };
-
     const addProdToCart = (item) => {
         const itemInCart = cart.products.find(
             (cartItem) => cartItem._id === item._id
@@ -77,12 +72,22 @@ export function CartContextProvider(props) {
         }
     };
 
-    // const addProdToCarts = (prod) => {
-    //     setCart({
-    //         ...cart,
-    //         products: [...cart.products, prod],
-    //     });
-    // };
+    const removeItemFromCart = (prod) => {
+        const newCart = cart.products.filter(
+            (product) => product._id != prod._id
+        );
+        setCart({
+            ...cart,
+            products: newCart,
+        });
+    };
+
+    const emptyCart = () => {
+        setCart({
+            ...cart,
+            products: [],
+        });
+    };
 
     const toggleCart = () => {
         setCart({
@@ -96,13 +101,15 @@ export function CartContextProvider(props) {
         toggleCart: toggleCart,
         addProdToCart: addProdToCart,
         updateQuantity: updateQuantity,
+        removeItemFromCart: removeItemFromCart,
+        emptyCart: emptyCart,
     };
 
     return (
-        <CartContex.Provider value={context}>
+        <CartContext.Provider value={context}>
             {props.children}
-        </CartContex.Provider>
+        </CartContext.Provider>
     );
 }
 
-export default CartContex;
+export default CartContext;

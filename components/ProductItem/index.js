@@ -14,9 +14,6 @@ const ProductItem = (item) => {
         cartContext.addProdToCart(item);
     };
     
-    useEffect(() => {
-        console.log(products);
-    }, [products]);
 
     return (
         <div key={_id}>
