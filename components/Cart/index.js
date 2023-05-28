@@ -1,47 +1,38 @@
 import React, { useEffect, Fragment, useContext } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-// import { loadStripe } from "@stripe/stripe-js";
-// import { useLazyQuery } from "@apollo/client";
-// import { QUERY_CHECKOUT } from "../../../utils/shopping/queries";
-// import { idbPromise } from "../../../utils/helpers";
+import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "../CartItem";
 // import Auth from "../../../utils/shopping/auth";
-// import { useStoreContext } from "../../../utils/shopping/GlobalState";
-// import {
-//     TOGGLE_CART,
-//     ADD_MULTIPLE_TO_CART,
-// } from "../../../utils/shopping/actions";
 import "./style.module.css";
 import CartContex from "../../GlobalStates/cartState";
+import { useQuery } from "@tanstack/react-query";
+import { Result } from "postcss";
 
-// const stripePromise = loadStripe(
-//     "pk_test_51LwAJXFZoRYZwQnKvp7DSqLSz0HG4gAQJjH2JTAIUXOdYLCwSSFX4M4o9j1Yjta226OxbCIrbfyrndJtLmGNyRWh00OtjMPGcA"
-// );
+const stripePromise = loadStripe(
+    "pk_test_51LwAJXFZoRYZwQnKvp7DSqLSz0HG4gAQJjH2JTAIUXOdYLCwSSFX4M4o9j1Yjta226OxbCIrbfyrndJtLmGNyRWh00OtjMPGcA"
+);
 
 const Cart = (props) => {
     const cartContext = useContext(CartContex);
 
-    // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    const fetchCheckout = async () => {
+        const products = prepCart();
+        const response = await fetch("/api/data/checkout", {
+            method: "POST",
+            body: JSON.stringify({ products: products }),
+        });
 
-    // useEffect(() => {
-    //   if (data) {
-    //     stripePromise.then((res) => {
-    //       res.redirectToCheckout({ sessionId: data.checkout.session });
-    //     });
-    //   }
-    // }, [data]);
+        const id = JSON.parse(response.sessionId);
+        console.log(id);
+        return id;
+    };
 
-    // useEffect(() => {
-    //   async function getCart() {
-    //     const cart = await idbPromise("cart", "get");
-    //     dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-    //   }
-
-    //   if (!state.cart.length) {
-    //     getCart();
-    //   }
-    // }, [state.cart.length, dispatch]);
+    const { data, status, error, refetch, isFetching } = useQuery({
+        queryKey: ["checkout"],
+        queryFn: fetchCheckout,
+        enabled: false,
+    });
 
     function toggleCart() {
         cartContext.toggleCart();
@@ -55,16 +46,30 @@ const Cart = (props) => {
         return sum.toFixed(2);
     }
 
-    function submitCheckout() {
-        // const products = [];
-        // state.cart.forEach((item) => {
-        //   const newLine = { prodId: item._id, qnty: item.purchaseQuantity };
-        //   products.push(newLine);
-        // });
-        // getCheckout({
-        //   variables: { products: products },
-        // });
+    async function submitCheckout() {
+        const products = prepCart();
+        const response = await fetch("/api/data/checkout", {
+            method: "POST",
+            body: JSON.stringify({ products: products }),
+        });
+
+        const data = await response.json();
+
+        stripePromise.then((res) => {
+            res.redirectToCheckout({
+                sessionId: data,
+            });
+        });
     }
+
+    const prepCart = () => {
+        const products = [];
+        cartContext.cart.products.forEach((item) => {
+            const newLine = { prodId: item._id, qnty: item.quantity };
+            products.push(newLine);
+        });
+        return products;
+    };
 
     const onlyProceeds = () => {
         const treatRemoved = calculateTotal() / 4;
@@ -115,16 +120,21 @@ const Cart = (props) => {
                                             <div className="px-6"></div>
                                         </div>
                                         <ul className=" divide-y divide-gray-200 overflow-y-auto">
-                                            {cartContext.cart.products.map((item) => (
-                                                <CartItem
-                                                    key={item._id}
-                                                    item={item}
-                                                />
-                                            ))}
+                                            {cartContext.cart.products.map(
+                                                (item) => (
+                                                    <CartItem
+                                                        key={item._id}
+                                                        item={item}
+                                                    />
+                                                )
+                                            )}
                                         </ul>
                                         <div className="flex flex-col align-center justify-center">
                                             <span className="text-sm ml-4 mt-2 font-medium text-gray-900">
-                                                {cartContext.cart.selectedRescueValue}
+                                                {
+                                                    cartContext.cart
+                                                        .selectedRescueValue
+                                                }
                                             </span>
                                             <span className="ml-4 mt-1 text-sm text-gray-500">
                                                 25% of this purchase ($
@@ -161,3 +171,35 @@ const Cart = (props) => {
 };
 
 export default Cart;
+// useEffect(() => {
+//     const query = new URLSearchParams(window.location.search);
+
+//     if (query.get("success")) {
+//         console.log("order placed");
+//     }
+
+//     if (query.get("canceled")) {
+//         console.log("order canceled");
+//     }
+// }, []);
+
+// useEffect(() => {
+//     if (data) {
+//         stripePromise.then((res) => {
+//             res.redirectToCheckout({
+//                 sessionId:data,
+//             });
+//         });
+//     }
+// }, []);
+
+// useEffect(() => {
+//   async function getCart() {
+//     const cart = await idbPromise("cart", "get");
+//     dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+//   }
+
+//   if (!state.cart.length) {
+//     getCart();
+//   }
+// }, [state.cart.length, dispatch]);

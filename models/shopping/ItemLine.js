@@ -3,7 +3,7 @@ import { chowDb } from "../../config/connections";
 
 const { Schema } = mongoose;
 
-const itemLineSchema = new Schema({
+export const itemLineSchema = new Schema({
     prodId: {
         type: Schema.Types.ObjectId,
         ref: 'Product',

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { chowDb } from "../../config/connections";
-import ItemLine from './ItemLine';
+import {itemLineSchema} from './ItemLine';
 
 const { Schema } = mongoose;
 
@@ -10,7 +10,7 @@ const orderSchema = new Schema({
     default: Date.now
   },
   
-  products: [ItemLine.schema], 
+  products: [itemLineSchema], 
 
   rescue: {
       type: Schema.Types.ObjectId,
