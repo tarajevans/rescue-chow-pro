@@ -18,4 +18,4 @@ const orderSchema = new Schema({
     }
 });
 
-export const Orders = chowDb.model('Orders', orderSchema);
+export const Order = chowDb.model('Orders', orderSchema);

@@ -1,36 +1,37 @@
 import React, { useContext, useEffect } from "react";
-import Jumbotron from '../components/Jumbotron'
+import Jumbotron from "../components/Jumbotron";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import CartContext from "../GlobalStates/cartState";
+import { idbPromise } from "../utils/helpers";
 
 function Success() {
-    // const [addNewOrder] = useMutation(ADD_NEW_ORDER);
+    const saveOrder = async () => {
+        const cart = await idbPromise("cart", "get");
+        const products = [];
+        console.log(cart);
 
-    const cartContext = useContext(CartContext);
+        cart.forEach((item) => {
+            let newItem = { prodId: item._id, qnty: item.quantity };
+            products.push(newItem);
+        });
+        if (products.length) {
+            const rescue = idbPromise("selectedRescue", "get");
 
-    useEffect(() => {
-        async function saveOrder() {
-            const products = [];
-
-            cartContext.cart.products.forEach((item) => {
-                let newItem = { prodId: item._id, qnty: item.quantity };
-                products.push(newItem);
+            const response = await fetch("/api/data/orders", {
+                method: "POST",
+                body: JSON.stringify({
+                    products: products,
+                    rescue: rescue._id,
+                }),
             });
-            if (products.length) {
-                const response = await fetch("/api/data/checkout", {
-                    method: "POST",
-                    body: JSON.stringify({
-                        products: products,
-                        rescue: cartContext.cart.selectedRescueValue /* add stripe reference number */,
-                    }),
-                });
-            }
-
-            setTimeout(() => {
-                window.location.assign("/");
-            }, 3000);
+            console.log(response);
         }
 
+        setTimeout(() => {
+            window.location.assign("/");
+        }, 9000);
+    };
+
+    useEffect(() => {
         saveOrder();
     }, []);
 

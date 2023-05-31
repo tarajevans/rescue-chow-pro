@@ -1,8 +1,8 @@
-// import { ADD_RESCUE_CHECKOUT, TOGGLE_CART, UPDATE_RESCUES } from "../utils/shopping/actions";
-
 import React, { useContext, useEffect, useState } from "react";
 import ListsDataContex from "../GlobalStates/listsDataState";
 import { useQuery } from "@tanstack/react-query";
+import CartContext from "../GlobalStates/cartState";
+import { idbPromise } from "../utils/helpers";
 
 const fetchRescues = async () => {
     //fetch rescues from api
@@ -13,19 +13,26 @@ const fetchRescues = async () => {
 };
 
 function RescueForm() {
-    // const [state, dispatch] = useStoreContext();
-    // // const { currentCategory } = state;
     const [radio, setRadio] = useState("None");
-
-    // const { loading, data } = useQuery(QUERY_RESCUES);
+    const [selectedRescue, setSelectedRescue] = useState();
 
     const listContext = useContext(ListsDataContex);
+    const cartContext = useContext(CartContext);
 
     const { isLoading, data } = useQuery({
         queryKey: ["rescues"],
         queryFn: fetchRescues,
         enabled: true,
     });
+
+    useEffect(() => {
+        if (selectedRescue) {
+            setRadio(selectedRescue.name);
+            cartContext.setRescue(selectedRescue._id);
+            console.log(selectedRescue)
+            idbPromise("selectedRescue", "put", selectedRescue);
+        }
+    }, [selectedRescue]);
 
     useEffect(() => {
         if (isLoading) {
@@ -36,26 +43,6 @@ function RescueForm() {
         // load rescues into globalState
     }, [isLoading, data]);
 
-    
-
-    // // function filterProducts() {
-    // //   if (!currentCategory) {
-    // //     return state.products;
-    // //   }
-    // //   return state.products.filter(
-    // //     (product) => product.category._id === currentCategory
-    // //   );
-    // // }
-
-    function submitCheckout(e) {
-      // e.preventDefault();
-
-      // dispatch({
-      //   type: ADD_RESCUE_CHECKOUT,
-      //   selectedRescueValue: radio,
-      // });
-      // dispatch({ type: TOGGLE_CART });
-    }
     return (
         <div>
             <legend className="text-lg font-medium text-gray-900">
@@ -82,21 +69,12 @@ function RescueForm() {
                                 checked={radio === rescue.name}
                                 type="radio"
                                 value={rescue.name}
-                                onChange={(e) => setRadio(rescue.name)}
+                                onChange={(e) => setSelectedRescue(rescue)}
                                 className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500"
                             />
                         </div>
                     </div>
                 ))}
-            </div>
-            <div className="flex justify-center align-center">
-                    <button
-                        onClick={submitCheckout}
-                        type="submit"
-                        className="m-5 inline-flex items-center rounded-md border border-gray-400 bg-red-300 px-6 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                    >
-                        Proceed To Checkout
-                    </button>
             </div>
         </div>
     );

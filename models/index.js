@@ -1,4 +1,4 @@
-import {Orders} from'./shopping/Orders';
+import {Order} from'./shopping/Order';
 import {Rescues} from'./Rescues';
 import {User} from'./shopping/User';
 import {Product} from'./shopping/Product';
@@ -7,7 +7,7 @@ import {ItemLine} from'./shopping/ItemLine';
 
 export {    
     ItemLine,
-    Orders,
+    Order,
     Rescues,
     User,
     Product,

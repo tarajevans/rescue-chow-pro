@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Product } from "../../models/shopping/Product";
-// import {
-//   UPDATE_CART_QUANTITY,
-//   ADD_TO_CART,
-// } from "../../utils/shopping/actions";
 // import ThoughtForm from "../../components/ThoughtForm";
 import { StarIcon } from "@heroicons/react/20/solid";
 import CartContex from "../../GlobalStates/cartState";

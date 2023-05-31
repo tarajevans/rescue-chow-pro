@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import ProductItem from "../ProductItem";
 import ListsDataContex from "../../GlobalStates/listsDataState";
+import CartContext from "../../GlobalStates/cartState";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchProducts = async () => {
@@ -13,6 +14,7 @@ const fetchProducts = async () => {
 
 function ProductList() {
     const listContext = useContext(ListsDataContex);
+    const cartContext = useContext(CartContext);
 
     const { isLoading, data } = useQuery({
         queryKey: ["products"],
@@ -27,8 +29,6 @@ function ProductList() {
             listContext.loadProducts(data);
         }
     }, [isLoading, data]);
-
-    
 
     return (
         <div className=" bg-opacity-20 from-red-200 to-white bg-gradient-to-t">
@@ -54,6 +54,15 @@ function ProductList() {
                             quantity={product.quantity}
                         />
                     ))}
+                </div>
+                <div className="flex justify-center align-center">
+                    <button
+                        onClick={cartContext.toggleCart}
+                        type="submit"
+                        className="m-5 inline-flex items-center rounded-md border border-gray-400 bg-red-300 px-6 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                    >
+                        Proceed To Checkout
+                    </button>
                 </div>
             </div>
         </div>

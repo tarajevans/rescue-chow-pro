@@ -16,24 +16,6 @@ const stripePromise = loadStripe(
 const Cart = (props) => {
     const cartContext = useContext(CartContex);
 
-    const fetchCheckout = async () => {
-        const products = prepCart();
-        const response = await fetch("/api/data/checkout", {
-            method: "POST",
-            body: JSON.stringify({ products: products }),
-        });
-
-        const id = JSON.parse(response.sessionId);
-        console.log(id);
-        return id;
-    };
-
-    const { data, status, error, refetch, isFetching } = useQuery({
-        queryKey: ["checkout"],
-        queryFn: fetchCheckout,
-        enabled: false,
-    });
-
     function toggleCart() {
         cartContext.toggleCart();
     }
@@ -171,35 +153,3 @@ const Cart = (props) => {
 };
 
 export default Cart;
-// useEffect(() => {
-//     const query = new URLSearchParams(window.location.search);
-
-//     if (query.get("success")) {
-//         console.log("order placed");
-//     }
-
-//     if (query.get("canceled")) {
-//         console.log("order canceled");
-//     }
-// }, []);
-
-// useEffect(() => {
-//     if (data) {
-//         stripePromise.then((res) => {
-//             res.redirectToCheckout({
-//                 sessionId:data,
-//             });
-//         });
-//     }
-// }, []);
-
-// useEffect(() => {
-//   async function getCart() {
-//     const cart = await idbPromise("cart", "get");
-//     dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
-//   }
-
-//   if (!state.cart.length) {
-//     getCart();
-//   }
-// }, [state.cart.length, dispatch]);

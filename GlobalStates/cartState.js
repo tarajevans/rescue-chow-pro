@@ -1,15 +1,17 @@
 import React, { createContext, useState } from "react";
+import { idbPromise } from "../utils/helpers";
 
 const CartContext = createContext({
     products: [],
     cartOpen: false,
     currentCategory: "",
-    selectedRescueValue: {},
+    selectedRescueValue: "",
     toggleCart: function () {},
     addProdToCart: function (prod) {},
     updateQuantity: function (prod) {},
     removeItemFromCart: function (prod) {},
     emptyCart: function () {},
+    setRescue: function (rescueId) {},
 });
 
 export function CartContextProvider(props) {
@@ -64,11 +66,17 @@ export function CartContextProvider(props) {
                 ...cart,
                 products: nextProds,
             });
+            idbPromise("cart", "put", {
+                ...itemInCart,
+                purchaseQuantity: parseInt(itemInCart.quantity) + 1,
+              });
         } else {
             setCart({
                 ...cart,
                 products: [...cart.products, item],
             });
+
+            idbPromise("cart", "put", { ...item, quantity: 1 });
         }
     };
 
@@ -96,6 +104,13 @@ export function CartContextProvider(props) {
         });
     };
 
+    const setRescue = (rescueId) => {
+        setCart({
+            ...cart,
+            selectedRescueValue: rescueId,
+        });
+    };
+
     const context = {
         cart: cart,
         toggleCart: toggleCart,
@@ -103,6 +118,7 @@ export function CartContextProvider(props) {
         updateQuantity: updateQuantity,
         removeItemFromCart: removeItemFromCart,
         emptyCart: emptyCart,
+        setRescue: setRescue,
     };
 
     return (

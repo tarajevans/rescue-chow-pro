@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { pluralize, getProceeds } from "../../utils/helpers";
 import CartContex from "../../GlobalStates/cartState";
 import Link from "next/link";
+import { idbPromise } from "../../utils/helpers";
 
 const ProductItem = (item) => {
     const cartContext = useContext(CartContex);

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { chowDb } from "../../config/connections";
-import Orders from'./Orders';
+import Orders from'./Order';
 
 const { Schema } = mongoose;
 // const bcrypt = require('bcrypt');
