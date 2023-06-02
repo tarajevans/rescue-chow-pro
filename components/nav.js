@@ -10,6 +10,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import UserMenu from "./userMenu";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import CartContex from "../GlobalStates/cartState";
+import { useSession } from "next-auth/react";
 
 function EditInactiveIcon(props) {
     return (
@@ -235,7 +236,11 @@ function DeleteActiveIcon(props) {
 
 const Nav = () => {
     const cart = useContext(CartContex);
+    const session = useSession();
 
+    if (session?.data) {
+        console.log(session.data.user.scanner);
+    }
     const user = {
         name: "user",
         email: "user@email.com",
@@ -313,7 +318,7 @@ const Nav = () => {
                                     🛒
                                 </span>
                             </button>
-                            <UserMenu/>
+                            <UserMenu />
                         </div>
                     </div>
                     <div className="-mr-2 flex md:hidden">

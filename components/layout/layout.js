@@ -9,13 +9,13 @@ import Cart from "../Cart";
 const queryClient = new QueryClient();
 
 // import MainHeader from './main-header';
-// import Notification from '../ui/notification';
-// import NotificationContext from '../../store/notification-context';
+import Notification from "../ui/notification";
+import NotificationContext from "../../GlobalStates/notification-context";
 
 function Layout(props) {
-    //   const notificationCtx = useContext(NotificationContext);
+    const notificationCtx = useContext(NotificationContext);
 
-    //   const activeNotification = notificationCtx.notification;
+    const activeNotification = notificationCtx.notification;
 
     return (
         <Fragment>
@@ -25,13 +25,13 @@ function Layout(props) {
                         <Nav />
                         <Cart />
                         <main>{props.children}</main>
-                        {/* {activeNotification && (
-        <Notification
-          title={activeNotification.title}
-          message={activeNotification.message}
-          status={activeNotification.status}
-        />
-      )} */}
+                        {activeNotification && (
+                            <Notification
+                                title={activeNotification.title}
+                                message={activeNotification.message}
+                                status={activeNotification.status}
+                            />
+                        )}
                         <Footer />
                     </ListsDataContexProvider>
                 </CartContextProvider>

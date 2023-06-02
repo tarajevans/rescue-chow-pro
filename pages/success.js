@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { idbPromise } from "../utils/helpers";
+import { useSession } from "next-auth/react";
 
 function Success() {
     const saveOrder = async () => {

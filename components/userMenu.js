@@ -56,12 +56,13 @@ import { useState } from "react";
 import dropdownImg from "../public/images/icons8-double-down-50.png";
 import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { signIn, signOut } from "next-auth/react";
 
 const UserMenu = () => {
     const userNavigation = [
-        { name: "Login", href: "#" },
-        { name: "Logout", href: "#" },
-        { name: "Signup", href: "#" },
+        { name: "Login", href: "#", onclick: signIn },
+        { name: "Logout", href: "#", onclick: signOut },
+        { name: "Signup", href: "/signup" },
     ];
 
     function classNames(...classes) {
