@@ -22,9 +22,6 @@ const Detail = ({ data }) => {
         setCurrentProduct(thisItem);
     }, [data]);
 
-    useEffect(() => {
-        console.log(cartContext.cart.products);
-    }, [cartContext.cart.products]);
 
     const addToCart = () => {
         cartContext.addProdToCart(thisItem);

@@ -3,7 +3,6 @@ import { Order } from "../../../models";
 const handler = async (req, res) => {
     const body = await JSON.parse(req.body);
 
-    console.log(req);
     if (req.method === "POST") {
         const result = await Order.create(body);
 

@@ -70,9 +70,13 @@ const userSchema = new Schema({
     },
 
     stripId: {
-      type: String,
-    }
+        type: String,
+    },
 
+    refresh: {
+        type: String,
+        default: "testing",
+    },
 });
 
 // set up pre-save middleware to create password

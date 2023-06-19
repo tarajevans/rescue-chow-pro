@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
 import Img from "../public/images/favicon.ico";
@@ -236,16 +236,18 @@ function DeleteActiveIcon(props) {
 
 const Nav = () => {
     const cart = useContext(CartContex);
-    const session = useSession();
+    const { data: session, status, update } = useSession();
+    // const {user} = session;
 
-    if (session?.data) {
-        console.log(session.data.user.scanner);
-    }
-    const user = {
-        name: "user",
-        email: "user@email.com",
-        imageUrl: { dropdownImg },
-    };
+    // useEffect(() => {
+    //     console.log(session);
+    // }, []);
+
+    // const user = {
+    //     name: "user",
+    //     email: "user@email.com",
+    //     imageUrl: { dropdownImg },
+    // };
 
     const navigation = [
         { name: "Home", href: "/", current: false },

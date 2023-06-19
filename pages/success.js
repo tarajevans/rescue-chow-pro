@@ -2,18 +2,32 @@ import React, { useContext, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { idbPromise } from "../utils/helpers";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 
 function Success() {
+    const { data: session, status } = useSession();
+    // signIn("direct_jwt_auth", null, { credentials: { id: "testId" } });
+    // const user = session.user;
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            console.log(session);
+            saveOrder();
+        }
+    }, [status]);
+
+    // console.log(session);
     const saveOrder = async () => {
         const cart = await idbPromise("cart", "get");
         const products = [];
-        console.log(cart);
 
         cart.forEach((item) => {
             let newItem = { prodId: item._id, qnty: item.quantity };
             products.push(newItem);
+            idbPromise("cart", "delete", item);
         });
+
         if (products.length) {
             const rescue = idbPromise("selectedRescue", "get");
 
@@ -22,19 +36,15 @@ function Success() {
                 body: JSON.stringify({
                     products: products,
                     rescue: rescue._id,
+                    customer: session.user._id,
                 }),
             });
-            console.log(response);
         }
 
         setTimeout(() => {
             window.location.assign("/");
-        }, 9000);
+        }, 900000);
     };
-
-    useEffect(() => {
-        saveOrder();
-    }, []);
 
     return (
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">

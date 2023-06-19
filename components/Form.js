@@ -29,7 +29,6 @@ function RescueForm() {
         if (selectedRescue) {
             setRadio(selectedRescue.name);
             cartContext.setRescue(selectedRescue._id);
-            console.log(selectedRescue)
             idbPromise("selectedRescue", "put", selectedRescue);
         }
     }, [selectedRescue]);

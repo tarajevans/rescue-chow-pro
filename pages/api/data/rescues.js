@@ -1,4 +1,4 @@
-import {Rescuese} from "../../../models/Rescues";
+import {Rescues} from "../../../models/Rescues";
 const mapRescues = (rescues) => {
     return "hi";
 };
@@ -6,7 +6,7 @@ const mapRescues = (rescues) => {
 const handler = async (req, res) => {
     
     // if (req.method === "POST") {
-        const result = await Rescuese.find();
+        const result = await Rescues.find();
         if(!result){
             console.log("ERROR");
         }

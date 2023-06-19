@@ -26,12 +26,12 @@ const orderSchema = new Schema({
         type: String,
     },
 
-    thoughts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Thought",
-        },
-    ],
+    // thoughts: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: "Thought",
+    //     },
+    // ],
 });
 
 export const Order = chowDb.model("Orders", orderSchema);
