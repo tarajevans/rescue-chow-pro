@@ -65,15 +65,13 @@ export function idbPromise(storeName, method, object) {
                 case "delete":
                     store.delete(object._id);
                     break;
-                case "deleteAllAndSave":
+                case "deleteAll":
                     const allEntries = store.getAll();
                     if (allEntries.length) {
                         allEntries.array.forEach((element) => {
                             store.delete(element._id);
                         });
                     }
-                    store.put(object);
-                    resolve(object);
                     break;
                 default:
                     console.log("No valid method");

@@ -29,8 +29,12 @@ function Success() {
         });
 
         if (products.length) {
-            const rescue = idbPromise("selectedRescue", "get");
-
+            const rescues = await idbPromise("selectedRescue", "get");
+            const rescue = rescues[0];
+            // console.log(rescues);
+            rescues.forEach((rescue) => {
+                idbPromise("selectedRescue", "delete", rescue);
+            });
             const response = await fetch("/api/data/orders", {
                 method: "POST",
                 body: JSON.stringify({

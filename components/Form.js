@@ -12,6 +12,16 @@ const fetchRescues = async () => {
     return data;
 };
 
+const saveSelectedRescue = async (rescueIn) => {
+    const slRescues = await idbPromise("selectedRescue", "get");
+    if (slRescues.length) {
+        slRescues.forEach((rescue) => {
+            idbPromise("selectedRescue", "delete", rescue);
+        });
+    }
+    idbPromise("selectedRescue", "put", rescueIn);
+};
+
 function RescueForm() {
     const [radio, setRadio] = useState("None");
     const [selectedRescue, setSelectedRescue] = useState();
@@ -29,7 +39,7 @@ function RescueForm() {
         if (selectedRescue) {
             setRadio(selectedRescue.name);
             cartContext.setRescue(selectedRescue._id);
-            idbPromise("selectedRescue", "put", selectedRescue);
+            saveSelectedRescue(selectedRescue);
         }
     }, [selectedRescue]);
 
