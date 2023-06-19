@@ -41,13 +41,14 @@ function Success() {
                     products: products,
                     rescue: rescue._id,
                     customer: session.user._id,
+                    status: "new",
                 }),
             });
         }
 
         setTimeout(() => {
             window.location.assign("/");
-        }, 900000);
+        }, 10000);
     };
 
     return (

@@ -26,6 +26,10 @@ const orderSchema = new Schema({
         type: String,
     },
 
+    status: {
+        type: String, // values: new, assigned, picked, shipped
+    },
+
     // thoughts: [
     //     {
     //         type: Schema.Types.ObjectId,
