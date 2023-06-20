@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductList from "../components/ProductList";
 import CategoryMenu from "../components/CategoryMenu";
 import ChooseARescue from "../components/ChooseRescue";
 
 const OrderNow = () => {
-  return (
-    <div>
-      <div className="w-full">
-        <ChooseARescue />
-        <CategoryMenu />
-        <ProductList />
+    const [currentCategory, setCurrentCategory] = useState("all");
 
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            <div className="w-full">
+                <ChooseARescue />
+                <CategoryMenu
+                    setCurrentCategory={setCurrentCategory}
+                    currentCategory={currentCategory}
+                />
+                <ProductList currentCategory={currentCategory} />
+            </div>
+        </div>
+    );
 };
 
 export default OrderNow;

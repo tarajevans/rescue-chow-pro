@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductItem from "../ProductItem";
 import ListsDataContex from "../../GlobalStates/listsDataState";
 import CartContext from "../../GlobalStates/cartState";
@@ -12,15 +12,24 @@ const fetchProducts = async () => {
     return data;
 };
 
-function ProductList() {
+function ProductList({ currentCategory }) {
     const listContext = useContext(ListsDataContex);
     const cartContext = useContext(CartContext);
+    const [currProds, setCurrProds] = useState([]);
 
     const { isLoading, data } = useQuery({
         queryKey: ["products"],
         queryFn: fetchProducts,
         enabled: true,
     });
+
+    useEffect(()=> {
+        if (currentCategory === "all"){
+            setCurrProds(listContext.data.products)
+        }else{
+            setCurrProds(listContext.data.products.filter((prod) => prod.category === currentCategory ))
+        }
+    }, [currentCategory])
 
     useEffect(() => {
         if (isLoading) {
@@ -44,7 +53,7 @@ function ProductList() {
                 )}
 
                 <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                    {listContext.data.products.map((product) => (
+                    {currProds.map((product) => (
                         <ProductItem
                             key={product._id}
                             _id={product._id}

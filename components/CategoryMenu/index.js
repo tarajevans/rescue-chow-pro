@@ -21,7 +21,7 @@ const fetchCategories = async () => {
     return data;
 };
 
-function CategoryMenu() {
+function CategoryMenu({ currentCategory, setCurrentCategory }) {
     // const [state, dispatch] = useStoreContext();
 
     // const { categories } = state;
@@ -47,12 +47,13 @@ function CategoryMenu() {
     //   }
     // }, [categoryData, loading, dispatch]);
 
-    // const handleClick = (id) => {
-    //   dispatch({
-    //     type: UPDATE_CURRENT_CATEGORY,
-    //     currentCategory: id,
-    //   });
-    // };
+    const handleClick = (id) => {
+        setCurrentCategory(id);
+    };
+
+    const browseAll = () => {
+        setCurrentCategory("all");
+    };
 
     const listContext = useContext(ListsDataContex);
 
@@ -68,7 +69,6 @@ function CategoryMenu() {
         } else {
             listContext.loadCategories(data);
         }
-        // load rescues into globalState
     }, [isLoading, data]);
 
     return (
@@ -76,15 +76,15 @@ function CategoryMenu() {
             <div className="py-10 sm:py-10 xl:mx-auto xl:max-w-7xl xl:px-8">
                 <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
                     <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                        Shop by Category
+                        Shop by Category {currentCategory}
                     </h2>
-                    <a
-                        href=""
+                    <button
+                        onClick={browseAll}
                         className="hidden text-sm font-semibold text-red-400 hover:text-black sm:block"
                     >
                         Browse all categories
                         <span aria-hidden="true"> &rarr;</span>
-                    </a>
+                    </button>
                 </div>
 
                 <div className="mt-4 flow-root">
@@ -95,7 +95,8 @@ function CategoryMenu() {
                                     <a
                                         key={category._id}
                                         href="#"
-                                        onClick={() => {
+                                        onClick={(e) => {
+                                            e.preventDefault();
                                             handleClick(category._id);
                                         }}
                                         className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
