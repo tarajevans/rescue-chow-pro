@@ -21,7 +21,7 @@ const fetchCategories = async () => {
     return data;
 };
 
-function CategoryMenu({ currentCategory, setCurrentCategory }) {
+function CategoryMenu({ setCurrentCategory }) {
     // const [state, dispatch] = useStoreContext();
 
     // const { categories } = state;
@@ -76,7 +76,7 @@ function CategoryMenu({ currentCategory, setCurrentCategory }) {
             <div className="py-10 sm:py-10 xl:mx-auto xl:max-w-7xl xl:px-8">
                 <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
                     <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                        Shop by Category {currentCategory}
+                        Shop by Category 
                     </h2>
                     <button
                         onClick={browseAll}

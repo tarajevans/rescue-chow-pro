@@ -10,10 +10,7 @@ const OrderNow = () => {
         <div>
             <div className="w-full">
                 <ChooseARescue />
-                <CategoryMenu
-                    setCurrentCategory={setCurrentCategory}
-                    currentCategory={currentCategory}
-                />
+                <CategoryMenu setCurrentCategory={setCurrentCategory} />
                 <ProductList currentCategory={currentCategory} />
             </div>
         </div>
