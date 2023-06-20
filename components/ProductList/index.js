@@ -23,19 +23,26 @@ function ProductList({ currentCategory }) {
         enabled: true,
     });
 
-    useEffect(()=> {
-        if (currentCategory === "all"){
-            setCurrProds(listContext.data.products)
-        }else{
-            setCurrProds(listContext.data.products.filter((prod) => prod.category === currentCategory ))
+    useEffect(() => {
+        console.log(currentCategory);
+        if (currentCategory === "all") {
+            console.log(currentCategory);
+            setCurrProds(listContext.data.products);
+        } else {
+            setCurrProds(
+                listContext.data.products.filter(
+                    (prod) => prod.category === currentCategory
+                )
+            );
         }
-    }, [currentCategory])
+    }, [currentCategory]);
 
     useEffect(() => {
         if (isLoading) {
             console.log("Loading...");
         } else {
             listContext.loadProducts(data);
+            setCurrProds(data);
         }
     }, [isLoading, data]);
 
