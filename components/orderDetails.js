@@ -27,7 +27,7 @@ const OrderDetails = ({ order, productList }) => {
             <div>
                 <ul>
                     {products.map((product)=> (
-                        <div key={product._id}>Qnty:{product.qnty} - {product.product.name}</div>
+                        <li key={product.product._id}>Qnty:{product.qnty} - {product.product.name}</li>
                     ))}
                 </ul>
             </div>
