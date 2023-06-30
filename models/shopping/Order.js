@@ -29,6 +29,37 @@ const orderSchema = new Schema({
     status: {
         type: String, // values: new, assigned, picked, shipped
     },
+    paymentStatus: {
+        type: String, // values: pending, success, failed
+    },
+
+    stripeSessionId: {
+        type: String,
+    },
+
+    shipLine1: {
+        type: String,
+    },
+
+    shipLine2: {
+        type: String,
+    },
+
+    shipCity: {
+        type: String,
+    },
+
+    shipCountry: {
+        type: String,
+    },
+
+    shipPostalCode: {
+        type: String,
+    },
+
+    shipProv: {
+        type: String,
+    },
 
     // thoughts: [
     //     {

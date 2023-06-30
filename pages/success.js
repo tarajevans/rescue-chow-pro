@@ -7,50 +7,14 @@ import { getServerSession } from "next-auth";
 
 function Success() {
     const { data: session, status } = useSession();
-    // signIn("direct_jwt_auth", null, { credentials: { id: "testId" } });
-    // const user = session.user;
 
     useEffect(() => {
-        if (status === "authenticated") {
-            console.log(session);
-            saveOrder();
-        }
-    }, [status]);
-
-    // console.log(session);
-    const saveOrder = async () => {
-        const cart = await idbPromise("cart", "get");
-        const products = [];
-
-        cart.forEach((item) => {
-            let newItem = { prodId: item._id, qnty: item.quantity };
-            products.push(newItem);
-            idbPromise("cart", "delete", item);
-        });
-
-        if (products.length) {
-            const rescues = await idbPromise("selectedRescue", "get");
-            const rescue = rescues[0];
-            // console.log(rescues);
-            rescues.forEach((rescue) => {
-                idbPromise("selectedRescue", "delete", rescue);
-            });
-            const response = await fetch("/api/data/orders", {
-                method: "POST",
-                body: JSON.stringify({
-                    products: products,
-                    rescue: rescue._id,
-                    customer: session.user._id,
-                    status: "new",
-                }),
-            });
-        }
-
         setTimeout(() => {
             window.location.assign("/");
         }, 10000);
-    };
+    }, []);
 
+   
     return (
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Jumbotron>

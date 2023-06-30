@@ -1,8 +1,6 @@
 import { ItemLine } from "../../../models";
 
-const stripe = require("stripe")(
-    "sk_test_51LwAJXFZoRYZwQnKrB1KDnIQTimvYiaK2LxWeGS58kKJYCsj1MTns20e5GJsZJW5cLSM248C2PrsIJau71yxEYhi00CsrFsfQo"
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const handler = async (req, res) => {
     const body = await JSON.parse(req.body);

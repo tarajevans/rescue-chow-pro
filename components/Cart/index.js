@@ -8,13 +8,17 @@ import "./style.module.css";
 import CartContex from "../../GlobalStates/cartState";
 import { useQuery } from "@tanstack/react-query";
 import { Result } from "postcss";
+import { useSession } from "next-auth/react";
+import { idbPromise } from "../../utils/helpers";
 
 const stripePromise = loadStripe(
-    "pk_test_51LwAJXFZoRYZwQnKvp7DSqLSz0HG4gAQJjH2JTAIUXOdYLCwSSFX4M4o9j1Yjta226OxbCIrbfyrndJtLmGNyRWh00OtjMPGcA"
+    "pk_test_51LwBkjLpYjTk7wEvqTVHj6U7uKjLuHKc2dnyWXW21jXoMfXoP9EAAbD1JIkMqXWOVqwUGMY9M5GbmoktReevW0Lq00Jm9RbWPH"
 );
 
 const Cart = (props) => {
     const cartContext = useContext(CartContex);
+
+    const { data: session, status } = useSession();
 
     function toggleCart() {
         cartContext.toggleCart();
@@ -37,12 +41,50 @@ const Cart = (props) => {
 
         const data = await response.json();
 
+        // save order with stripe sessionId
+        saveOrder(data);
+
         stripePromise.then((res) => {
             res.redirectToCheckout({
                 sessionId: data,
             });
         });
     }
+
+    const saveOrder = async (stripeSessionId) => {
+        const cart = await idbPromise("cart", "get");
+        const products = [];
+
+        cart.forEach((item) => {
+            let newItem = { prodId: item._id, qnty: item.quantity };
+            products.push(newItem);
+            idbPromise("cart", "delete", item);
+        });
+
+        if (products.length) {
+            const rescues = await idbPromise("selectedRescue", "get");
+            const rescue = rescues[0];
+            // console.log(rescues);
+            rescues.forEach((rescue) => {
+                idbPromise("selectedRescue", "delete", rescue);
+            });
+            const response = await fetch("/api/data/orders", {
+                method: "POST",
+                body: JSON.stringify({
+                    products: products,
+                    rescue: rescue._id,
+                    customer: session.user._id,
+                    status: "new",
+                    stripeSessionId: stripeSessionId,
+                    paymentStatus: "pending",
+                }),
+            });
+        }
+
+        setTimeout(() => {
+            window.location.assign("/");
+        }, 10000);
+    };
 
     const prepCart = () => {
         const products = [];
@@ -126,7 +168,7 @@ const Cart = (props) => {
                                             <strong className="relative ml-4 mb-4 mt-1  text-lg font-semibold text-black">
                                                 Total: ${calculateTotal()}
                                             </strong>
-                                            {true ? (
+                                            {status === "authenticated" ? (
                                                 <button
                                                     className="ml-4 my-2 inline-flex items-center justify-center rounded-md border border-gray-400 bg-red-300 px-6 py-3 text-base font-medium text-gray-700 shadow-sm hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                                     onClick={submitCheckout}

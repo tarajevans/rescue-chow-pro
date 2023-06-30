@@ -25,13 +25,13 @@ function Layout(props) {
                         <Nav />
                         <Cart />
                         <main>{props.children}</main>
-                        {activeNotification && (
+                        {/* {activeNotification && (
                             <Notification
                                 title={activeNotification.title}
                                 message={activeNotification.message}
                                 status={activeNotification.status}
                             />
-                        )}
+                        )} */}
                         <Footer />
                     </ListsDataContexProvider>
                 </CartContextProvider>
