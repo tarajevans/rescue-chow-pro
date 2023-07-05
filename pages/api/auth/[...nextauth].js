@@ -88,6 +88,14 @@ const encryptString = (inputString) => {
 const mapUser = (userIn) => {
     let mappedUser = {};
 
+    if ("isAffiliate" in userIn) {
+        Object.assign(mappedUser, { isAffiliate: userIn.isAffiliate });
+    }
+
+    if (userIn.affiliateRescue) {
+        Object.assign(mappedUser, { affiliateRescue: userIn.affiliateRescue });
+    }
+
     if (userIn._id) {
         Object.assign(mappedUser, { _id: userIn._id });
     }

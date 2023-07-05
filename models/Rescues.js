@@ -1,30 +1,42 @@
-import { Schema, model } from'mongoose';
-import { chowDb } from '../config/connections';
+import { Schema, model } from "mongoose";
+import { chowDb } from "../config/connections";
 
 const rescueSchema = new Schema(
     {
         name: {
             type: String,
-            required: true
+            required: true,
         },
         website: {
             type: String,
-            required: false
+            required: false,
         },
         description: {
             type: String,
-            required: false
+            required: false,
         },
         image: {
             type: String,
-            required: false
+            required: false,
         },
+
+        adminUser: {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+        },
+
+        authUsers: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User",
+            },
+        ],
     },
     {
         toJSON: {
-            virtuals: true
-        }
+            virtuals: true,
+        },
     }
 );
 
-export const Rescues = chowDb.model('Rescues', rescueSchema);
+export const Rescues = chowDb.model("Rescues", rescueSchema);

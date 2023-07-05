@@ -18,8 +18,8 @@ const UserMenu = () => {
             setHistoryLink(session.user._id.toString());
         }
 
-        if (status === "loading" || status === "unauthenticated"){
-            setHistoryLink("")
+        if (status === "loading" || status === "unauthenticated") {
+            setHistoryLink("");
         }
     }, [status, session]);
 
@@ -36,6 +36,7 @@ const UserMenu = () => {
 
     const loggedInNavigation = [
         { name: "Order History", href: `/order-history` },
+        { name: "Affiliate", href: `/affiliate` },
         { name: "Logout", href: "#", onclick: signOut },
     ];
 

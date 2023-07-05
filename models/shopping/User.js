@@ -64,6 +64,7 @@ const userSchema = new Schema({
     },
     // end of shipping info
 
+    // can be user or affiliate, rescue admin status will be stored in the rescue
     role: {
         type: String,
         default: "user",
@@ -71,6 +72,16 @@ const userSchema = new Schema({
 
     stripId: {
         type: String,
+    },
+
+    isAffiliate: {
+        type: Boolean,
+        default: false,
+    },
+
+    affiliateRescue: {
+        type: Schema.Types.ObjectId,
+        ref: "Rescues",
     },
 
     refresh: {
