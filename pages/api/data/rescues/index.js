@@ -1,4 +1,6 @@
-import { Rescues } from "../../../models/Rescues";
+import { User } from "../../../../models";
+import { Rescues } from "../../../../models";
+
 const mapRescues = (rescues) => {
     return "hi";
 };
@@ -22,9 +24,19 @@ const handler = async (req, res) => {
     }
 
     if (req.method === "POST") {
-        const result = await Rescues.create(newRescue);
-        const data = await result.json();
-        console.log(data);
+        const body = await JSON.parse(req.body);
+        const result = await Rescues.create(body);
+        const userId = result.adminUser.toString();
+
+        if (result) {
+            const userResult = await User.findOneAndUpdate(
+                { _id: userId },
+                { isAffiliate: true, affiliateRescue: result._id },
+                { new: true }
+            );
+        }
+
+        return res.status(200).json(result);
     }
 };
 

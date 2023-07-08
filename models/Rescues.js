@@ -20,6 +20,12 @@ const rescueSchema = new Schema(
             required: false,
         },
 
+        // use to determine what is displayed as rescue choices / when admin approves the rescue set this to true
+        active: {
+            type: Boolean,
+            default: false,
+        },
+
         adminUser: {
             type: Schema.Types.ObjectId,
             ref: "User",
