@@ -24,9 +24,7 @@ function ProductList({ currentCategory }) {
     });
 
     useEffect(() => {
-        console.log(currentCategory);
         if (currentCategory === "all") {
-            console.log(currentCategory);
             setCurrProds(listContext.data.products);
         } else {
             setCurrProds(

@@ -21,9 +21,9 @@ const Affiliate = () => {
             `/api/data/rescues/${session.user.affiliateRescue}`
         );
 
-        console.log(response);
         const stringData = await response.json();
 
+        console.log(stringData);
         return stringData;
     };
 
@@ -77,7 +77,7 @@ const Affiliate = () => {
         if (data) {
             setAffiliateRescue(data);
         }
-    }, [data]);
+    }, [isfetching]);
 
     return (
         <div>

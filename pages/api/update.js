@@ -1,7 +1,19 @@
 // import { Category } from "../models/shopping/Category";
 // import { Product } from "../models/shopping/Product";
+import { Rescues } from "../../models";
 
 const handler = async (req, res) => {
+    // const rescues = await Rescues.find();
+
+    // rescues.map( async (rescue) => {
+    //     // console.log(rescue)
+    //     const result = await Rescues.findByIdAndUpdate(
+    //         rescue._id,
+    //         { active: true }
+    //     );
+    //     console.log(result);
+    // });
+    
     // await Product.deleteMany();
     // await Category.deleteMany();
 

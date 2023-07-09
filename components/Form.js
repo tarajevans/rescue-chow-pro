@@ -9,7 +9,9 @@ const fetchRescues = async () => {
 
     const response = await fetch("/api/data/rescues");
     const data = await response.json();
-    return data;
+
+    const activeRscues = data.filter((rescue) => rescue.active === true);
+    return activeRscues;
 };
 
 const saveSelectedRescue = async (rescueIn) => {
