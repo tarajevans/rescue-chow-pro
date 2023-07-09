@@ -81,9 +81,9 @@ const Cart = (props) => {
             });
         }
 
-        setTimeout(() => {
-            window.location.assign("/");
-        }, 10000);
+        // setTimeout(() => {
+        //     window.location.assign("/");
+        // }, 10000);
     };
 
     const prepCart = () => {

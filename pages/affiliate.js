@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { resolve } from "path";
 
 // if the user is an affiliate load a page with affliate info, if user is not an affiliate present a page explaining the program and signup functions
 const Affiliate = () => {
@@ -43,7 +42,7 @@ const Affiliate = () => {
     const createRescue = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("/api/data/rescues", {
+        await fetch("/api/data/rescues", {
             method: "POST",
             body: JSON.stringify({
                 name: rescueName,
@@ -53,7 +52,7 @@ const Affiliate = () => {
             }),
         });
 
-        const result = await response.json();
+        // const result = await response.json();
         update();
         // console.log(session);
     };
@@ -64,7 +63,7 @@ const Affiliate = () => {
             queryFn: fetchRescue,
             enabled: false,
         });
-
+        
     useEffect(() => {
         if (session) {
             if (session?.user?.isAffiliate) {
@@ -113,7 +112,12 @@ const Affiliate = () => {
                                     </div>
 
                                     <div>
-                                        Affiliate Link: https://rescue-chow-pro.vercel.app/orderNow/{affiliateRescue._id}
+                                        Affiliate Link:
+                                        https://rescue-chow-pro.vercel.app/orderNow/
+                                        {affiliateRescue._id}
+                                    </div>
+                                    <div>
+                                        <img src={createObjectURL} />
                                     </div>
                                 </div>
                             )}
@@ -171,19 +175,6 @@ const Affiliate = () => {
                                                     updateRescueDescription
                                                 }
                                                 id="rescueDescription"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label
-                                                htmlFor="rescueImage"
-                                                className="pr-2"
-                                            >
-                                                Animal Rescue image:
-                                            </label>
-                                            <input
-                                                className="border-2"
-                                                type="file"
-                                                id="rescueImage"
                                             />
                                         </div>
                                         <div>
