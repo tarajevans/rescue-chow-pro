@@ -63,9 +63,9 @@ const Affiliate = () => {
             queryFn: fetchRescue,
             enabled: false,
         });
-        
+
     useEffect(() => {
-        if (session) {
+        if (status === "authenticated") {
             if (session?.user?.isAffiliate) {
                 // fetch the rescue info from the DB
                 refetch();
@@ -115,9 +115,6 @@ const Affiliate = () => {
                                         Affiliate Link:
                                         https://rescue-chow-pro.vercel.app/orderNow/
                                         {affiliateRescue._id}
-                                    </div>
-                                    <div>
-                                        <img src={createObjectURL} />
                                     </div>
                                 </div>
                             )}
