@@ -10,7 +10,8 @@ const getOpenOrders = (orders) => {
             (order) => order.paymentStatus === "success"
         );
     }
-    return openOrders;
+    return openOrders; 
+    
 };
 
 const OpenOrders = ({ allOrders, allProducts, ordersRefetch }) => {
