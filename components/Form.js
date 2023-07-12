@@ -6,7 +6,6 @@ import { idbPromise } from "../utils/helpers";
 
 const fetchRescues = async () => {
     //fetch rescues from api
-
     const response = await fetch("/api/data/rescues");
     const data = await response.json();
 

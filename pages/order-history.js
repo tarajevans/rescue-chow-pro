@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Order, Product } from "../models";
 import OrderLineItem from "../components/orderLineItem";
@@ -22,14 +22,13 @@ const orderHistory = ({ orders, products }) => {
             );
 
             if (selectedOrders.length) {
-                console.log(selectedOrders.length);
                 setMyOrders(selectedOrders);
             }
             // save orders in the orders state
         }
     }, [userId]);
 
-    console.log(myOrders);
+    // console.log(myOrders);
 
     return (
         <div>
@@ -55,13 +54,14 @@ const orderHistory = ({ orders, products }) => {
 
 export default orderHistory;
 
-export const getServerSideProps = async () => {
-    const allOrders = await Order.find()
+export const getServerSideProps = async (ctx) => {
+    const thisSession = await getSession(ctx);
+
+    const allOrders = await Order.find({ customer: thisSession.user._id })
         .populate("rescue")
         .populate("customer");
 
     const OrderData = JSON.parse(JSON.stringify(allOrders));
-
     const allProducts = await Product.find();
     const ProdData = JSON.parse(JSON.stringify(allProducts));
 

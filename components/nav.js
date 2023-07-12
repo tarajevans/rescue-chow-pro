@@ -237,17 +237,6 @@ function DeleteActiveIcon(props) {
 const Nav = () => {
     const cart = useContext(CartContex);
     const { data: session, status, update } = useSession();
-    // const {user} = session;
-
-    // useEffect(() => {
-    //     console.log(session);
-    // }, []);
-
-    // const user = {
-    //     name: "user",
-    //     email: "user@email.com",
-    //     imageUrl: { dropdownImg },
-    // };
 
     const navigation = [
         { name: "Home", href: "/", current: false },
@@ -266,8 +255,6 @@ const Nav = () => {
     function classNames(...classes) {
         return classes.filter(Boolean).join(" ");
     }
-
-    // const [isCartOpen, setIsCartOpen] = useState(false);
 
     function toggleCart() {
         cart.toggleCart();
@@ -413,67 +400,3 @@ const Nav = () => {
 
 export default Nav;
 
-// <div className="min-h-full ">
-//       <Disclosure as="nav" className="bg-grey-223">
-//         {({ open }) => (
-//           <>
-
-//             </>
-//           )}
-//         </Disclosure>
-//       </div>
-
-// // import Auth from "../utils/auth";
-// import { idbPromise } from "../utils/helpers";
-// // import { useStoreContext } from "../utils/globalState";
-// import { TOGGLE_CART } from "../utils/actions";
-
-// const user = {
-//   name: "user",
-//   email: "user@email.com",
-//   imageUrl: { dropdownImg },
-// };
-// const navigation = [
-//   { name: "Home", href: "/", current: false },
-//   { name: "Who We Are", href: "/who-we-are", current: false },
-//   { name: "Order Now", href: "/shop", current: false },
-//   { name: "Find A Rescue", href: "/find-a-rescue", current: false },
-//   { name: "Get In Touch", href: "/get-in-touch", current: false },
-// ];
-
-// let userNavigation = [];
-
-// function Logout() {
-//   async function clearCart() {
-//     const cart = await idbPromise("cart", "get");
-//     if (cart.length) {
-//       cart.forEach((item) => {
-//         idbPromise("cart", "delete", item);
-//       });
-//     }
-//     setTimeout(() => {
-//       window.location.assign("/");
-//     }, 3000);
-//   }
-
-//   clearCart();
-//   // Auth.logout();
-// }
-
-// function showNavigation() {
-//   if (Auth.loggedIn()) {
-//     //Auth.loggedIn()
-//     userNavigation = [
-//       ...userNavigation,
-//       { name: "Logout", href: "/", onclick: Logout },
-//       { name: "Order History", href: "/orderHistory" },
-//     ];
-//   } else {
-//     userNavigation = [
-//       ...userNavigation,
-//       { name: "Login", href: "/login" },
-//       { name: "Signup", href: "/signup" },
-//     ];
-//   }
-// }
-// showNavigation();

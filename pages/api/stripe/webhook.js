@@ -27,7 +27,6 @@ const handler = async (req, res) => {
             if (event?.data?.object?.shipping_details?.address) {
                 address = event.data.object.shipping_details.address;
             }
-
             // Handle events here
             switch (event.type) {
                 case "checkout.session.completed":
@@ -54,8 +53,8 @@ const handler = async (req, res) => {
                         thisOrder.shipCountry = address.country;
                     }
 
-                    if (address.postalCode) {
-                        thisOrder.shipPostalCode = address.postalCode;
+                    if (address.postal_code) {
+                        thisOrder.shipPostalCode = address.postal_code;
                     }
 
                     if (address.state) {
@@ -92,8 +91,8 @@ const handler = async (req, res) => {
                         result.shipCountry = address.country;
                     }
 
-                    if (address.postalCode) {
-                        result.shipPostalCode = address.postalCode;
+                    if (address.postal_code) {
+                        result.shipPostalCode = address.postal_code;
                     }
 
                     if (address.state) {
