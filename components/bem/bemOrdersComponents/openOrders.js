@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const getOpenOrders = (orders) => {
     let openOrders;
     if (orders) {
-        const newOrders = orders.filter((order) => order.status === "new");
+        const newOrders = orders.filter((order) => order.status != "shipped");
         openOrders = newOrders.filter(
             (order) => order.paymentStatus === "success"
         );
