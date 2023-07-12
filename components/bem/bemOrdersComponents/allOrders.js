@@ -1,6 +1,6 @@
 import BemOrderLineItem from "./bemOrderLineItem";
 
-const AllOrders = ({ allOrders, allProducts }) => {
+const AllOrders = ({ allOrders, allProducts, ordersRefetch }) => {
     return (
         <div>
             <div>
@@ -15,6 +15,7 @@ const AllOrders = ({ allOrders, allProducts }) => {
                                         <BemOrderLineItem
                                             order={order}
                                             products={allProducts}
+                                            ordersRefetch={ordersRefetch}
                                         />
                                     </div>
                                 ))}

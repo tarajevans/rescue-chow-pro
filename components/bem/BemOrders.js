@@ -80,6 +80,7 @@ const BemOrders = () => {
                                         <OpenOrders
                                             allOrders={allOrders}
                                             allProducts={allProducts}
+                                            ordersRefetch ={ordersQuery.refetch}
                                         />
                                     </div>
                                 )}
@@ -88,6 +89,7 @@ const BemOrders = () => {
                                         <ShippedOrders
                                             allOrders={allOrders}
                                             allProducts={allProducts}
+                                            ordersRefetch ={ordersQuery.refetch}
                                         />
                                     </div>
                                 )}
@@ -96,6 +98,7 @@ const BemOrders = () => {
                                         <AllOrders
                                             allOrders={allOrders}
                                             allProducts={allProducts}
+                                            ordersRefetch ={ordersQuery.refetch}
                                         />
                                     </div>
                                 )}
@@ -104,6 +107,7 @@ const BemOrders = () => {
                                         <LookupOrder
                                             allOrders={allOrders}
                                             allProducts={allProducts}
+                                            ordersRefetch ={ordersQuery.refetch}
                                         />
                                     </div>
                                 )}

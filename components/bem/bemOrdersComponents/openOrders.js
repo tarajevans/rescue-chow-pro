@@ -13,7 +13,7 @@ const getOpenOrders = (orders) => {
     return openOrders;
 };
 
-const OpenOrders = ({ allOrders, allProducts }) => {
+const OpenOrders = ({ allOrders, allProducts, ordersRefetch }) => {
 
     const openOrders = getOpenOrders(allOrders);
 
@@ -28,6 +28,7 @@ const OpenOrders = ({ allOrders, allProducts }) => {
                                     <BemOrderLineItem
                                         order={order}
                                         products={allProducts}
+                                        ordersRefetch={ordersRefetch}
                                     />
                                 </div>
                             ))}

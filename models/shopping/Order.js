@@ -27,7 +27,7 @@ const orderSchema = new Schema({
     },
 
     status: {
-        type: String, // values: new, assigned, picked, shipped
+        type: String, // values: new, picking, picked, shipped
     },
     paymentStatus: {
         type: String, // values: pending, success, failed

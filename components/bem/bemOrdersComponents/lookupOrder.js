@@ -7,7 +7,7 @@ const fetchOrder = async (orderNum) => {
     return data;
 };
 
-const LookupOrder = ({ allProducts }) => {
+const LookupOrder = ({ allProducts, ordersRefetch }) => {
     const [currentOrder, setCurrentOrder] = useState();
     const [orderNumber, setOrderNumber] = useState();
 
@@ -60,6 +60,7 @@ const LookupOrder = ({ allProducts }) => {
                                         <BemOrderLineItem
                                             order={currentOrder}
                                             products={allProducts}
+                                            ordersRefetch={ordersRefetch}
                                         />
                                     </div>
                                 </div>

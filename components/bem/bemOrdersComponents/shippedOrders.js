@@ -9,7 +9,7 @@ const getShippedOrders = (orders) => {
     return openOrders;
 };
 
-const ShippedOrders = ({ allOrders, allProducts }) => {
+const ShippedOrders = ({ allOrders, allProducts, ordersRefetch }) => {
     
     const shippedOrders = getShippedOrders(allOrders);
 console.log(shippedOrders)
@@ -27,6 +27,7 @@ console.log(shippedOrders)
                                         <BemOrderLineItem
                                             order={order}
                                             products={allProducts}
+                                            ordersRefetch={ordersRefetch}
                                         />
                                     </div>
                                 ))}
