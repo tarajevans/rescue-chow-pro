@@ -11,7 +11,6 @@ const getOpenOrders = (orders) => {
         );
     }
     return openOrders; 
-    
 };
 
 const OpenOrders = ({ allOrders, allProducts, ordersRefetch }) => {
