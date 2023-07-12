@@ -32,23 +32,25 @@ const BemOrders = () => {
     const [allProducts, setAllProducts] = useState();
 
     const ordersQuery = useQuery({
-        //{ isLoading, data }
         queryKey: ["orders"],
         queryFn: fetchOrders,
         enabled: true,
     });
 
-    const productsQuery = useQuery({
+    const productsQuery =  useQuery({
         queryKey: ["products"],
         queryFn: fetchProducts,
         enabled: true,
     });
 
+    const {status, data} = productsQuery
+
     useEffect(() => {
-        if (productsQuery.data) {
+        if (productsQuery.status === "success") {
             setAllProducts(productsQuery.data);
         }
-    }, [productsQuery.isLoading, productsQuery.data]);
+        console.log(allProducts)
+    }, [productsQuery.status]);
 
     useEffect(() => {
         if (ordersQuery.data) {
@@ -59,11 +61,11 @@ const BemOrders = () => {
     return (
         <div>
             {ordersQuery.isLoading ? (
-                <div>LOADING ...</div>
+                <div>LOADING Orders ...</div>
             ) : (
                 <div>
                     {productsQuery.isLoading ? (
-                        <div> LOADING ...</div>
+                        <div> LOADING Products...</div>
                     ) : (
                         <div>
                             <div>

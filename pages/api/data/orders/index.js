@@ -1,4 +1,4 @@
-import { Order } from "../../../models";
+import { Order } from "../../../../models";
 
 const handler = async (req, res) => {
     

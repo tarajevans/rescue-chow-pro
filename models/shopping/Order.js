@@ -57,10 +57,6 @@ const orderSchema = new Schema({
         type: String,
     },
 
-    shipCode: {
-        type:String,
-    },
-
     shipProv: {
         type: String,
     },

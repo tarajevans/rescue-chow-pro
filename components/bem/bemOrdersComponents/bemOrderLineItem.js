@@ -2,8 +2,8 @@ import { useState } from "react";
 import BemProdLineItem from "./bemProdLineItem";
 
 const BemOrderLineItem = ({ order, products }) => {
+    console.log(products)
     const [showDetails, setShowDetails] = useState(false);
-console.log(order)
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     };
@@ -12,6 +12,7 @@ console.log(order)
         let orderedProducts = [];
         if (order.products.length) {
             order.products.map((item) => {
+                console.log(products)
                 const selectedItem = products.filter(
                     (product) => product._id === item.prodId
                 );
@@ -58,6 +59,7 @@ console.log(order)
                                         <div>{order.shipLine1}</div>
                                         <div>{order.shipLine2}</div>
                                         <div>{order.shipCity}, {order.shipProv} {order.shipPostalCode} </div>
+                                        <div>{order.shipCountry}</div>
                                     </div>
                                 </div>
                                 <div id="payment_status">

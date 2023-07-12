@@ -6,15 +6,17 @@ const getOpenOrders = (orders) => {
     let openOrders;
     if (orders) {
         const newOrders = orders.filter((order) => order.status === "new");
-        openOrders = newOrders.filter((order) => order.paymentStatus === "success")
+        openOrders = newOrders.filter(
+            (order) => order.paymentStatus === "success"
+        );
     }
-    return openOrders
+    return openOrders;
 };
 
 const OpenOrders = ({ allOrders, allProducts }) => {
 
-    const openOrders = getOpenOrders(allOrders)
-    
+    const openOrders = getOpenOrders(allOrders);
+
     return (
         <div>
             <div>
@@ -23,7 +25,10 @@ const OpenOrders = ({ allOrders, allProducts }) => {
                         <div>
                             {openOrders.map((order) => (
                                 <div key={order._id}>
-                                    <BemOrderLineItem order={order} products={allProducts} />
+                                    <BemOrderLineItem
+                                        order={order}
+                                        products={allProducts}
+                                    />
                                 </div>
                             ))}
                         </div>
