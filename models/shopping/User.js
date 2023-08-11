@@ -70,7 +70,7 @@ const userSchema = new Schema({
         default: "user",
     },
 
-    stripId: {
+    stripeId: {
         type: String,
     },
 

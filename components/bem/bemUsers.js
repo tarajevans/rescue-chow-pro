@@ -2,7 +2,7 @@ import { useState } from "react";
 import UserNav from "./bemUserComponents/usersNav";
 import AllUsers from "./bemUserComponents/allUsers";
 
-const BemUsers = () => {
+const BemUsers = ({ allUsers, userRefetch }) => {
     const [currentModule, setCurrentModule] = useState("all");
 
     return (
@@ -16,7 +16,7 @@ const BemUsers = () => {
             <div>
                 {currentModule === "all" && (
                     <div>
-                        <AllUsers />
+                        <AllUsers allUsers={allUsers} userRefetch={userRefetch} />
                     </div>
                 )}
             </div>

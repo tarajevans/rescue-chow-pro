@@ -1,11 +1,21 @@
+import BemUserLineItem from "./bemUserLineItem";
 
 
 
-const AllUsers = () => {
+const AllUsers = ({allUsers, userRefetch}) => {
 
 
     return (
-        <div> All Users Component</div>
+        <div>
+            {allUsers.map((user) => (
+                <div className="p-2">
+                    <BemUserLineItem
+                        user={user}
+                        userRefetch={userRefetch}
+                    />
+                </div>
+            ))}
+        </div>
     )
 }
 export default AllUsers;

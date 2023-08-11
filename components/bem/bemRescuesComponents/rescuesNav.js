@@ -2,13 +2,6 @@ import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
 
 const RescueNav = ({ currentModule, setCurrentModule }) => {
-    const selectOpen = () => {
-        setCurrentModule("open");
-    };
-
-    const selectShipped = () => {
-        setCurrentModule("shipped");
-    };
 
     const selectAll = () => {
         setCurrentModule("all");

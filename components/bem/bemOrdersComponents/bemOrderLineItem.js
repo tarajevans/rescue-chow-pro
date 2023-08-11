@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import BemProdLineItem from "./bemProdLineItem";
 
 const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
-    console.log(products);
     const [showDetails, setShowDetails] = useState(false);
     const [orderStatus, setOrderStatus] = useState();
 
@@ -14,7 +13,6 @@ const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
 
     const handleStatusUpdate = async () => {
         const orderStatusObj = { status: orderStatus };
-        console.log(orderStatusObj);
         const result = await fetch(`/api/data/orders/${order._id}`, {
             method: "POST",
             headers: {
@@ -37,7 +35,6 @@ const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
         let orderedProducts = [];
         if (order.products.length) {
             order.products.map((item) => {
-                console.log(products);
                 const selectedItem = products.filter(
                     (product) => product._id === item.prodId
                 );
@@ -61,8 +58,18 @@ const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
                         {" "}
                         <div className="py-2">
                             <div className="bg-red-100 rounded overflow-hidden shadow-lg border-2 border-red-700">
-                                <div className="py-2">
-                                    <span className="font-bold">Order#</span>{" "}
+                                <div className="py-2 px-2">
+                                    <span>
+                                        <input
+                                            onClick={toggleDetails}
+                                            type="button"
+                                            value="Details"
+                                            className="px-1 border-2 rounded border-slate-700 bg-slate-300"
+                                        />
+                                    </span>
+                                    <span className="font-bold pl-2">
+                                        Order#
+                                    </span>{" "}
                                     {order._id},{" "}
                                     <span className="font-bold">
                                         Order Date:{" "}
@@ -74,14 +81,8 @@ const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
                                     <span className="pl-1 pr-4">
                                         {order.status}
                                     </span>
-                                    <button
-                                        className="border-2 bg-gray-300 border-black rounded"
-                                        onClick={toggleDetails}
-                                    >
-                                        <span className="px-1">Details</span>
-                                    </button>
                                     <span className="px-4">
-                                        <label>
+                                        <label className="pl-14">
                                             Select Status:{" "}
                                             <span className="px-1">
                                                 <select
@@ -168,113 +169,139 @@ const BemOrderLineItem = ({ order, products, ordersRefetch }) => {
                 ) : (
                     <div>
                         <div>
-                        {" "}
-                        <div className="py-2">
-                            <div className="bg-green-100 rounded overflow-hidden shadow-lg border-2 border-green-700">
-                                <div className="py-2">
-                                    <span className="font-bold">Order#</span>{" "}
-                                    {order._id},{" "}
-                                    <span className="font-bold">
-                                        Order Date:{" "}
-                                    </span>
-                                    {order.purchaseDate},{" "}
-                                    <span className="font-bold pl-4">
-                                        Status:{" "}
-                                    </span>
-                                    <span className="pl-1 pr-4">
-                                        {order.status}
-                                    </span>
-                                    <button
-                                        className="border-2 bg-gray-300 border-black rounded"
-                                        onClick={toggleDetails}
-                                    >
-                                        <span className="px-1">Details</span>
-                                    </button>
-                                    <span className="px-4">
-                                        <label>
-                                            Select Status:{" "}
-                                            <span className="px-1">
-                                                <select
-                                                    defaultValue={order.status}
-                                                    ref={orderStatusRef}
-                                                    onChange={
-                                                        handleStatusChange
-                                                    }
+                            {" "}
+                            <div className="py-2">
+                                <div className="bg-green-100 rounded overflow-hidden shadow-lg border-2 border-green-700">
+                                    <div className="py-2 px-2">
+                                        <span>
+                                            <input
+                                                onClick={toggleDetails}
+                                                type="button"
+                                                value="Details"
+                                                className="px-1 px2 border-2 rounded border-slate-700 bg-slate-300"
+                                            />
+                                        </span>
+                                        <span className="font-bold pl-2">
+                                            Order#
+                                        </span>{" "}
+                                        {order._id},{" "}
+                                        <span className="font-bold">
+                                            Order Date:{" "}
+                                        </span>
+                                        {order.purchaseDate},{" "}
+                                        <span className="font-bold pl-4">
+                                            Status:{" "}
+                                        </span>
+                                        <span className="pl-1 pr-4">
+                                            {order.status}
+                                        </span>
+                                        <span className="px-4">
+                                            <label className="pl-14">
+                                                Select Status:{" "}
+                                                <span className="px-1">
+                                                    <select
+                                                        defaultValue={
+                                                            order.status
+                                                        }
+                                                        ref={orderStatusRef}
+                                                        onChange={
+                                                            handleStatusChange
+                                                        }
+                                                    >
+                                                        <option value="new">
+                                                            {" "}
+                                                            New{" "}
+                                                        </option>
+                                                        <option value="picking">
+                                                            {" "}
+                                                            Picking{" "}
+                                                        </option>
+                                                        <option value="picked">
+                                                            {" "}
+                                                            Picked{" "}
+                                                        </option>
+                                                        <option value="shipped">
+                                                            {" "}
+                                                            Shipped{" "}
+                                                        </option>
+                                                    </select>
+                                                </span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <input
+                                                className="rounded border-2 border-slate-500 bg-slate-200 px-1"
+                                                type="button"
+                                                value="Update Status"
+                                                onClick={handleStatusUpdate}
+                                            />
+                                        </span>
+                                    </div>
+                                    {showDetails && (
+                                        <div>
+                                            <div className=" flex flex-row">
+                                                <div
+                                                    id="products"
+                                                    className="px-2"
                                                 >
-                                                    <option value="new">
-                                                        {" "}
-                                                        New{" "}
-                                                    </option>
-                                                    <option value="picking">
-                                                        {" "}
-                                                        Picking{" "}
-                                                    </option>
-                                                    <option value="picked">
-                                                        {" "}
-                                                        Picked{" "}
-                                                    </option>
-                                                    <option value="shipped">
-                                                        {" "}
-                                                        Shipped{" "}
-                                                    </option>
-                                                </select>
-                                            </span>
-                                        </label>
-                                    </span>
-                                    <span>
-                                        <input
-                                            className="rounded border-2 border-slate-500 bg-slate-200 px-1"
-                                            type="button"
-                                            value="Update Status"
-                                            onClick={handleStatusUpdate}
-                                        />
-                                    </span>
-                                </div>
-                                {showDetails && (
-                                    <div>
-                                        <div className=" flex flex-row">
-                                            <div id="products" className="px-2">
-                                                {orderedItems.map((item) => (
-                                                    <div key={item.product._id}>
-                                                        <BemProdLineItem
-                                                            item={item}
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            <div id="shipping" className="px-2">
-                                                <div>
+                                                    {orderedItems.map(
+                                                        (item) => (
+                                                            <div
+                                                                key={
+                                                                    item.product
+                                                                        ._id
+                                                                }
+                                                            >
+                                                                <BemProdLineItem
+                                                                    item={item}
+                                                                />
+                                                            </div>
+                                                        )
+                                                    )}
+                                                </div>
+                                                <div
+                                                    id="shipping"
+                                                    className="px-2"
+                                                >
                                                     <div>
-                                                        <span className="font-bold ">
-                                                            Shippping Address:
-                                                        </span>
-                                                    </div>
-                                                    <div>{order.shipLine1}</div>
-                                                    <div>{order.shipLine2}</div>
-                                                    <div>
-                                                        {order.shipCity},{" "}
-                                                        {order.shipProv}{" "}
-                                                        {order.shipPostalCode}{" "}
-                                                    </div>
-                                                    <div>
-                                                        {order.shipCountry}
+                                                        <div>
+                                                            <span className="font-bold ">
+                                                                Shippping
+                                                                Address:
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            {order.shipLine1}
+                                                        </div>
+                                                        <div>
+                                                            {order.shipLine2}
+                                                        </div>
+                                                        <div>
+                                                            {order.shipCity},{" "}
+                                                            {order.shipProv}{" "}
+                                                            {
+                                                                order.shipPostalCode
+                                                            }{" "}
+                                                        </div>
+                                                        <div>
+                                                            {order.shipCountry}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div id="payment_status">
-                                                <div>
-                                                    <span className="font-bold pl-8">
-                                                        Payment Status:{" "}
-                                                    </span>
-                                                    {order.paymentStatus}
+                                                <div id="payment_status">
+                                                    <div>
+                                                        <span className="font-bold pl-8">
+                                                            Payment Status:{" "}
+                                                        </span>
+                                                        {order.paymentStatus}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 )}
             </div>
