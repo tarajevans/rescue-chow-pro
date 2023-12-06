@@ -22,7 +22,7 @@ const ProductItem = (item) => {
                 <div className="relative h-72 w-full overflow-hidden rounded-lg">
                     {price && (
                         <img
-                            src={`/images/${image}`}
+                            src={image}
                             alt={name}
                             className="h-full w-full object-cover object-center"
                         />

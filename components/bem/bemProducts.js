@@ -4,7 +4,7 @@ import AllProducts from "./bemProductsComponents/allProducts";
 import NewProduct from "./bemProductsComponents/newProduct";
 import LookupProduct from "./bemProductsComponents/lookupProduct";
 
-const BemProducts = () => {
+const BemProducts = ({ allProducts, productRefetch }) => {
     const [currentModule, setCurrentModule] = useState("all");
 
     return (
@@ -18,7 +18,10 @@ const BemProducts = () => {
             <div>
                 {currentModule === "all" && (
                     <div>
-                        <AllProducts />
+                        <AllProducts
+                        allProducts={allProducts}
+                        productRefetch={productRefetch}
+                        />
                     </div>
                 )}
                 {currentModule === "new" && (

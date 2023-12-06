@@ -17,7 +17,6 @@ const handler = async (req, res) => {
         const body = await JSON.parse(req.body);
         let result;
 
-        console.log(body)
 
         if ("firstName" in body) {
             result = await User.findByIdAndUpdate(

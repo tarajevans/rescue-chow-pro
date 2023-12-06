@@ -67,32 +67,6 @@ const BemPage = () => {
         enabled: true,
     });
 
-    // useEffect(() => {
-    //     if (ordersQuery.status == "success") {
-    //         setAllOrders(ordersQuery.data);
-    //     }
-    // }, [ordersQuery.status, ordersQuery.data, ordersQuery.isLoading]);
-
-    // useEffect(() => {
-    //     if (rescuesQuery.status == "success") {
-    //         setAllOrders(rescuesQuery.data);
-    //     }
-    // }, [rescuesQuery.status, rescuesQuery.data, rescuesQuery.isLoading]);
-
-    // useEffect(() => {
-    //     if (productsQuery.status == "success") {
-    //         if (productsQuery.data) {
-    //             setAllOrders(productsQuery.data);
-    //         }
-    //     }
-    // }, [productsQuery.status, productsQuery.data, productsQuery.isLoading]);
-
-    // useEffect(() => {
-    //     if (usersQuery.status == "success") {
-    //         setAllOrders(usersQuery.data);
-    //     }
-    // }, [usersQuery.status, usersQuery.data, usersQuery.isLoading]);
-
     return (
         <div>
             {productsQuery.status === "success" ? (
@@ -137,6 +111,9 @@ const BemPage = () => {
                                                             allProducts={
                                                                 productsQuery.data
                                                             }
+                                                            productRefetch={
+                                                                productsQuery.refetch
+                                                            }
                                                         />
                                                     )}
                                                 </div>
@@ -147,8 +124,9 @@ const BemPage = () => {
                                                             allUsers={
                                                                 usersQuery.data
                                                             }
-
-                                                            userRefetch={usersQuery.refetch}
+                                                            userRefetch={
+                                                                usersQuery.refetch
+                                                            }
                                                         />
                                                     )}
                                                 </div>
@@ -159,8 +137,9 @@ const BemPage = () => {
                                                             allRescues={
                                                                 rescuesQuery.data
                                                             }
-
-                                                            rescueRefetch ={rescuesQuery.refetch}
+                                                            rescueRefetch={
+                                                                rescuesQuery.refetch
+                                                            }
                                                         />
                                                     )}
                                                 </div>

@@ -1,10 +1,23 @@
+import BemProductsLineItem from "./bemProductsLineItem";
 
 
 
-const AllProducts = () => {
+const AllProducts = ({productRefetch, allProducts}) => {
 
     return (
-        <div> All Products </div>
+        <div>
+            <div>
+                <div>
+                    {allProducts.map((prod)=>(
+                        <BemProductsLineItem 
+                            key={prod._id}
+                            product={prod}
+                            productRefetch={productRefetch}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
     )
 }
 
