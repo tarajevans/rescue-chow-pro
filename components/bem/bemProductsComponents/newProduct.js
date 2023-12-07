@@ -19,8 +19,8 @@ const NewProduct = () => {
         const client = new S3Client({
             region: "us-east-2",
             credentials: {
-                accessKeyId: "AKIA5EZRI4ORZH6HBZTH",
-                secretAccessKey: "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",
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
             },
         });
 
