@@ -9,20 +9,21 @@ const ProductItem = (item) => {
     const { cart } = cartContext;
     const { products } = cart;
 
-    const { image, name, _id, price, quantity } = item;
+    const { image, name, _id, price, quantity, imgUrl } = item;
 
     const addToCart = () => {
         cartContext.addProdToCart(item);
     };
     
-
+    console.log(item)
     return (
         <div key={_id}>
+            {item.imgUrl}
             <div className="relative">
                 <div className="relative h-72 w-full overflow-hidden rounded-lg">
                     {price && (
                         <img
-                            src={image}
+                            src={"https://rescue-chow.s3.us-east-2.amazonaws.com/"+ image}
                             alt={name}
                             className="h-full w-full object-cover object-center"
                         />
