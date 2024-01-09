@@ -218,13 +218,17 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-full w-full rounded-lg">
+      <div className="flex items-center justify-center">
         <div className={iframe_container}>
       <iframe
         src="https://www.tiktok.com/embed/7173411131246087429"
         className={iframe}
+        title="Tiktok video player"
+        width="600"
+        height="600"
+        frameborder="40%"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-        allow="encrypted-media;"
       ></iframe>
     </div>
     </div>
