@@ -2,7 +2,7 @@ import * as mongoose from "mongoose";
 
 
 const chowDb = mongoose.createConnection (
-    "mongodb+srv://joefish1973:!Fish6305@rescue-chow.qwstvcn.mongodb.net/rescue-chow",
+    "mongodb+srv://tarajevans:Merlin320!@cluster0.fr9gdbw.mongodb.net/rescue-chow",
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
