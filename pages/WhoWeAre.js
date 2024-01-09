@@ -24,7 +24,7 @@ border: 0}
 const WhoWeAre = () => {
   return (
     <div className="bg-who-section bg-cover bg-fixed divide-y-2 divide-slate-400/25 divide-solid">
-      <header className="bg-rescue-paws bg-center pb-24 pt-20  contrast-100   ">
+      <header className="bg-rescue-paws bg-center pb-24 pt-20  contrast-100">
         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-start"></div>
 
         <div className="pl-28">
@@ -35,6 +35,9 @@ const WhoWeAre = () => {
           Rescue Chow is a community initiative pet food bank, making a difference in the lives of animals in rescue and in need.
           </p>
         </div>
+
+
+        
       </header>
 
       <main>
@@ -277,6 +280,7 @@ const WhoWeAre = () => {
           </Link>
         </div>
       </div>
+      <div>
       <div><div className={iframe_container}>
       <iframe
         src="https://www.tiktok.com/embed/7173411131246087429"
@@ -284,7 +288,7 @@ const WhoWeAre = () => {
         allowFullScreen
         allow="encrypted-media;"
       ></iframe>
-    </div></div>
+    </div></div></div>
       </main>
     </div>
 
