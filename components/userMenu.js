@@ -15,7 +15,9 @@ const UserMenu = () => {
 
     useEffect(() => {
         if (status === "authenticated") {
+            if(session?.user?._id){
             setHistoryLink(session.user._id.toString());
+            }
         }
 
         if (status === "loading" || status === "unauthenticated") {

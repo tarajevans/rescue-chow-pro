@@ -30,8 +30,14 @@ const productSchema = new Schema({
     ref: 'Category',
     required: true
   },
+  
   isCharitable: {
     type: Schema.Types.Boolean
+  },
+
+  isActive: {
+    type:Boolean,
+    default: true
   },
   thoughts: [thoughtSchema],
 });

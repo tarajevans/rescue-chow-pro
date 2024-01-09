@@ -292,7 +292,7 @@ const BemUserLineItem = ({ user, userRefetch }) => {
                                             <div className="p-2">
                                                 <span>Postal Code:</span>
                                                 <span>
-                                                    {user.addrPostalCode}
+                                                    {user.addrPostCode}
                                                 </span>
                                             </div>
                                         </div>
