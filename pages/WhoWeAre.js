@@ -7,6 +7,20 @@ import petsAbout from "../public/images/pets-about-free-img.png";
 import petFood from "../public/images/icons8-pet-food-64.png";
 import heartPaw from "../public/images/icons8-heart-with-dog-paw-64.png";
 
+const iframe_container = {
+  left: 0,
+            width: "100%",
+            height: 500,
+            position: "relative"
+          }
+
+const iframe ={top: 0,
+left: 0,
+width: "100%",
+height: "100%",
+position: "absolute",
+border: 0}
+
 const WhoWeAre = () => {
   return (
     <div className="bg-who-section bg-cover bg-fixed divide-y-2 divide-slate-400/25 divide-solid">
@@ -263,6 +277,14 @@ const WhoWeAre = () => {
           </Link>
         </div>
       </div>
+      <div><div className={iframe_container}>
+      <iframe
+        src="https://www.tiktok.com/embed/7173411131246087429"
+        className={iframe}
+        allowFullScreen
+        allow="encrypted-media;"
+      ></iframe>
+    </div></div>
       </main>
     </div>
 
