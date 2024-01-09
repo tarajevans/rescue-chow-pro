@@ -1,8 +1,8 @@
-import {
-    ListObjectsV2Command,
-    PutObjectCommand,
-    S3Client,
-} from "@aws-sdk/client-s3";
+// import {
+//     ListObjectsV2Command,
+//     PutObjectCommand,
+//     S3Client,
+// } from "@aws-sdk/client-s3";
 import { useEffect, useState } from "react";
 
 const NewProduct = () => {
