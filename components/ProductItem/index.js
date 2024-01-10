@@ -33,13 +33,9 @@ const ProductItem = (item) => {
                     <h3 className="text-sm font-medium text-gray-900">
                         {name}
                     </h3>
-                    {quantity ? (
                         <p className="mt-1 text-sm text-gray-500">
                             {quantity} {pluralize("item", quantity)} in stock
                         </p>
-                    ) : (
-                        "Sorry! Out of stock"
-                    )}
                     {price && (
                         <p className="mt-1 text-sm text-gray-500 font-semibold">
                             ${getProceeds(price)} of this item goes to the
@@ -61,28 +57,15 @@ const ProductItem = (item) => {
             </div>
             <Link href={`/products/${_id}`}>View Item </Link>
 
-            {price && quantity ? (
                 <div className="mt-6 flex items-center justify-center">
                     <button
                         type="button"
-                        className="rounded-md relative w-11/12  py-2 px-8 outline outline-gray-400  outline-1 bg-gray-100 text-gray-900 hover:bg-gray-200 "
+                        className="rounded-md relative w-11/12  py-2 px-8 outline outline-gray-400  outline-1 bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-400"
                         onClick={addToCart}
                     >
                         Add to bag
                     </button>
                 </div>
-            ) : (
-                <div className="mt-6 flex items-center justify-center">
-                    <button
-                        type="button"
-                        className="rounded-md relative w-11/12  py-2 px-8 outline outline-gray-400  outline-1
-         bg-gray-100 text-red-600 hover:bg-red-600 hover:text-black hover:outline hover:outline-2 
-         hover:outline-black "
-                    >
-                        Out of stock
-                    </button>{" "}
-                </div>
-            )}
         </div>
     );
 };

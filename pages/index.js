@@ -43,7 +43,7 @@ const Home = () => {
 
     return (
         <div className="bg-hero-pattern bg-cover bg-fixed ">
-            <header className="bg-header-pattern bg-center pb-20 md:pb-64 contrast-75 ">
+            <div className="bg-header-pattern bg-center pb-20 md:pb-64 contrast-75 pt-32">
                 <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
                     <Image
                         className="object-fill h-1/4 w-3/4"
@@ -67,8 +67,8 @@ const Home = () => {
                         Learn more
                     </Link>
                 </div>
-            </header>
-            <main>
+            </div>
+            <main className="pt-16" id="WhoWeAre">
                 <div className="flex justify-center">
                     <div className="relative overflow-hidden bg-white bg-opacity-80 w-4/5  shadow-inner">
                         <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
@@ -147,7 +147,7 @@ const Home = () => {
                     </p>
                 </div>
 
-                <div className="mx-auto py-6 sm:px-6 lg:px-8">
+                <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
                     <div className="flex justify-center">
                         <div className="relative content-center overflow-hidden bg-red-400 bg-opacity-80 w-4/5  shadow-inner">
                             <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28">
@@ -214,7 +214,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="bg-white  pb-16 pt-12  ">
+                <div className="bg-white  pb-16 pt-16">
                     <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
                         <h2 className="text-8xl font-medium font-love text-red-400   ">
                             Order Today!
@@ -251,7 +251,7 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <header className="bg-rescue-paws bg-center pb-24 pt-20    ">
+                    <div className="bg-rescue-paws bg-center pb-24 pt-20" id="GetInTouch">
                         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8  ">
                             <div className="px-28 flex justify-between align-center">
                                 <h2 className="text-9xl font-medium font-love text-red-400">
@@ -266,7 +266,7 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
-                    </header>
+                    </div>
 
                     <div>
                         <iframe

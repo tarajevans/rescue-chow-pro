@@ -80,7 +80,7 @@ const Affiliate = () => {
     }, [isfetching]);
 
     return (
-        <div>
+        <div className="pt-32">
             {status === "authenticated" ? (
                 <div>
                     {session.user.isAffiliate ? (
@@ -179,7 +179,7 @@ const Affiliate = () => {
                                                 onClick={createRescue}
                                                 className="border-2"
                                             >
-                                                Create Rescue
+                                                Apply
                                             </button>
                                         </div>
                                     </form>

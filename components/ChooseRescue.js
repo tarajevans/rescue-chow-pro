@@ -2,7 +2,7 @@ import Form from "./Form";
 
 const ChooseARescue = () => {
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-gray-100 pt-16">
       <div className="text-center p-8">
         <h1 className="text-8xl font-medium font-love text-red-400">
           Choose A Rescue

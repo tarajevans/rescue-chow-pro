@@ -240,10 +240,10 @@ const Nav = () => {
 
     const navigation = [
         { name: "Home", href: "/", current: false },
-        //{ name: "Who We Are", href: "/WhoWeAre", current: false },
+        { name: "Who We Are", href: "#WhoWeAre", current: false },
         { name: "Order Now", href: "/OrderNow", current: false },
         { name: "Find A Rescue", href: "/find-a-rescue", current: false },
-        //{ name: "Get In Touch", href: "/GetInTouch", current: false },
+        { name: "Get In Touch", href: "#GetInTouch", current: false },
     ];
 
     const userNavigation = [
@@ -261,6 +261,7 @@ const Nav = () => {
     }
 
     return (
+        <div className="fixed top-0 w-full z-50 shadow-md">
         <Disclosure as="nav" className="bg-gray-400 border-b-4 border-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-around">
@@ -303,8 +304,15 @@ const Nav = () => {
                                 onClick={toggleCart}
                                 className="rounded-full  p-3 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                             >
-                                <span role="Image" aria-label="trash">
-                                    🛒
+                                <span role="Image" aria-label="cart">
+                                    {cart.cart.products.length > 0 ? (
+                                    <div>
+                                        🛒
+                                    </div>
+                                    ):(
+                                    <div>
+                                        🛒
+                                    </div>)}
                                 </span>
                             </button>
                             <UserMenu />
@@ -395,6 +403,7 @@ const Nav = () => {
                 </div>
             </div>
         </Disclosure>
+        </div>
     );
 };
 
