@@ -243,7 +243,7 @@ const Nav = () => {
         //{ name: "Who We Are", href: "/WhoWeAre", current: false },
         { name: "Order Now", href: "/OrderNow", current: false },
         { name: "Find A Rescue", href: "/find-a-rescue", current: false },
-        { name: "Get In Touch", href: "/GetInTouch", current: false },
+        //{ name: "Get In Touch", href: "/GetInTouch", current: false },
     ];
 
     const userNavigation = [
