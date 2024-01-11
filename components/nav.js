@@ -5,7 +5,7 @@ import Image from "next/image";
 import Img from "../public/images/favicon.ico";
 import { useState } from "react";
 import dropdownImg from "../public/images/icons8-double-down-50.png";
-import CartFull from "../public/images/CartFull.png";
+import CartFull1 from "../public/images/CartFull1.png";
 import CartEmpty from "../public/images/CartEmpty.png";
 import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -309,19 +309,17 @@ const Nav = () => {
                                 <span role="Image" aria-label="cart">
                                     {cart.cart.products.length > 0 ? (
                                     <div>
-                                                            <Image
-                        className="h-10 w-10 rounded-full p-1 "
-                        src={CartFull}
-                        alt=""
-                    />
+                                        <Image className="h-10 w-10 rounded-full p-1 "
+                                            src={CartFull1}
+                                            alt=""
+                                        />
                                     </div>
                                     ):(
                                     <div>
-                                                                                                  <Image
-                        className="h-10 w-10 rounded-full p-1 "
-                        src={CartEmpty}
-                        alt=""
-                    />
+                                        <Image className="h-10 w-10 rounded-full p-1"
+                                            src={CartEmpty}
+                                            alt=""
+                                        />
                                     </div>)}
                                 </span>
                             </button>
