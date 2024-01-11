@@ -52,6 +52,7 @@ const Footer = () => {
       </div>
       <div className="text-center mt-4">
         <p>Copyright &copy;2022 Rescue Chow Powered by T.J.S.S Production</p>
+        <p><a target="_blank" href="https://icons8.com/icon/2rUtNpDNO0co/shopping-cart">Shopping Cart</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
       </div>
     </footer>
   );
