@@ -68,7 +68,7 @@ const BemPage = () => {
     });
 
     return (
-        <div>
+        <div className="pt-16">
             {productsQuery.status === "success" ? (
                 <div>
                     {rescuesQuery.status === "success" ? (
