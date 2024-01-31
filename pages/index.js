@@ -144,20 +144,16 @@ const Home = () => {
                         their campaign is going, and how many funds have been
                         raised. Full transparency is part of our integral
                         approach and mandate.
-                        </p>
-                        </div>
-                        <div className=" flex flex-row items-center justify-center pt-10 pb-28">
-                        
-                        <Link
+                    </p>
+                </div>
+                <div className=" flex flex-row items-center justify-center pt-10 pb-28">
+                    <Link
                         href="/affiliate"
                         className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black"
-                        >
+                    >
                         Apply Now
-                        </Link>
-                        </div>
-                        
-
-
+                    </Link>
+                </div>
 
                 <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
                     <div className="flex justify-center">
@@ -248,25 +244,28 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
-                <div className="flex justify-center">
-                <div className="flex items-center bg-white bg-opacity-80 w-4/5 content-center overflow-hidden shadow-inner">
-                    <div className={iframe_container}>
-                        <iframe
-                            src="https://www.tiktok.com/embed/7173411131246087429"
-                            className={iframe}
-                            title="Tiktok video player"
-                            width="600"
-                            height="600"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                    </div>
+                    <div className="flex justify-center">
+                        <div className="flex items-center bg-white bg-opacity-80 w-4/5 content-center overflow-hidden shadow-inner">
+                            <div className={iframe_container}>
+                                <iframe
+                                    src="https://www.tiktok.com/embed/7173411131246087429"
+                                    className={iframe}
+                                    title="Tiktok video player"
+                                    width="600"
+                                    height="600"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div>
-                    <div className="bg-rescue-paws bg-center pb-24 pt-20" id="GetInTouch">
+                    <div
+                        className="bg-rescue-paws bg-center pb-24 pt-20"
+                        id="GetInTouch"
+                    >
                         <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8  ">
                             <div className="px-28 flex justify-between align-center">
                                 <h2 className="text-9xl font-medium font-love text-red-400">
