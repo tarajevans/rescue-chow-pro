@@ -132,11 +132,11 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-center space-x-2 py-28">
+                <div className="flex flex-row items-center justify-center space-x-2 pt-28">
                     <h2 className="font-love text-white text-7xl font-medium w-1/2 drop-shadow-[0_0_2px_rgba(0,0,0,1)] ">
                         What is our affiliate program?
                     </h2>
-                    <p className=" max-w-2xl text-xl text-red-300 drop-shadow-[0_0_2px_rgba(0,0,0,1)] font-serif lg:mx-auto">
+                    <p className=" max-w-2xl text-xl text-red-400 drop-shadow-[0_0_2px_rgba(0,0,0,1)] font-serif lg:mx-auto">
                         Each Registered Rescue is given a unique link to ensure
                         that supporter's purchases are given to the correct
                         charity or rescue. Rescue Admins have access to the back
@@ -144,8 +144,20 @@ const Home = () => {
                         their campaign is going, and how many funds have been
                         raised. Full transparency is part of our integral
                         approach and mandate.
-                    </p>
-                </div>
+                        </p>
+                        </div>
+                        <div className=" flex flex-row items-center justify-center pt-10 pb-28">
+                        
+                        <Link
+                        href="/affiliate"
+                        className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black"
+                        >
+                        Apply Now
+                        </Link>
+                        </div>
+                        
+
+
 
                 <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
                     <div className="flex justify-center">
@@ -214,14 +226,14 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="bg-white  pb-16 pt-16">
+                <div className="pb-16 pt-16">
                     <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
                         <h2 className="text-8xl font-medium font-love text-red-400   ">
                             Order Today!
                         </h2>
                     </div>
                     <div className=" flex flex-row items-center justify-center space-x-4">
-                        <p className="mt-4 max-w-2xl text-center font-medium text-xl text-gray-500  lg:mx-auto  ">
+                        <p className="mt-4 max-w-2xl text-center font-medium text-xl text-white  lg:mx-auto  ">
                             20% of your purchase goes towards helping animals in
                             need within your community.
                         </p>
@@ -229,14 +241,15 @@ const Home = () => {
                     <div className=" flex flex-row items-center justify-center pt-10 space-x-4">
                         <Link
                             href="/OrderNow"
-                            className="inline-flex items-center justify-center rounded-full border border-transparent  bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
+                            className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-gray-50 outline bg-red-400 px-5 py-3 text-base font-medium text-white hover:bg-black"
                         >
                             Shop Now
                         </Link>
                     </div>
                 </div>
-
-                <div className="flex items-center justify-center">
+                <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
+                <div className="flex justify-center">
+                <div className="flex items-center bg-white bg-opacity-80 w-4/5 content-center overflow-hidden shadow-inner">
                     <div className={iframe_container}>
                         <iframe
                             src="https://www.tiktok.com/embed/7173411131246087429"
@@ -247,6 +260,8 @@ const Home = () => {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                         ></iframe>
+                    </div>
+                    </div>
                     </div>
                 </div>
 
