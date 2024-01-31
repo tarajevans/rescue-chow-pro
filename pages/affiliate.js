@@ -17,6 +17,7 @@ const Affiliate = () => {
     const rescueDescriptionRef = useRef();
 
     const fetchRescue = async () => {
+        
         const response = await fetch(
             `/api/data/rescues/${session.user.affiliateRescue}`
         );
@@ -57,7 +58,7 @@ const Affiliate = () => {
         // console.log(session);
     };
 
-    const { data, error, refetch, isfetching, isError, isInitialLoading } =
+    const rescueData =
         useQuery({
             queryKey: ["singleRescue"],
             queryFn: fetchRescue,
@@ -67,17 +68,21 @@ const Affiliate = () => {
     useEffect(() => {
         if (status === "authenticated") {
             if (session?.user?.isAffiliate) {
+
                 // fetch the rescue info from the DB
-                refetch();
+                rescueData.refetch();
             }
+            
+            console.log(session)
         }
     }, [status]);
 
     useEffect(() => {
-        if (data) {
-            setAffiliateRescue(data);
+        if (rescueData.data) {
+            setAffiliateRescue(rescueData.data);
         }
-    }, [isfetching]);
+        
+    }, [rescueData.isFetching]);
 
     return (
         <div className="pt-32">
