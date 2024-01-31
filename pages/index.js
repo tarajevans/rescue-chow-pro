@@ -249,7 +249,7 @@ const Home = () => {
                 </div>
                 <div className="mx-auto pt-6 pb-16 sm:px-6 lg:px-8">
                     <div className="flex justify-center">
-                        <div className="relative content-center overflow-hidden bg-white bg-opacity-80 w-4/5 shadow-inner">
+                        <div className="relative content-center overflow-hidden bg-white bg-opacity-80 w-4/5 gitshadow-inner">
                             <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-20 lg:pb-28 flex justify-center">
                                 <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
                     <div className={iframe_container}>
