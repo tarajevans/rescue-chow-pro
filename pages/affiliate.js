@@ -9,22 +9,22 @@ const Affiliate = () => {
     const [rescueName, setrescueName] = useState("");
     const [rescueUrl, setRescueUrl] = useState("");
     const [rescueDescription, setRescueDescription] = useState("");
+    const [products, setProducts] = useState([]);
 
     const [affiliateRescue, setAffiliateRescue] = useState();
+    const [affiliateEarning, setAffiliateEarnings] = useState(0.0);
 
     const rescueNameRef = useRef();
     const rescueUrlRef = useRef();
     const rescueDescriptionRef = useRef();
 
     const fetchRescue = async () => {
-        
         const response = await fetch(
             `/api/data/rescues/${session.user.affiliateRescue}`
         );
 
         const stringData = await response.json();
 
-        console.log(stringData);
         return stringData;
     };
 
@@ -58,22 +58,57 @@ const Affiliate = () => {
         // console.log(session);
     };
 
-    const rescueData =
-        useQuery({
-            queryKey: ["singleRescue"],
-            queryFn: fetchRescue,
-            enabled: false,
-        });
+    const fetchProducts = async () => {
+        const response = await fetch("/api/data/products");
+
+        const productData = await response.json();
+
+        return productData;
+    };
+
+    const fetchEarnings = async () => {
+        const response = await fetch(
+            `api/data/rescue_earnings/${session.user.affiliateRescue}`
+        );
+
+        const earningsData = await response.json();
+
+        return earningsData;
+    };
+
+    const rescueEarningQuery = useQuery({
+        queryKey: ["rescueEarnings"],
+        queryFn: fetchEarnings,
+        enabled: false,
+    });
+
+    const productQuery = useQuery({
+        queryKey: ["products"],
+        queryFn: fetchProducts,
+        enabled: true,
+    });
+
+    const rescueData = useQuery({
+        queryKey: ["singleRescue"],
+        queryFn: fetchRescue,
+        enabled: false,
+    });
+
+    // useEffect(() => {
+    //     if (productQuery.data) {
+    //         console.log(productQuery.data)
+    //         setProducts(productQuery.data);
+    //     }
+    //     console.log(products)
+    // }, productQuery.isFetching);
 
     useEffect(() => {
         if (status === "authenticated") {
             if (session?.user?.isAffiliate) {
-
                 // fetch the rescue info from the DB
                 rescueData.refetch();
+                rescueEarningQuery.refetch();
             }
-            
-            console.log(session)
         }
     }, [status]);
 
@@ -81,8 +116,27 @@ const Affiliate = () => {
         if (rescueData.data) {
             setAffiliateRescue(rescueData.data);
         }
-        
     }, [rescueData.isFetching]);
+
+    useEffect(() => {
+        let salesTotal = 0;
+
+        if (rescueEarningQuery.data) {
+            if (productQuery.data)
+                rescueEarningQuery.data.map((order) => {
+                    order.products.map((product) => {
+                        productQuery.data.forEach((prod) => {
+                            if (prod._id === product.prodId) {
+                                const itemTotal = prod.price * product.qnty;
+                                salesTotal = salesTotal + itemTotal;
+                            }
+                        });
+                    });
+                });
+        }
+
+        setAffiliateEarnings(salesTotal * 0.2);
+    }, [rescueEarningQuery.isFetching, productQuery.isFetching]);
 
     return (
         <div className="pt-32">
@@ -109,7 +163,7 @@ const Affiliate = () => {
                                     </div>
                                     <div>
                                         {" "}
-                                        {affiliateRescue.acive ? (
+                                        {affiliateRescue.active ? (
                                             <div> Rescue Status: Active</div>
                                         ) : (
                                             <div> Rescue Status: Pending </div>
@@ -120,6 +174,10 @@ const Affiliate = () => {
                                         Affiliate Link:
                                         https://rescue-chow-pro.vercel.app/orderNow/
                                         {affiliateRescue._id}
+                                    </div>
+
+                                    <div>
+                                        Affiliate Earnings: ${affiliateEarning}
                                     </div>
                                 </div>
                             )}
