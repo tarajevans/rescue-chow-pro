@@ -139,29 +139,35 @@ const Affiliate = () => {
     }, [rescueEarningQuery.isFetching, productQuery.isFetching]);
 
     return (
-        <div className="pt-32">
+        <div className="pt-32 bg-rescue-paws bg-center pb-32">
+            <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+                <h2 className="text-8xl font-medium font-love text-red-400">
+                    Welcome Affiliate!
+                </h2>
+            </div>
+            <div className=" pt-24 flex flex-row items-center justify-center space-x-4">
             {status === "authenticated" ? (
                 <div>
                     {session.user.isAffiliate ? (
                         <div>
-                            <div>Is affiliate</div>
+                            <div className="text-2xl font-love text-red-400 font-semibold">"Is Affiliate" makes no sense as it's pending.  Can we hide this line?</div>
                             {affiliateRescue && (
                                 <div>
-                                    <div>
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
                                         {" "}
                                         Rescue Name: {affiliateRescue.name}{" "}
                                     </div>
-                                    <div>
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
                                         {" "}
                                         Rescue Website:{" "}
                                         {affiliateRescue.website}{" "}
                                     </div>
-                                    <div>
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
                                         {" "}
                                         Rescue Description:{" "}
                                         {affiliateRescue.description}
                                     </div>
-                                    <div>
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
                                         {" "}
                                         {affiliateRescue.active ? (
                                             <div> Rescue Status: Active</div>
@@ -170,18 +176,19 @@ const Affiliate = () => {
                                         )}
                                     </div>
 
-                                    <div>
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
                                         Affiliate Link:
                                         https://rescue-chow-pro.vercel.app/orderNow/
                                         {affiliateRescue._id}
                                     </div>
 
-                                    <div>
-                                        Affiliate Earnings: ${affiliateEarning}
+                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                        Affiliate earnings to date: ${affiliateEarning}
                                     </div>
                                 </div>
                             )}
                         </div>
+                        
                     ) : (
                         <div>
                             <div> Affiliate Signup</div>
@@ -255,6 +262,8 @@ const Affiliate = () => {
                 <div>Please Log In to continue</div>
             )}
         </div>
+        </div>
+
     );
 };
 

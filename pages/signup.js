@@ -65,7 +65,7 @@ const LoginPage = () => {
 
     return (
         <div>
-            <form className="flex flex-col justify-center items-center mt-6">
+            <form className="flex flex-col justify-center items-center mt-6 pt-32">
                 {errorMessage && (
                     <div>
                         <h3>{errorMessage}</h3>
