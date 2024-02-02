@@ -94,14 +94,6 @@ const Affiliate = () => {
         enabled: false,
     });
 
-    // useEffect(() => {
-    //     if (productQuery.data) {
-    //         console.log(productQuery.data)
-    //         setProducts(productQuery.data);
-    //     }
-    //     console.log(products)
-    // }, productQuery.isFetching);
-
     useEffect(() => {
         if (status === "authenticated") {
             if (session?.user?.isAffiliate) {
@@ -146,124 +138,137 @@ const Affiliate = () => {
                 </h2>
             </div>
             <div className=" pt-24 flex flex-row items-center justify-center space-x-4">
-            {status === "authenticated" ? (
-                <div>
-                    {session.user.isAffiliate ? (
-                        <div>
-                            <div className="text-2xl font-love text-red-400 font-semibold">"Is Affiliate" makes no sense as it's pending.  Can we hide this line?</div>
-                            {affiliateRescue && (
-                                <div>
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        {" "}
-                                        Rescue Name: {affiliateRescue.name}{" "}
-                                    </div>
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        {" "}
-                                        Rescue Website:{" "}
-                                        {affiliateRescue.website}{" "}
-                                    </div>
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        {" "}
-                                        Rescue Description:{" "}
-                                        {affiliateRescue.description}
-                                    </div>
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        {" "}
-                                        {affiliateRescue.active ? (
-                                            <div> Rescue Status: Active</div>
-                                        ) : (
-                                            <div> Rescue Status: Pending </div>
-                                        )}
-                                    </div>
-
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        Affiliate Link:
-                                        https://rescue-chow-pro.vercel.app/orderNow/
-                                        {affiliateRescue._id}
-                                    </div>
-
-                                    <div className="text-2xl font-serif text-gray-600 font-semibold">
-                                        Affiliate earnings to date: ${affiliateEarning}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                        
-                    ) : (
-                        <div>
-                            <div> Affiliate Signup</div>
-                            <div> Describe the program here </div>
+                {status === "authenticated" ? (
+                    <div>
+                        {session.user.isAffiliate ? (
                             <div>
-                                <div>Sign Up</div>
+                                {affiliateRescue && (
+                                    <div>
+                                        <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                            {" "}
+                                            Rescue Name: {
+                                                affiliateRescue.name
+                                            }{" "}
+                                        </div>
+                                        <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                            {" "}
+                                            Rescue Website:{" "}
+                                            {affiliateRescue.website}{" "}
+                                        </div>
+                                        <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                            {" "}
+                                            Rescue Description:{" "}
+                                            {affiliateRescue.description}
+                                        </div>
+                                        <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                            {" "}
+                                            {affiliateRescue.active ? (
+                                                <div>
+                                                    {" "}
+                                                    Rescue Status: Active
+                                                </div>
+                                            ) : (
+                                                <div>
+                                                    {" "}
+                                                    Rescue Status: Pending{" "}
+                                                </div>
+                                            )}
+                                        </div>
+                                        {affiliateRescue.active ? (
+                                            <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                                Affiliate Link:
+                                                https://rescue-chow-pro.vercel.app/orderNow/
+                                                {affiliateRescue._id}
+                                            </div>
+                                        ) : (
+                                            <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                                Affiliate Link: Your affiliate
+                                                link will be available after our
+                                                staff approves your Rescue
+                                            </div>
+                                        )}
+
+                                        <div className="text-2xl font-serif text-gray-600 font-semibold">
+                                            Affiliate earnings to date: $
+                                            {affiliateEarning}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div>
+                                <div> Affiliate Signup</div>
+                                <div> Describe the program here </div>
                                 <div>
-                                    <form>
-                                        <div>
-                                            <label
-                                                htmlFor="rescueName"
-                                                className="pr-2"
-                                            >
-                                                Animal Rescue Name:
-                                            </label>
-                                            <input
-                                                className="border-2"
-                                                type="text"
-                                                ref={rescueNameRef}
-                                                onChange={updateRescueName}
-                                                id="recueName"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label
-                                                htmlFor="rescueUrl"
-                                                className="pr-2"
-                                            >
-                                                Animal Rescue URL:
-                                            </label>
-                                            <input
-                                                className="border-2"
-                                                type="text"
-                                                ref={rescueUrlRef}
-                                                onChange={updateRescueUrl}
-                                                id="rescueUrl"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label
-                                                htmlFor="rescueDescription"
-                                                className="pr-2"
-                                            >
-                                                Animal Rescue Description:
-                                            </label>
-                                            <input
-                                                className="border-2"
-                                                type="text"
-                                                ref={rescueDescriptionRef}
-                                                onChange={
-                                                    updateRescueDescription
-                                                }
-                                                id="rescueDescription"
-                                            />
-                                        </div>
-                                        <div>
-                                            <button
-                                                onClick={createRescue}
-                                                className="border-2"
-                                            >
-                                                Apply
-                                            </button>
-                                        </div>
-                                    </form>
+                                    <div>Sign Up</div>
+                                    <div>
+                                        <form>
+                                            <div>
+                                                <label
+                                                    htmlFor="rescueName"
+                                                    className="pr-2"
+                                                >
+                                                    Animal Rescue Name:
+                                                </label>
+                                                <input
+                                                    className="border-2"
+                                                    type="text"
+                                                    ref={rescueNameRef}
+                                                    onChange={updateRescueName}
+                                                    id="recueName"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    htmlFor="rescueUrl"
+                                                    className="pr-2"
+                                                >
+                                                    Animal Rescue URL:
+                                                </label>
+                                                <input
+                                                    className="border-2"
+                                                    type="text"
+                                                    ref={rescueUrlRef}
+                                                    onChange={updateRescueUrl}
+                                                    id="rescueUrl"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    htmlFor="rescueDescription"
+                                                    className="pr-2"
+                                                >
+                                                    Animal Rescue Description:
+                                                </label>
+                                                <input
+                                                    className="border-2"
+                                                    type="text"
+                                                    ref={rescueDescriptionRef}
+                                                    onChange={
+                                                        updateRescueDescription
+                                                    }
+                                                    id="rescueDescription"
+                                                />
+                                            </div>
+                                            <div>
+                                                <button
+                                                    onClick={createRescue}
+                                                    className="border-2"
+                                                >
+                                                    Apply
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <div>Please Log In to continue</div>
-            )}
+                        )}
+                    </div>
+                ) : (
+                    <div>Please Log In to continue</div>
+                )}
+            </div>
         </div>
-        </div>
-
     );
 };
 
