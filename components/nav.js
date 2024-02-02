@@ -304,6 +304,11 @@ const Nav = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div>
+                            {status === "authenticated" && (<span className="">Welcome, {" "}{session.user.username}</span>) }
+                            </div>
+
                         <div className="hidden md:block">
                             <div className="ml-4 flex items-center md:ml-6">
                                 <button
