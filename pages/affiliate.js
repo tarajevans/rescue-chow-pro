@@ -198,7 +198,7 @@ const Affiliate = () => {
                         </div>
                         
                     ) : (
-                        <div className="pt-32 bg-rescue-paws bg-center pb-32">
+                        <div>
                             <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
                                 <h2 className="text-8xl font-medium font-love text-red-400">
                                     Affiliate Application
