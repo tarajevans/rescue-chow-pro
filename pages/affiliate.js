@@ -1,6 +1,7 @@
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 
 // if the user is an affiliate load a page with affliate info, if user is not an affiliate present a page explaining the program and signup functions
 const Affiliate = () => {
@@ -271,7 +272,7 @@ const Affiliate = () => {
                     )}
                 </div>
             ) : (
-                <div>Please Log In to continue</div>
+                <div>Please <Link href="#" onClick={signIn} className="text-red-400">Log In</Link>  or <Link href="/signup" className="text-red-400">Register</Link>  to continue</div>
             )}
         </div>
         </div>
