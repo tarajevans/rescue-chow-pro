@@ -108,7 +108,7 @@ const LoginPage = () => {
                         htmlFor="password"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                        Your Password
+                        Your Password  (must be atleast 7 characters)
                     </label>
                     <input
                         type="password"
