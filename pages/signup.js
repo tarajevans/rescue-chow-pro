@@ -1,27 +1,15 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import NotificationContext from "../GlobalStates/notification-context";
 
-const createUser = async (email, username, password) => {
-    const response = await fetch("/api/auth/signup", {
-        method: "POST",
-        body: JSON.stringify({ email, username, password }),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    const data = await response.json();
 
-    if (!response.ok) {
-        throw new Error(data.message);
-    }
-    return data;
-};
 
 const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [password, setPassword] = useState();
     const [password2, setPassword2] = useState("");
     const [doesPasswordMatch, setDoesPasswordMatch] = useState(true);
+    const [usernameError, setUsernameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
 
     const notificationCtx = useContext(NotificationContext);
 
@@ -29,6 +17,31 @@ const LoginPage = () => {
     const usernameInputRef = useRef();
     const passwordInputRef = useRef();
     const password2InputRef = useRef();
+
+    const createUser = async (email, username, password) => {
+        setEmailError(false);
+            setUsernameError(false);
+        const response = await fetch("/api/auth/signup", {
+            method: "POST",
+            body: JSON.stringify({ email, username, password }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        const data = await response.json();
+    
+        if (response.status === 200) {
+            // do success stuff
+            window.location.assign("/");
+        }else{
+            if (response.status === 417){
+                setUsernameError(true)
+            }else if(response.status === 418){
+                setEmailError(true)
+            }
+        }
+        return data;
+    };
 
     useEffect(() => {
         if (password !== password2) {
@@ -55,12 +68,10 @@ const LoginPage = () => {
                 status: "success",
             });
         } catch (error) {
-            notificationCtx.showNotification({
-                title: "Creating Account",
-                message: error.toString(),
-                status: "error",
-            });
-        }
+            setErrorMessage(error)
+            console.log(error)
+            };
+        
     };
 
     return (
@@ -77,7 +88,7 @@ const LoginPage = () => {
                         htmlFor="email"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                        Your email
+                        Your email {emailError && (<span className="text-red-700">Already in use</span>)}
                     </label>
                     <input
                         type="email"
@@ -93,7 +104,7 @@ const LoginPage = () => {
                         htmlFor="username"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                        Your Username
+                        Your Username {usernameError && (<span className="text-red-700"> Already in use</span>)}
                     </label>
                     <input
                         type="username"
@@ -108,7 +119,7 @@ const LoginPage = () => {
                         htmlFor="password"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                        Your Password  (must be atleast 7 characters)
+                        Your Password  <span className="text-grey-600">(Must be at least 7 characters)</span>
                     </label>
                     <input
                         type="password"

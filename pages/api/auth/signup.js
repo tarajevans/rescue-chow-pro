@@ -58,7 +58,7 @@ const signup = async (req, res) => {
                 });
             }
         } else {
-            res.status(417).json({
+            res.status(418).json({
                 message: "email already assigned to an account",
             });
         }
