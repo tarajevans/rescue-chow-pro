@@ -153,7 +153,8 @@ const Affiliate = () => {
                                         <div className="text-2xl font-serif text-gray-600 font-semibold">
                                             {" "}
                                             Rescue Website:{" "}
-                                            {affiliateRescue.website}{" "}
+                                            <span className="text-red-600">{affiliateRescue.website}{" "}</span>
+                                            
                                         </div>
                                         <div className="text-2xl font-serif text-gray-600 font-semibold">
                                             {" "}
