@@ -84,7 +84,7 @@ const Nav = () => {
                         </div>
 
                         <div>
-                            {status === "authenticated" && (<span>Welcome, {" "}{session.user.username}</span>) }
+                            {status === "authenticated" && (<span className="">Welcome, {" "}{session.user.username}</span>) }
                             </div>
 
                         <div className="hidden md:block">

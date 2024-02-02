@@ -64,7 +64,7 @@ const userSchema = new Schema({
     },
     // end of shipping info
 
-    // can be user or affiliate, rescue admin status will be stored in the rescue
+    // can be user, admin, employee, rescue admin status will be stored in the rescue
     role: {
         type: String,
         default: "user",
