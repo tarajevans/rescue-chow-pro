@@ -190,9 +190,13 @@ const Affiliate = () => {
                         </div>
                         
                     ) : (
-                        <div>
-                            <div> Affiliate Signup</div>
-                            <div> Describe the program here </div>
+                        <div className="pt-32 bg-rescue-paws bg-center pb-32">
+                            <div className="mx-auto max-w-7xl py-2 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+                                <h2 className="text-8xl font-medium font-love text-red-400">
+                                    Affiliate Application
+                                </h2>
+                            </div>
+                            <div> Describe your organization! Please keep this to 1-2 sentences.  This is what the customer will read when choosing a charity to support.</div>
                             <div>
                                 <div>Sign Up</div>
                                 <div>
