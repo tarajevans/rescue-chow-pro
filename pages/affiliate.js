@@ -85,7 +85,7 @@ const Affiliate = () => {
     const productQuery = useQuery({
         queryKey: ["products"],
         queryFn: fetchProducts,
-        enabled: true,
+        enabled: false,
     });
 
     const rescueData = useQuery({
@@ -100,6 +100,7 @@ const Affiliate = () => {
                 // fetch the rescue info from the DB
                 rescueData.refetch();
                 rescueEarningQuery.refetch();
+                productQuery.refetch();
             }
         }
     }, [status]);
