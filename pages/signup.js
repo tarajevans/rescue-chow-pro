@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import NotificationContext from "../GlobalStates/notification-context";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 
 
@@ -32,7 +33,7 @@ const LoginPage = () => {
     
         if (response.status === 200) {
             // do success stuff
-            window.location.assign("/");
+            signIn();
         }else{
             if (response.status === 417){
                 setUsernameError(true)
