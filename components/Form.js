@@ -3,8 +3,6 @@ import ListsDataContex from "../GlobalStates/listsDataState";
 import { useQuery } from "@tanstack/react-query";
 import CartContext from "../GlobalStates/cartState";
 import { idbPromise } from "../utils/helpers";
-import Modal from "react-modal";
-import { getModeForUsageLocation } from "typescript";
 import RescueListItem from "./rescueListItem";
 
 const fetchRescues = async () => {
@@ -62,6 +60,10 @@ function RescueForm() {
         // setHover(index)
     };
 
+    const handleChecked = () => {
+        setSelectedRescue()
+    }
+
     return (
         <div>
             <legend className="text-lg font-medium text-gray-900">
@@ -72,7 +74,6 @@ function RescueForm() {
                     <div
                         className="relative flex items-start py-4"
                         key={rescue._id}
-                        onMouseOver={() => {}}
                     >
                         <RescueListItem
                             website={rescue.website}
