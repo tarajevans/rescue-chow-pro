@@ -3,6 +3,9 @@ import ListsDataContex from "../GlobalStates/listsDataState";
 import { useQuery } from "@tanstack/react-query";
 import CartContext from "../GlobalStates/cartState";
 import { idbPromise } from "../utils/helpers";
+import Modal from "react-modal";
+import { getModeForUsageLocation } from "typescript";
+import RescueListItem from "./rescueListItem";
 
 const fetchRescues = async () => {
     //fetch rescues from api
@@ -26,6 +29,8 @@ const saveSelectedRescue = async (rescueIn) => {
 function RescueForm() {
     const [radio, setRadio] = useState("None");
     const [selectedRescue, setSelectedRescue] = useState();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [hover, setHover] = useState(null);
 
     const listContext = useContext(ListsDataContex);
     const cartContext = useContext(CartContext);
@@ -53,18 +58,29 @@ function RescueForm() {
         // load rescues into globalState
     }, [isLoading, data]);
 
+    const MouseOver = () => {
+        // setHover(index)
+    };
+
     return (
         <div>
             <legend className="text-lg font-medium text-gray-900">
                 Our Rescues
             </legend>
             <div className="mt-4 divide-y divide-gray-200 border-t border-b border-gray-200">
-                {listContext.data.rescues.map((rescue) => (
+                {listContext.data.rescues.map((rescue, index) => (
                     <div
                         className="relative flex items-start py-4"
                         key={rescue._id}
+                        onMouseOver={() => {}}
                     >
-                        <div className="min-w-0 flex-1 text-sm">
+                        <RescueListItem
+                            website={rescue.website}
+                            name={rescue.name}
+                            description={rescue.description}
+                        />
+
+                        {/* <div className="min-w-0 flex-1 text-sm">
                             <a href={rescue.website} rel="noopener">
                                 <label
                                     htmlFor={rescue.name}
@@ -73,7 +89,7 @@ function RescueForm() {
                                     {rescue.name}
                                 </label>
                             </a>
-                        </div>
+                        </div> */}
                         <div className="ml-3 flex h-5 items-center">
                             <input
                                 checked={radio === rescue.name}
