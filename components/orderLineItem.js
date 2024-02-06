@@ -9,6 +9,7 @@ const OrderLineItem = ({
     products,
     productList,
     order,
+    paymentStatus
 }) => {
     const [showOrderDetails, setShowOrderDetails] = useState(false);
 
@@ -30,7 +31,7 @@ const OrderLineItem = ({
         <div className="py-2">
             <div className="bg-yellow-100 rounded overflow-hidden shadow-lg">
                 <div>
-                    Date: {date}, Order#: {orderNum}, Status: {status}{" "}
+                    Date: {new Date(date).toLocaleString()}, Order#: {orderNum}, Status: {status}{" "}
                     <button
                         className="px-4 bg-blue-100"
                         onClick={toggleDetails}
@@ -43,6 +44,8 @@ const OrderLineItem = ({
                     <OrderDetails
                         order={order} // products in the order
                         productList={productList} // list of all products
+                        paymentStatus={paymentStatus}
+
                     />
                 )}
             </div>

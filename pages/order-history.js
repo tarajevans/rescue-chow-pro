@@ -28,8 +28,6 @@ const orderHistory = ({ orders, products }) => {
         }
     }, [userId]);
 
-    // console.log(myOrders);
-
     return (
         <div>
             <div> Order History </div>
@@ -44,6 +42,7 @@ const orderHistory = ({ orders, products }) => {
                             products={order.products}
                             productList={products}
                             order={order}
+                            paymentStatus={order.paymentStatus}
                         />
                     ))}
                 </ul>
