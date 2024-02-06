@@ -15,7 +15,7 @@ const ChooseARescue = () => {
         </p>
       </div>
       <div className="flex justify-center align-center">
-        <Form></Form>
+        <Form/>
       </div>
     </div>
   );
