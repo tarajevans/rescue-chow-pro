@@ -15,7 +15,6 @@ const ProductItem = (item) => {
         cartContext.addProdToCart(item);
     };
     
-    console.log(item)
     return (
         <div key={_id}>
             {item.imgUrl}
