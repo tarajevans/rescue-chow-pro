@@ -13,6 +13,7 @@ const OrderLineItem = ({
 }) => {
     const [showOrderDetails, setShowOrderDetails] = useState(false);
 
+
     const findProduct = (prodId) => {
         let returnProd;
         productList.map((prod) => {
@@ -42,7 +43,8 @@ const OrderLineItem = ({
                 </div>
                 {showOrderDetails && (
                     <OrderDetails
-                        order={order} // products in the order
+                        order={order}
+                        products={products} // products in the order
                         productList={productList} // list of all products
                         paymentStatus={paymentStatus}
 

@@ -56,6 +56,7 @@ const Cart = (props) => {
         const products = [];
 
         cart.forEach((item) => {
+            console.log(item)
             let newItem = { prodId: item._id, qnty: item.quantity };
             products.push(newItem);
             idbPromise("cart", "delete", item);

@@ -3,43 +3,35 @@ import { useEffect, useState } from "react";
 import { Order, Product } from "../models";
 import OrderLineItem from "../components/orderLineItem";
 
+const mapOrders = () => {};
+
+const findProduct = (prodId, productList) => {
+    let curProd;
+    productList.forEach((prod) => {
+        if (prod._id === prodId) {
+            curProd = prod;
+        }
+    });
+    return curProd;
+};
+
 const orderHistory = ({ orders, products }) => {
     const { data: session, status } = useSession();
-    const [userId, setUserId] = useState();
-    const [myOrders, setMyOrders] = useState([]);
+    // const [userId, setUserId] = useState();
+    // const [myOrders, setMyOrders] = useState([]);
 
-    useEffect(() => {
-        if (status === "authenticated") {
-            setUserId(session.user._id);
-        }
-    }, [status, session]);
-
-    useEffect(() => {
-        if (userId) {
-            // fetch all orders with the userId of the current user
-            const selectedOrders = orders.filter(
-                (order) => order.customer._id === userId
-            );
-
-            if (selectedOrders.length) {
-                setMyOrders(selectedOrders);
-            }
-            // save orders in the orders state
-        }
-    }, [userId]);
-
-    return (
+       return (
         <div>
             <div> Order History </div>
             <div>
                 <ul>
-                    {myOrders.map((order) => (
+                    {orders.map((order) => (
                         <OrderLineItem
                             date={order.purchaseDate}
                             orderNum={order._id}
                             status={order.status}
                             key={order._id}
-                            products={order.products}
+                            popProducts={order.popProdList}
                             productList={products}
                             order={order}
                             paymentStatus={order.paymentStatus}
@@ -59,10 +51,24 @@ export const getServerSideProps = async (ctx) => {
     const allOrders = await Order.find({ customer: thisSession.user._id })
         .populate("rescue")
         .populate("customer");
+    const orderData = JSON.parse(JSON.stringify(allOrders));
 
-    const OrderData = JSON.parse(JSON.stringify(allOrders));
     const allProducts = await Product.find();
-    const ProdData = JSON.parse(JSON.stringify(allProducts));
+    const prodData = JSON.parse(JSON.stringify(allProducts));
 
-    return { props: { orders: OrderData, products: ProdData } };
+    orderData.map((order) => {
+        const popProdList = [];
+        let orderTotal = 0;
+        if (order.products) {
+            order.products.map((product) => {
+                const thisProd = findProduct(product.prodId, prodData);
+                const newProdObj = { product: thisProd, qnty: product.qnty };
+                popProdList.push(newProdObj);
+                orderTotal += (thisProd.price * product.qnty)
+            });
+        }
+        Object.assign(order, { populatedProdList: popProdList, orderTotal: orderTotal });
+    });
+
+    return { props: { orders: orderData, products: prodData } };
 };
