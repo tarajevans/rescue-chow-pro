@@ -1,13 +1,3 @@
-// import React, { useEffect } from "react";
-// import { useQuery } from "@apollo/client";
-// import { useStoreContext } from "../../../utils/shopping/GlobalState";
-// import {
-//   UPDATE_CATEGORIES,
-//   UPDATE_CURRENT_CATEGORY,
-// } from "../../../utils/shopping/actions";
-// import { QUERY_CATEGORIES } from "../../../utils/shopping/queries";
-// import { idbPromise } from "../../../utils/helpers";
-import placeholder from "../../public/images/footer-dog-free-img-1.png";
 import React, { useContext, useEffect, useState } from "react";
 import ListsDataContex from "../../GlobalStates/listsDataState";
 import Image from "next/image";
@@ -22,30 +12,6 @@ const fetchCategories = async () => {
 };
 
 function CategoryMenu({ setCurrentCategory }) {
-    // const [state, dispatch] = useStoreContext();
-
-    // const { categories } = state;
-
-    // const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-
-    // useEffect(() => {
-    //   if (categoryData) {
-    //     dispatch({
-    //       type: UPDATE_CATEGORIES,
-    //       categories: categoryData.categories,
-    //     });
-    //     categoryData.categories.forEach((category) => {
-    //       idbPromise("categories", "put", category);
-    //     });
-    //   } else if (!loading) {
-    //     idbPromise("categories", "get").then((categories) => {
-    //       dispatch({
-    //         type: UPDATE_CATEGORIES,
-    //         categories: categories,
-    //       });
-    //     });
-    //   }
-    // }, [categoryData, loading, dispatch]);
 
     const handleClick = (id) => {
         setCurrentCategory(id);
@@ -106,7 +72,7 @@ function CategoryMenu({ setCurrentCategory }) {
                                             className="absolute inset-0"
                                         >
                                             <Image
-                                                src={`/images/${category.image}`}
+                                                src={"https://rescue-chow-pro.s3.amazonaws.com/"+category.image}
                                                 alt="#"
                                                 width={100}
                                                 height={100}

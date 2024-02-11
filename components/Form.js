@@ -3,8 +3,6 @@ import ListsDataContex from "../GlobalStates/listsDataState";
 import { useQuery } from "@tanstack/react-query";
 import CartContext from "../GlobalStates/cartState";
 import { idbPromise } from "../utils/helpers";
-import Modal from "react-modal";
-import { getModeForUsageLocation } from "typescript";
 import RescueListItem from "./rescueListItem";
 
 const fetchRescues = async () => {

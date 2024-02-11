@@ -1,13 +1,5 @@
-import rescueChow from "../public/images/Rescue-Chow-Logo-white-outline.gif";
-import dog from "../public/images/Cartoon-Dog.gif";
-import beefHome from "../public/images/Beef-Bites-For-Home-Page.gif";
-import dogFood from "../public/images/Dog-Food-Bowl.gif";
-import heartPaw from "../public/images/Heart-with-Paw-in-middle.gif";
-import petsAbout from "../public/images/pets-about-free-img.png";
-import chooseRescueImg from "../public/images/pet-with-girl-free-img.png";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext } from "react";
 import React, { useState } from "react";
 import { captializeFirstChar, validateEmail } from "../utils/helpers";
 
@@ -45,12 +37,10 @@ const Home = () => {
         <div className="bg-hero-pattern bg-cover bg-fixed ">
             <div className="bg-header-pattern bg-center pb-20 md:pb-64 contrast-75 pt-32">
                 <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
-                    <Image
+                    <img
                         className="object-fill h-1/4 w-3/4"
-                        src={rescueChow}
+                        src="https://rescue-chow-pro.s3.amazonaws.com/Rescue-Chow-Logo-white-outline.gif"
                         alt="rescue chow logo"
-                        width={""}
-                        height={""}
                     />
                 </div>
                 <div className=" flex flex-row items-center justify-center space-x-4">
@@ -108,12 +98,10 @@ const Home = () => {
                                         >
                                             <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                                                 <div className="flex items-center space-x-6 lg:space-x-8">
-                                                    <Image
+                                                    <img
                                                         className="h-full w-full object-cover object-center"
-                                                        src={petsAbout}
+                                                        src="https://rescue-chow-pro.s3.amazonaws.com/pets-about-free-img.png"
                                                         alt=""
-                                                        width={""}
-                                                        height={""}
                                                     />
                                                 </div>
                                             </div>
@@ -170,12 +158,10 @@ const Home = () => {
                                                 <div className="inline-flex rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">
                                                     Find Your Rescue
                                                 </div>
-                                                <Image
+                                                <img
                                                     className="object-fill mx-auto mt-6 py-6 sm:px-6 lg:px-8"
-                                                    src={dog}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/Cartoon-Dog.gif"
                                                     alt="cartoon dog"
-                                                    width={""}
-                                                    height={""}
                                                 />
                                             </div>
 
@@ -183,12 +169,10 @@ const Home = () => {
                                                 <div className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">
                                                     Choose Treats
                                                 </div>
-                                                <Image
+                                                <img
                                                     className="object-fill mx-auto mt-6 py-6 sm:px-6 lg:px-8"
-                                                    src={dogFood}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/Dog-Food-Bowl.gif"
                                                     alt="dog food bag"
-                                                    width={""}
-                                                    height={""}
                                                 />
                                             </div>
 
@@ -196,22 +180,18 @@ const Home = () => {
                                                 <div className="inline-flex items-center justify-center rounded-full border border-transparent outline-2 outline-red-400 outline bg-white px-5 py-3 text-base font-medium text-red-400 hover:bg-black">
                                                     Proceeds Sent
                                                 </div>
-                                                <Image
+                                                <img
                                                     className="object-fill mx-auto py-6 sm:px-6 lg:px-8"
-                                                    src={heartPaw}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/Heart-with-Paw-in-middle.gif"
                                                     alt="heart with a paw in the center"
-                                                    width={""}
-                                                    height={""}
                                                 />
                                             </div>
 
                                             <div className="flex justify-center text-6xl border-2 border-gray-300 rounded-xl p-6 bg-gray-100">
-                                                <Image
+                                                <img
                                                     className=""
-                                                    src={beefHome}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/Beef-Bites-For-Home-Page.gif"
                                                     alt="Beef Bites Product"
-                                                    width={""}
-                                                    height={""}
                                                 />
                                             </div>
                                         </div>

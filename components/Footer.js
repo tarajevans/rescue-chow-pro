@@ -1,9 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import facebook from "../public/images/icons8-facebook-circled-64.png";
-import linkedin from "../public/images/icons8-linkedin-circled-64.png";
-import instagram from "../public/images/icons8-instagram-old-50.png";
 
 const Footer = () => {
     return (
@@ -30,9 +27,9 @@ const Footer = () => {
                         rel="noopener noreferrer"
                     >
                         <div className="flex-shrink-0">
-                            <Image
+                            <img
                                 className="h-8 w-8"
-                                src={facebook}
+                                src="https://rescue-chow-pro.s3.amazonaws.com/icons8-facebook-circled-64.png"
                                 alt="facebook link"
                             />
                         </div>
@@ -43,9 +40,9 @@ const Footer = () => {
                         rel="noopener noreferrer"
                     >
                         <div className="flex-shrink-0">
-                            <Image
+                            <img
                                 className="h-8 w-8"
-                                src={instagram}
+                                src="https://rescue-chow-pro.s3.amazonaws.com/icons8-instagram-old-50.png"
                                 alt="instagram link"
                             />
                         </div>
@@ -56,9 +53,9 @@ const Footer = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <Image
+                            <img
                                 className="h-8 w-8"
-                                src={linkedin}
+                                src="https://rescue-chow-pro.s3.amazonaws.com/icons8-linkedin-circled-64.png"
                                 alt="linkedin link"
                             />
                         </Link>

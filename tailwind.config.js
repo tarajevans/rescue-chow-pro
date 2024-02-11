@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-pattern": "url('../public/images/AdobeStock_156099814.jpg')",
-        "header-pattern": "url('../public/images/AdobeStock_269478900.jpg')",
-        "rescue-paws": "url(../public/images/rescueChowPaws.jpg)",
-        "who-section": "url(../public/images/feature-img2-free-img.jpg)",
+        "hero-pattern": "url('https://rescue-chow-pro.s3.amazonaws.com/AdobeStock_156099814.jpg')",
+        "header-pattern": "url('https://rescue-chow-pro.s3.amazonaws.com/AdobeStock_269478900.jpg')",
+        "rescue-paws": "url('https://rescue-chow-pro.s3.amazonaws.com/rescueChowPaws.jpg')",
+        "who-section": "url('https://rescue-chow-pro.s3.amazonaws.com/feature-img2-free-img.jpg')",
       },
       colors: {
         "grey-223": "#DFDFDF",

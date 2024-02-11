@@ -23,7 +23,7 @@ const ProductItem = (item) => {
                 <div className="relative h-72 w-full overflow-hidden rounded-lg">
                     {price && (
                         <img
-                            src={"https://rescue-chow.s3.us-east-2.amazonaws.com/"+ image}
+                            src={"https://rescue-chow-pro.s3.amazonaws.com/"+ image}
                             alt={name}
                             className="h-full w-full object-cover object-center"
                         />

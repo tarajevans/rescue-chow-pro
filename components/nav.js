@@ -2,15 +2,8 @@ import Link from "next/link";
 import React, { useContext, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
-import Img from "../public/images/favicon.ico";
-import { useState } from "react";
-import dropdownImg from "../public/images/icons8-double-down-50.png";
-import CartFull1 from "../public/images/CartFull1.png";
-import CartEmpty from "../public/images/CartEmpty.png";
-import { Fragment } from "react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import UserMenu from "./userMenu";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import CartContex from "../GlobalStates/cartState";
 import { useSession } from "next-auth/react";
 
@@ -274,7 +267,7 @@ const Nav = () => {
                             <div className="flex-shrink-0">
                                 <Image
                                     className="h-8 w-8"
-                                    src={Img}
+                                    src="https://rescue-chow-pro.s3.amazonaws.com/favicon.ico"
                                     width={60}
                                     height={60}
                                     alt="rescue chow logo"
@@ -319,17 +312,17 @@ const Nav = () => {
                                     <span role="Image" aria-label="cart">
                                         {cart.cart.products.length > 0 ? (
                                             <div>
-                                                <Image
+                                                <img
                                                     className="h-10 w-10 rounded-full p-1 "
-                                                    src={CartFull1}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/CartFull1.png"
                                                     alt=""
                                                 />
                                             </div>
                                         ) : (
                                             <div>
-                                                <Image
+                                                <img
                                                     className="h-10 w-10 rounded-full p-1"
-                                                    src={CartEmpty}
+                                                    src="https://rescue-chow-pro.s3.amazonaws.com/CartEmpty.png"
                                                     alt=""
                                                 />
                                             </div>
