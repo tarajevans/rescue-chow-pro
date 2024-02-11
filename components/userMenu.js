@@ -13,8 +13,8 @@ const UserMenu = () => {
 
     useEffect(() => {
         if (status === "authenticated") {
-            if(session?.user?._id){
-            setHistoryLink(session.user._id.toString());
+            if (session?.user?._id) {
+                setHistoryLink(session.user._id.toString());
             }
         }
 
@@ -31,6 +31,21 @@ const UserMenu = () => {
     const loggedInNavigation = [
         { name: "Order History", href: `/order-history` },
         { name: "Affiliate", href: `/affiliate` },
+        { name: "Logout", href: "#", onclick: signOut },
+    ];
+
+    const loggedInWorkerNavigation = [
+        { name: "Order History", href: `/order-history` },
+        { name: "Affiliate", href: `/affiliate` },
+        { name: "Back End", href: "bem" },
+        { name: "Logout", href: "#", onclick: signOut },
+    ];
+
+    const loggedInAdminNavigation = [
+        { name: "Order History", href: `/order-history` },
+        { name: "Affiliate", href: `/affiliate` },
+        { name: "Admin", href: "/admin" },
+        { name: "Back End", href: "bem" },
         { name: "Logout", href: "#", onclick: signOut },
     ];
 
@@ -59,42 +74,89 @@ const UserMenu = () => {
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        {status === "authenticated"
-                            ? loggedInNavigation.map((item) => (
-                                  <Menu.Item key={item.name}>
-                                      {({ active }) => (
-                                          <Link
-                                              href={item.href}
-                                              onClick={item.onclick}
-                                              className={classNames(
-                                                  active ? "bg-gray-100" : "",
-                                                  "block px-4 py-2 text-sm text-gray-700"
-                                              )}
-                                          >
-                                              {item.name}
-                                          </Link>
-                                      )}
-                                  </Menu.Item>
-                              ))
-                            : loggedOutNavigation.map((item) => (
-                                  <Menu.Item key={item.name}>
-                                      {({ active }) => (
-                                          <Link
-                                              href={item.href}
-                                              onClick={item.onclick}
-                                              className={classNames(
-                                                  active ? "bg-gray-100" : "",
-                                                  "block px-4 py-2 text-sm text-gray-700"
-                                              )}
-                                          >
-                                              {item.name}
-                                          </Link>
-                                      )}
-                                  </Menu.Item>
-                              ))}
+                        {status === "authenticated" ? (
+                            <span>
+                                <span>
+                                    {session.user.role === "admin" &&
+                                        loggedInWorkerNavigation.map((item) => (
+                                            <Menu.Item key={item.name}>
+                                                {({ active }) => (
+                                                    <Link
+                                                        href={item.href}
+                                                        onClick={item.onclick}
+                                                        className={classNames(
+                                                            active
+                                                                ? "bg-gray-100"
+                                                                : "",
+                                                            "block px-4 py-2 text-sm text-gray-700"
+                                                        )}
+                                                    >
+                                                        {item.name}
+                                                    </Link>
+                                                )}
+                                            </Menu.Item>
+                                        ))}
+                                </span>
+
+                                <span>
+                                    {session.user.role === "worker" &&
+                                        loggedInWorkerNavigation.map((item) => (
+                                            <Menu.Item key={item.name}>
+                                                {({ active }) => (
+                                                    <Link
+                                                        href={item.href}
+                                                        onClick={item.onclick}
+                                                        className={classNames(
+                                                            active
+                                                                ? "bg-gray-100"
+                                                                : "",
+                                                            "block px-4 py-2 text-sm text-gray-700"
+                                                        )}
+                                                    >
+                                                        {item.name}
+                                                    </Link>
+                                                )}
+                                            </Menu.Item>
+                                        ))}
+                                </span>
+                                {session.user.role === 'user' && loggedInNavigation.map((item) => (
+                                    <Menu.Item key={item.name}>
+                                        {({ active }) => (
+                                            <Link
+                                                href={item.href}
+                                                onClick={item.onclick}
+                                                className={classNames(
+                                                    active ? "bg-gray-100" : "",
+                                                    "block px-4 py-2 text-sm text-gray-700"
+                                                )}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        )}
+                                    </Menu.Item>
+                                ))}
+                            </span>
+                        ) : (
+                            loggedOutNavigation.map((item) => (
+                                <Menu.Item key={item.name}>
+                                    {({ active }) => (
+                                        <Link
+                                            href={item.href}
+                                            onClick={item.onclick}
+                                            className={classNames(
+                                                active ? "bg-gray-100" : "",
+                                                "block px-4 py-2 text-sm text-gray-700"
+                                            )}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    )}
+                                </Menu.Item>
+                            ))
+                        )}
                     </Menu.Items>
                 </Transition>
-            </Menu>
+            </Menu>            
         </div>
     );
 };

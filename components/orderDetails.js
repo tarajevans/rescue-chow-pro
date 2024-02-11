@@ -1,35 +1,20 @@
-const OrderDetails = ({ order, productList }) => {
-    const products = [];
+import { useEffect, useState } from "react";
 
-    const findProduct = (prodId) => {
-        let curProd;
-        productList.forEach((prod) => {
-            if (prod._id === prodId) {
-                curProd = prod;
-            }
-        });
-        return curProd;
-    };
+const OrderDetails = ({ order, paymentStatus }) => {
+    const [orderTotal, setOrderTotal] = useState(0);
 
-    const populateProducts = () => {
-        const items = order.products;
-        if (items.length) {
-            items.map((item) => {
-                const curProd = findProduct(item.prodId);
-                const newProd = { product: curProd, qnty: item.qnty };
-                products.push(newProd);
-            });
-        }
-    };
-    populateProducts();
     return (
         <div>
             <div>
+                <div className="py-2">Payment Status: {paymentStatus}</div>
                 <ul>
-                    {products.map((product)=> (
-                        <li key={product.product._id}>Qnty:{product.qnty} - {product.product.name}</li>
+                    {order.populatedProdList.map((product) => (
+                        <li key={product.product._id}>
+                            Qnty:{product.qnty} - {product.product.name}
+                        </li>
                     ))}
                 </ul>
+                <span>Order Total: ${order.orderTotal}</span>
             </div>
         </div>
     );

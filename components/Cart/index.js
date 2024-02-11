@@ -3,13 +3,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { loadStripe } from "@stripe/stripe-js";
 import CartItem from "../CartItem";
-// import Auth from "../../../utils/shopping/auth";
 import "./style.module.css";
 import CartContex from "../../GlobalStates/cartState";
 import { useQuery } from "@tanstack/react-query";
 import { Result } from "postcss";
 import { useSession } from "next-auth/react";
 import { idbPromise } from "../../utils/helpers";
+import ListsDataContex from "../../GlobalStates/listsDataState";
 
 const stripePromise = loadStripe(
     "pk_test_51LwBkjLpYjTk7wEvqTVHj6U7uKjLuHKc2dnyWXW21jXoMfXoP9EAAbD1JIkMqXWOVqwUGMY9M5GbmoktReevW0Lq00Jm9RbWPH"
@@ -17,6 +17,7 @@ const stripePromise = loadStripe(
 
 const Cart = (props) => {
     const cartContext = useContext(CartContex);
+    const listDataContext = useContext(ListsDataContex);
 
     const { data: session, status } = useSession();
 
@@ -42,7 +43,7 @@ const Cart = (props) => {
         const data = await response.json();
 
         // save order with stripe sessionId
-        saveOrder(data);
+        saveOrder(data, products);
 
         stripePromise.then((res) => {
             res.redirectToCheckout({
@@ -51,28 +52,19 @@ const Cart = (props) => {
         });
     }
 
-    const saveOrder = async (stripeSessionId) => {
-        const cart = await idbPromise("cart", "get");
-        const products = [];
+    const saveOrder = async (stripeSessionId, productsIn) => {
+        if (productsIn.length) {
+            const selectedRescue = listDataContext.data.rescues.filter(
+                (rescue) => rescue._id === cartContext.cart.selectedRescueValue
+            );
 
-        cart.forEach((item) => {
-            let newItem = { prodId: item._id, qnty: item.quantity };
-            products.push(newItem);
-            idbPromise("cart", "delete", item);
-        });
+            console.log(selectedRescue);
 
-        if (products.length) {
-            const rescues = await idbPromise("selectedRescue", "get");
-            const rescue = rescues[0];
-            // console.log(rescues);
-            rescues.forEach((rescue) => {
-                idbPromise("selectedRescue", "delete", rescue);
-            });
             const response = await fetch("/api/data/orders", {
                 method: "POST",
                 body: JSON.stringify({
-                    products: products,
-                    rescue: rescue._id,
+                    products: productsIn,
+                    rescue: selectedRescue[0]._id,
                     customer: session.user._id,
                     status: "new",
                     stripeSessionId: stripeSessionId,
@@ -80,10 +72,6 @@ const Cart = (props) => {
                 }),
             });
         }
-
-        // setTimeout(() => {
-        //     window.location.assign("/");
-        // }, 10000);
     };
 
     const prepCart = () => {

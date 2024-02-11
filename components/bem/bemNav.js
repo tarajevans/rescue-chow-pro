@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const BemNav = ({ currentModule, setCurrentModule }) => {
+
+    const { data: session, status, update } = useSession();
+    const [currentNavigation, setCurrentNavigation] = useState([])
+
     const selectOrders = () => {
         setCurrentModule("orders");
     };
@@ -25,9 +31,32 @@ const BemNav = ({ currentModule, setCurrentModule }) => {
         { name: "Products", href: "#", onclick: selectProducts },
     ];
 
+    const workerNavigation = [
+        { name: "Orders", href: "#", onclick: selectOrders },
+        { name: "Rescues", href: "#", onclick: selectRescues },
+        { name: "Products", href: "#", onclick: selectProducts },
+    ];
+
+    const adminNavigation = [
+        { name: "Orders", href: "#", onclick: selectOrders },
+        { name: "Rescues", href: "#", onclick: selectRescues },
+        { name: "Users", href: "#", onclick: selectUsers },
+        { name: "Products", href: "#", onclick: selectProducts },
+    ];
+
     function classNames(...classes) {
         return classes.filter(Boolean).join(" ");
     }
+
+    useEffect(() => {
+        if(session?.user?.role === 'admin'){
+            setCurrentNavigation(adminNavigation)
+        }
+
+        if(session?.user?.role === 'worker'){
+            setCurrentNavigation(workerNavigation)
+        }
+    },[])
 
     return (
         <Disclosure as="nav" className="bg-red-200 border-b-4 border-white">
@@ -36,7 +65,8 @@ const BemNav = ({ currentModule, setCurrentModule }) => {
                     <div className="flex items-center">
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                {navigation.map((item, idx) => (
+
+                                {currentNavigation.map((item, idx) => (
                                     <Link
                                     key={idx}
                                         href={item.href}

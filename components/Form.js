@@ -60,6 +60,10 @@ function RescueForm() {
         // setHover(index)
     };
 
+    const handleChecked = () => {
+        setSelectedRescue()
+    }
+
     return (
         <div>
             <legend className="text-lg font-medium text-gray-900">
@@ -70,7 +74,6 @@ function RescueForm() {
                     <div
                         className="relative flex items-start py-4"
                         key={rescue._id}
-                        onMouseOver={() => {}}
                     >
                         <RescueListItem
                             website={rescue.website}
