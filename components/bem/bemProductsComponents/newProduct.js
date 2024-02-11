@@ -1,8 +1,8 @@
-// import {
-//     ListObjectsV2Command,
-//     PutObjectCommand,
-//     S3Client,
-// } from "@aws-sdk/client-s3";
+import {
+    ListObjectsV2Command,
+    PutObjectCommand,
+    S3Client,
+} from "@aws-sdk/client-s3";
 import { useEffect, useState } from "react";
 
 const NewProduct = () => {
@@ -70,7 +70,7 @@ const NewProduct = () => {
                         <input
                             className="border-2 border-slate-300 rounded px-1"
                             type="text"
-                            defaultValue="Product Name"
+                            placeholder="Product Name"
                             onChange={(e) => {setProdName(e.target.value)}}
                         />
                     </span>
@@ -82,7 +82,7 @@ const NewProduct = () => {
                         <input
                             className="border-2 border-slate-300 rounded px-1"
                             type="text"
-                            defaultValue="Description"
+                            placeholder="Description"
                             onChange={(e) => {setDescription(e.target.value)}}
                         />
                     </span>
@@ -94,7 +94,7 @@ const NewProduct = () => {
                         <input
                             className="border-2 border-slate-300 rounded px-1"
                             type="text"
-                            defaultValue="Active"
+                            defaultValue="false"
                             onChange={(e) => {setIsActive(e.target.value)}}
                         />
                     </span>
@@ -130,7 +130,7 @@ const NewProduct = () => {
                         <input
                             className="w-20 border-2 border-slate-300 rounded px-1"
                             type="number"
-                            defaultValue="0"
+                            defaultValue="0.00"
                             step="0.01"
                             onChange={(e) => {
                                 setPrice(e.target.value);
