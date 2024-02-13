@@ -662,9 +662,7 @@ const BemUserLineItem = ({ user, userRefetch }) => {
                                             <span>
                                                 {!editRescue ? (
                                                     <span>
-                                                        {
-                                                            user.affiliateRescue
-                                                                ._id
+                                                        { user?.affiliateRescue?._id && (user.affiliateRescue._id)
                                                         }
                                                     </span>
                                                 ) : (
@@ -720,7 +718,7 @@ const BemUserLineItem = ({ user, userRefetch }) => {
                                                 Rescue Name:
                                             </span>
                                             <span>
-                                                {user.affiliateRescue.name}
+                                                {user?.affiliateRescue?.name && (user.affiliateRescue.name)}
                                             </span>
                                         </div>
                                     </div>
