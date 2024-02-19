@@ -47,8 +47,8 @@ const handler = async (req, res) => {
     const client = new S3Client({
         region: "us-east-1",
         credentials: {
-            accessKeyId:"AKIATEDBIIEO6EFFZDD5", //"AKIATEDBIIEOWFWVCQVR",
-            secretAccessKey: "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",
+            accessKeyId:process.env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         },
     });
 
