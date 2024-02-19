@@ -12,7 +12,7 @@ const client = new S3Client({
         secretAccessKey: "qaYqGwOshbSM4+9TpjyO91OnlHbxZvHdpvYDRmSq",
     },
 });
-const NewProduct = ({productRefetch}) => {
+const NewProduct = ({ productRefetch }) => {
     const [file, setFile] = useState(null);
     // const [fileList, setFileList] = useState();
     const [price, setPrice] = useState(0);
@@ -31,51 +31,51 @@ const NewProduct = ({productRefetch}) => {
     const [errors, setErrors] = useState(false);
 
     const saveFile = async () => {
-        const command = new PutObjectCommand({
-            Bucket: "rescue-chow-pro",
-            Key: file[0].name,
-            Body: file[0],
+        const formData = new FormData();
+        formData.append('file', file)
+
+        console.log(formData.get('file'))
+        
+        const response = await fetch("/api/data/images", {
+            method: "POST",
+            body: formData,
         });
 
-        try {
-            const response = await client.send(command);
-            console.log(response);
-        } catch (err) {
-            console.error("The Error Is: " + err);
-        }
+        const respData = await response.json();
+
+        console.log(respData)
+        console.log(respData.fileName)
+        return respData.fileName
     };
 
     const saveNewProduct = async () => {
-        console.log(category)
+        const newFileName = await saveFile();
+
         let prodObj = {
             name: prodName,
             description: description,
-            image: file[0].name,
+            image: newFileName,
             price: price,
             category: category,
             isCharitable: isCharitable,
             isActive: isActive,
         };
 
-        saveFile();
+        
 
-        const response = await fetch("/api/data/products",{
-            method:"POST",
-            body:JSON.stringify(prodObj)
-
+        const response = await fetch("/api/data/products", {
+            method: "POST",
+            body: JSON.stringify(prodObj),
         });
 
         const respData = response.json();
 
-        console.log(respData)
 
         productRefetch();
-
     };
 
     useEffect(() => {
         if (prodName.length <= 0) {
-            console.log(prodName.length);
             setProdNameError("Product Name Required");
         } else {
             setProdNameError(null);
@@ -267,7 +267,7 @@ const NewProduct = ({productRefetch}) => {
                                 type="file"
                                 accept=".jpg, .png"
                                 onChange={(e) => {
-                                    setFile(e.target.files);
+                                    setFile(e.target.files[0]);
                                 }}
                                 className="border-2 border-red-200 rounded-xl file:text-red-700 file:rounded-xl file:border-red-200 "
                             />

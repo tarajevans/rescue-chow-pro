@@ -12,7 +12,6 @@ const handler = async (req, res) => {
 
     if (req.method === "POST"){
         const body = await JSON.parse(req.body);
-        console.log(body)
         const result = await Product.create(body)
     }
 
