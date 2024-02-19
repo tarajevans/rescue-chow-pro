@@ -19,14 +19,14 @@ const BemProducts = ({ allProducts, productRefetch }) => {
                 {currentModule === "all" && (
                     <div>
                         <AllProducts
-                        allProducts={allProducts}
-                        productRefetch={productRefetch}
+                            allProducts={allProducts}
+                            productRefetch={productRefetch}
                         />
                     </div>
                 )}
                 {currentModule === "new" && (
                     <div>
-                        <NewProduct />
+                        <NewProduct productRefetch={productRefetch} />
                     </div>
                 )}
                 {currentModule === "lookup" && (

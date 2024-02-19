@@ -112,7 +112,6 @@ const BemRescueLineItem = ({ rescue, rescueRefetch }) => {
             }),
         });
 
-        console.log(result)
 
         rescueRefetch();
     }
