@@ -1,5 +1,5 @@
 const update = () => {
-    // const runUpdate = async () => {
+//     const runUpdate = async () => {
     // await Product.deleteMany();
     // await Category.deleteMany();
 
@@ -73,30 +73,33 @@ const update = () => {
     // ]);
     // };
 
-    // const newRescue = {
-    //     name: "NEW RESCUE",
-    //     website: "https://localhost:3000",
-    //     description: "This is a test rescue object",
-    //     image: "charity-jrt.png",
-    //     adminUser: "adminUser's _id",
-    //     authUsers: [],
-    // };
+    // // const newRescue = {
+    // //     name: "NEW RESCUE",
+    // //     website: "https://localhost:3000",
+    // //     description: "This is a test rescue object",
+    // //     image: "charity-jrt.png",
+    // //     adminUser: "adminUser's _id",
+    // //     authUsers: [],
+    // // };
 
-    // const clickHandler = async () => {
-    //     const response = await fetch("/api/data/rescues", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(newRescue),
-    //     });
-    // };
-
-    // return (
-    //     <div>
-    //         <button onClick={clickHandler}>UPDATE</button>
-    //     </div>
-    // );
+    // // const clickHandler = async () => {
+    // //     const response = await fetch("/api/data/rescues", {
+    // //         method: "POST",
+    // //         headers: {
+    // //             "Content-Type": "application/json",
+    // //         },
+    // //         body: JSON.stringify(newRescue),
+    // //     });
+    // // };
+const handleSubmit=async()=>{
+    console.log ('handlerclicked')
+    // const result=await fetch("/api/update")
+}
+    return (
+        <div className="pt-32">
+            <button onClick={handleSubmit}>UPDATE</button>
+        </div>
+    );
 };
 
 export default update;

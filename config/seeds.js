@@ -1,20 +1,21 @@
 // const db = require('./connections');
-const { User, Product, Category, Rescues } = require('../models');
-import { chowDb as db } from './connections';
+// const { User, Product, Category, Rescues } = require('../models');
+const {Product} = require('../models/shopping/Product')
+const { chowDb } = require('./connections');
 
 
 
-db.once("open", async () => {
-  await Category.deleteMany();
+chowDb.once("open", async () => {
+  // await Category.deleteMany();
   await Product.deleteMany();
   // await User.deleteMany();
   // await Rescues.deleteMany();
 
-  const categories = await Category.insertMany([
-    { name: "Cat Treats", image: "footer-cat-free-img-1.png" },
-    { name: "Dog Treats", image: "footer-dog-free-img-2.png" },
-    { name: "Merch", image: "footer-cat-free-img-2.png"},
-  ]);
+  // const categories = await Category.insertMany([
+  //   { name: "Cat Treats", image: "footer-cat-free-img-1.png" },
+  //   { name: "Dog Treats", image: "footer-dog-free-img-2.png" },
+  //   { name: "Merch", image: "footer-cat-free-img-2.png"},
+  // ]);
 
   // console.log("categories seeded");
 
