@@ -17,7 +17,7 @@ function ProductList({ currentCategory }) {
     const cartContext = useContext(CartContext);
     const [currProds, setCurrProds] = useState([]);
 
-    const { isLoading, data } = useQuery({
+    const prodQuery = useQuery({
         queryKey: ["products"],
         queryFn: fetchProducts,
         enabled: true,
@@ -36,13 +36,21 @@ function ProductList({ currentCategory }) {
     }, [currentCategory]);
 
     useEffect(() => {
-        if (isLoading) {
+        if (prodQuery.isLoading) {
             console.log("Loading...");
         } else {
-            listContext.loadProducts(data);
-            setCurrProds(data);
+            const activeProducts = [];
+            prodQuery.data.map((prodIn) => {
+                if(prodIn.isActive === true){
+                console.log("This Product is active")
+                activeProducts.push(prodIn)
+                }
+            })            
+            
+            listContext.loadProducts(activeProducts);
+            setCurrProds(activeProducts);
         }
-    }, [isLoading, data]);
+    }, [prodQuery.isLoading, prodQuery.data]);
 
     return (
         <div className=" bg-opacity-20 from-red-200 to-white bg-gradient-to-t">
@@ -51,7 +59,7 @@ function ProductList({ currentCategory }) {
                     All Products
                 </h2>
 
-                {isLoading && (
+                {prodQuery.isLoading && (
                     <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                         <h4>Loading...</h4>
                     </div>

@@ -1,17 +1,5 @@
-import {
-    ListObjectsV2Command,
-    PutObjectCommand,
-    S3Client,
-} from "@aws-sdk/client-s3";
 import { useEffect, useState } from "react";
 
-const client = new S3Client({
-    region: "us-east-1",
-    credentials: {
-        accessKeyId: "AKIATEDBIIEOWFWVCQVR",
-        secretAccessKey: "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",
-    },
-});
 const NewProduct = ({ productRefetch }) => {
     const [file, setFile] = useState(null);
     // const [fileList, setFileList] = useState();
@@ -42,9 +30,6 @@ const NewProduct = ({ productRefetch }) => {
         });
 
         const respData = await response.json();
-
-        console.log(respData)
-        console.log(respData.fileName)
         return respData.fileName
     };
 

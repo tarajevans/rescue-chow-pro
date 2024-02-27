@@ -8,7 +8,7 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
     const [editCategory, setEditCategory] = useState(false);
     const [editStatus, setEditStatus] = useState(false);
 
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("");
     const [productName, setProductName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
@@ -173,23 +173,27 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                         {!editStatus ? (
                             <span>
                                 <span>
-                                    {product.isActive &&  (<span>Active</span>)}
+                                    {product.isActive && <span>Active</span>}
                                 </span>
                                 <span>
-                                    {!product.isActive && (<span>Inactive</span>)}
+                                    {!product.isActive && <span>Inactive</span>}
                                 </span>
                             </span>
-                            
                         ) : (
                             <span>
                                 <span>
-                                    <input
+                                    {/* <input
                                         className="w-20"
                                         type="text"
                                         onChange={(e) => {
                                             setStatus(e.target.value);
                                         }}
-                                    />
+                                    /> */}
+
+                                    <select value={status} onChange={(e) => {setStatus(e.target.value)}}>
+                                        <option value={true}> Active</option>
+                                        <option value={false}>Inactive</option>
+                                    </select>
                                 </span>
                                 <span className="px-1">
                                     <input
@@ -237,10 +241,14 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                             size={50}
                                         />
                                     </span>
-                                    <span className="font-bold px-2">Description:</span>
+                                    <span className="font-bold px-2">
+                                        Description:
+                                    </span>
                                     <span>
                                         {!editDescription ? (
-                                            <span className="">{product.description}</span>
+                                            <span className="">
+                                                {product.description}
+                                            </span>
                                         ) : (
                                             <span>
                                                 <span>
@@ -253,8 +261,11 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         style={{
                                                             width: "1000px",
                                                         }}
-                                                        onChange={(e)=>{setDescription(e.target.value)}}
-
+                                                        onChange={(e) => {
+                                                            setDescription(
+                                                                e.target.value
+                                                            );
+                                                        }}
                                                     />
                                                 </span>
                                                 <span className="px-1">
@@ -265,9 +276,12 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         onClick={() => {
                                                             handleSaveProduct({
                                                                 prodId: product._id,
-                                                                description: description,
+                                                                description:
+                                                                    description,
                                                             });
-                                                            setEditDescription(false);
+                                                            setEditDescription(
+                                                                false
+                                                            );
                                                         }}
                                                     />
                                                 </span>
@@ -277,7 +291,9 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         type="button"
                                                         value="Cancel"
                                                         onClick={() => {
-                                                            setEditDescription(false);
+                                                            setEditDescription(
+                                                                false
+                                                            );
                                                         }}
                                                     />
                                                 </span>
@@ -292,16 +308,18 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                             type="button"
                                             value="Edit"
                                             onClick={() => {
-                                                setEditCategory(
-                                                    !editCategory
-                                                );
+                                                setEditCategory(!editCategory);
                                             }}
                                         />
                                     </span>
-                                    <span className="font-bold px-2">Category:</span>
+                                    <span className="font-bold px-2">
+                                        Category:
+                                    </span>
                                     <span>
                                         {!editCategory ? (
-                                            <span className="">{product.category.name}</span>
+                                            <span className="">
+                                                {product.category.name}
+                                            </span>
                                         ) : (
                                             <span>
                                                 <span>
@@ -309,13 +327,17 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         className=""
                                                         type="text"
                                                         defaultValue={
-                                                            product.category.name
+                                                            product.category
+                                                                .name
                                                         }
                                                         style={{
                                                             width: "500",
                                                         }}
-                                                        onChange={(e)=>{setCategory(e.target.value)}}
-
+                                                        onChange={(e) => {
+                                                            setCategory(
+                                                                e.target.value
+                                                            );
+                                                        }}
                                                     />
                                                 </span>
                                                 <span className="px-1">
@@ -326,9 +348,12 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         onClick={() => {
                                                             handleSaveProduct({
                                                                 prodId: product._id,
-                                                                category: category,
+                                                                category:
+                                                                    category,
                                                             });
-                                                            setEditCategory(false);
+                                                            setEditCategory(
+                                                                false
+                                                            );
                                                         }}
                                                     />
                                                 </span>
@@ -338,7 +363,9 @@ const BemProductsLineItem = ({ product, productRefetch }) => {
                                                         type="button"
                                                         value="Cancel"
                                                         onClick={() => {
-                                                            setEditCategory(false);
+                                                            setEditCategory(
+                                                                false
+                                                            );
                                                         }}
                                                     />
                                                 </span>
